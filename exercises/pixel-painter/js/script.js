@@ -23,7 +23,12 @@ for (let i = 0; i < 1000; i++) {
 
 function paint(e){
   let pixel = e.target;
-  pixel.style.backgroundColor = 'lightblue';
+  // answer found from: https://www.w3resource.com/javascript-exercises/javascript-math-exercise-40.php
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+  pixel.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+
   setTimeout(resetPixel, 1000, pixel);
 
 }
