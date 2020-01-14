@@ -1,0 +1,26 @@
+body {
+  font-family: Times, serif;
+  width: 600px;
+  margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Helvetica, sans-serif;
+  color: rgb(50,50,50);
+  text-align: center;
+}
+
+a:hover {
+  background-color: yellow;
+}
+
+#wrapper {
+  background-color: rgb(200,200,200);
+  padding: 20px;
+}
+
+.game-icon {
+  padding: 10px;
+  max-width: 100px;
+  transform: rotate(10deg);
+}
