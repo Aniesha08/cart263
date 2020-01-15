@@ -9,6 +9,7 @@ In class exercise w/Pippin Barr
 
 window.onload = setup;
 let rotation = 0;
+let currentKey = "";
 
 function setup() {
   console.log("page is setup");
