@@ -8,6 +8,7 @@ In class exercise w/Pippin Barr
 *********************************************************************/
 
 window.onload = setup;
+let rotation = 0;
 
 function setup() {
   console.log("page is setup");
