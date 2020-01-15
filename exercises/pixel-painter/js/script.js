@@ -20,6 +20,7 @@ for (let i = 0; i < 1000; i++) {
     pixel.addEventListener('mouseover', paint);
     pixel.addEventListener('click', remove);
     document.addEventListener('keydown', rotate);
+    document.addEventListener('keydown', typed);
     document.body.appendChild(pixel);
   }
 
@@ -59,4 +60,10 @@ function rotate(e){
     pixel.style.transform = 'rotate('+-1+'deg)';
     console.log("rotated left");
   }
+}
+
+function typed(e){
+  let document = e.target;
+  currentKey = keyCode;
+  console.log(currentKey);
 }
