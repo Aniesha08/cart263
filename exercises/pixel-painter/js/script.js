@@ -18,8 +18,10 @@ for (let i = 0; i < 1000; i++) {
     pixel.setAttribute('class','pixel');
     pixel.addEventListener('mouseover', paint);
     pixel.addEventListener('click', remove);
+    document.addEventListener('keydown', rotate);
     document.body.appendChild(pixel);
   }
+
 }
 
 function paint(e){
@@ -41,4 +43,19 @@ function resetPixel(pixel){
 function remove(e){
   let pixel = e.target;
   pixel.style.opacity = '0';
+}
+
+function rotate(e){
+  let pixel = e.target;
+  // right
+  if (e.keyCode === 39){
+    pixel.style.transform = 'rotate('+1+'deg)';
+    console.log("rotated right");
+  }
+
+  // left
+  if (e.keyCode === 37){
+    pixel.style.transform = 'rotate('+-1+'deg)';
+    console.log("rotated left");
+  }
 }
