@@ -7,4 +7,6 @@ body {
   width: 30px;
   height: 30px;
   float: left;
+  line-height: 30px;
+  color:red;
 }
