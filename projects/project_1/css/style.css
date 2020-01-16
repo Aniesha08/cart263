@@ -1,0 +1,15 @@
+body {
+}
+
+h1{
+  text-align: center;
+  font-family: 'IM Fell Great Primer SC', serif;
+  font-size: 5em;
+  margin-bottom: none;
+  color: #422412;
+}
+
+div#container{
+  text-align:center;
+  margin-bottom: 3em;
+}
