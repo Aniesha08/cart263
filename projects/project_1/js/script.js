@@ -22,6 +22,8 @@ document.addEventListener('keydown', handleKeyEvent);
 let canvas;
 let canvasContext;
 let rock;
+let mountain;
+let mountainBack;
 
 
 function setup() {
@@ -29,20 +31,28 @@ function setup() {
   canvas  = document.getElementById("canvas");
   // SABINE :: YOU named this "rock" and i renamed it canvas Context - as it is not a rock it is the context that allows for drawing
   canvasContext = canvas.getContext('2d');
-  canvas.style.backgroundColor = "#C5EFFD";
-  canvas.width = "1000";
+  canvas.width = "1200";
   canvas.height = "650";
 
   // make a rock:
-  rock = new Rock(40,610,35,0,2*Math.PI);
+  rock = new Rock(40,625,25,0,2*Math.PI);
   rock.displayRock();
   requestAnimationFrame(animate);
+
+  mountainBack = new MountainBack (500,550,1000,220,900,100);
+  mountainBack.displayMountainBack();
+
+  mountain = new Mountain (1200,650,300,650,1200,25);
+  mountain.displayMountain();
+
 }
 
 function animate(){
   //console.log("in animate");
   canvasContext.clearRect(0,0,canvas.width,canvas.height);
-    rock.displayRock();
+  rock.displayRock();
+  mountainBack.displayMountainBack();
+  mountain.displayMountain();
   requestAnimationFrame(animate);
 
 }
@@ -83,7 +93,6 @@ updateRock(){
   this.rockY += this.rockSpeedY;
 }
 
-
 moveRock(){
   if (event.keyCode === 39){
   this.rockSpeedX =1;
@@ -99,3 +108,43 @@ moveRock(){
 
 }
 } //class
+
+class MountainBack{
+  constructor(x1, y1, x2, y2, x3, y3){
+    this.x1 = x1;
+    this.y1 = x1;
+    this.x2 = x1;
+    this.y2 = x1;
+    this.x3 = x1;
+    this.y3 = x1;
+  }
+
+  displayMountainBack(){
+    canvasContext.beginPath();
+    canvasContext.moveTo(500,550);
+    canvasContext.lineTo(1000,220);
+    canvasContext.lineTo(900,100);
+    canvasContext.fillStyle = "#461f2f";
+    canvasContext.fill();
+  }
+}
+
+class Mountain{
+  constructor(x1, y1, x2, y2, x3, y3){
+    this.x1 = x1;
+    this.y1 = x1;
+    this.x2 = x1;
+    this.y2 = x1;
+    this.x3 = x1;
+    this.y3 = x1;
+  }
+
+  displayMountain(){
+    canvasContext.beginPath();
+    canvasContext.moveTo(1200,650);
+    canvasContext.lineTo(300,650);
+    canvasContext.lineTo(1200,25);
+    canvasContext.fillStyle = "#311b25";
+    canvasContext.fill();
+  }
+}
