@@ -17,7 +17,7 @@ let rockY = 610;
 let rockR = 35;
 let rockS = 0;
 let rockE = 2 * Math.PI;
-let rockSpeed = 2;
+let rockSpeed = 0;
 
 
 function setup() {
@@ -33,33 +33,33 @@ function setup() {
   rock.fillStyle = "#5A4D41";
   rock.fill();
 
+  rock.newPos = function() {
+  rock.rockX += rock.rockSpeed;
+  rock.rockY += rock.rockSpeed;
+  }
+
   moveRock();
 }
 
-// function displayRock(){
-//   let x = 40;
-//   let y = 610;
-//   let r = 35;
-//   let s = 0;
-//   let e = 2 * Math.PI;
-//   rock.beginPath();
-//   rock.arc(x, y, r, s, e);
-//   rock.fillStyle = "#5A4D41";
-//   rock.fill();
+// function update(){
+//
 // }
 
 function moveRock(){
-  let rock = canvas.getContext('2d');
+let rock = canvas.getContext('2d');
+rock.rockSpeed = 0;
 
   if (event.keyCode === 39){
-  rock.vx = -rockSpeed;
+  rock.rockSpeed += 1;
+  console.log("moving right");
   }
 
-    if (event.keyCode === 37){
-  rock.vx = rockSpeed;
+  if (event.keyCode === 37){
+  rock.rockSpeed -= 1;
+  console.log("moving left");
   }
 
   else {
-  rock.vx = 0;
+  rock.rockSpeed = 0;
   }
 }
