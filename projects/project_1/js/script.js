@@ -25,6 +25,11 @@ let rock;
 let mountain;
 let mountainBack;
 
+let rockBg;
+function preload() {
+  rockBg = loadImage('https://www.textures.com/system/gallery/photos/3D%20Scans/ps132998/132998_header.jpg');
+}
+
 
 function setup() {
   //createCanvas(windowWidth, windowHeight);
@@ -34,25 +39,24 @@ function setup() {
   canvas.width = "1200";
   canvas.height = "650";
 
-  // make a rock:
-  rock = new Rock(40,625,25,0,2*Math.PI);
-  rock.displayRock();
-  requestAnimationFrame(animate);
-
   mountainBack = new MountainBack (500,550,1000,220,900,100);
   mountainBack.displayMountainBack();
 
   mountain = new Mountain (1200,650,300,650,1200,25);
   mountain.displayMountain();
 
+  // make a rock:
+  rock = new Rock(40,625,25,0,2*Math.PI);
+  rock.displayRock();
+  requestAnimationFrame(animate);
 }
 
 function animate(){
   //console.log("in animate");
   canvasContext.clearRect(0,0,canvas.width,canvas.height);
-  rock.displayRock();
   mountainBack.displayMountainBack();
   mountain.displayMountain();
+  rock.displayRock();
   requestAnimationFrame(animate);
 
 }
@@ -60,6 +64,7 @@ function animate(){
 function handleKeyEvent(){
   rock.moveRock();
   rock.updateRock();
+  rock.stopRock();
 }
 
 
@@ -82,7 +87,9 @@ displayRock(){
 //  console.log("display");
   canvasContext.beginPath();
   canvasContext.arc (this.rockX, this.rockY, this.rockR,this.rockS,this.rockE);
-  canvasContext.fillStyle = "#5A4D41";
+  //canvasContext.style.backgroundImage = "url('assets/images/rock.jpg')";
+  canvasContext.fillStyle = rockBg;
+  //canvasContext.background = rockBg;
   canvasContext.fill();
   canvasContext.closePath();
 }
@@ -95,17 +102,28 @@ updateRock(){
 
 moveRock(){
   if (event.keyCode === 39){
-  this.rockSpeedX =1;
-  this.rockDirectionX=1;
-  console.log("moving right");
+  this.rockSpeedX =2;
+  this.rockDirectionX=2;
   }
 
   if (event.keyCode=== 37){
-  this.rockSpeedX =1;
-  this.rockDirectionX=-1;
-  console.log("moving left");
+  this.rockSpeedX =2;
+  this.rockDirectionX=-2;
   }
 
+  console.log(this.rockX);
+  //console.log(this.rockY);
+}
+
+stopRock(){
+  if (this.rockX <= 25){
+  //  this.rockx = canvas.width - this.rockR;
+  //  this.rockX = 0;
+  this.rockX = 25;
+  this.rockY = 625;
+  this.rockSpeedX = 0;
+  this.rockDirectionX=-0;
+  }
 }
 } //class
 
