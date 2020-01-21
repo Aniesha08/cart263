@@ -19,4 +19,9 @@ function setup() {
 
 function update(){
   console.log('Update!');
+  $('span').each(updateSpan);
+}
+
+function updateSpan(){
+  console.log('Updating Span!');
 }
