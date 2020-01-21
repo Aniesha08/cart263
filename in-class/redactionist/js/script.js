@@ -14,6 +14,7 @@ $(document).ready(setup);
 
 function setup() {
   setInterval(update, 500);
+  $('span').click(spanClicked);
 }
 
 
@@ -25,10 +26,16 @@ function update(){
 function updateSpan(){
   let random = Math.random();
   console.log('Updating Span!');
-  console.log('random');
 
 if (random < 0.1) {
   $(this).removeClass('redacted');
   $(this).addClass('revealed');
   }
+}
+
+function spanClicked(){
+  $(this).addClass('redacted');
+  $(this).removeClass('revealed');
+
+  console.log('Span clicked!');
 }
