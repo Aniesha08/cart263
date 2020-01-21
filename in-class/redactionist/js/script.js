@@ -23,5 +23,12 @@ function update(){
 }
 
 function updateSpan(){
+  let random = Math.random();
   console.log('Updating Span!');
+  console.log('random');
+
+if (random < 0.1) {
+  $(this).removeClass('redacted');
+  $(this).addClass('revealed');
+  }
 }
