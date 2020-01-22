@@ -18,6 +18,14 @@ let $secretsTotal;
 function setup() {
   setInterval(update, 500);
   $spans = $('span');
+
+  //calculate total number of secrets
+  $secretsTotal = $('.secret').length;
+
+  //display the total secrets
+  $( "#total" ).text($secretsTotal);
+  console.log($secretsTotal);
+
   $spans.click(spanClicked);
 }
 
