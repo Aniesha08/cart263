@@ -26,6 +26,8 @@ function setup() {
   $( "#total" ).text($secretsTotal);
   console.log($secretsTotal);
 
+  $('.secret').on( "mouseover", overSecret);
+
   $spans.click(spanClicked);
 }
 
