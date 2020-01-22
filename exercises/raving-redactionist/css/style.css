@@ -1,0 +1,18 @@
+body {
+
+}
+
+div{
+  width: 60%;
+  margin: 0 auto;
+}
+
+.redacted {
+  background-color: black;
+  color: transparent;
+}
+
+.revealed{
+  background-color: transparent;
+  color: red;
+}
