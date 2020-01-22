@@ -12,8 +12,8 @@ to match your project! Write JavaScript to do amazing things below!
 
 $(document).ready(setup);
 let $spans;
-let $secretsFound;
-let $secretsTotal = $('#found');
+let $secretsFound = 0;
+let $secretsTotal;
 
 function setup() {
   setInterval(update, 500);
@@ -59,5 +59,7 @@ function overSecret(){
   //apply the css style to the secrets found on mouseover
   $(this).addClass("found");
   //$(this).off("mouseover", "found");
+  console.log($secretsFound);
   $secretsFound++;
+  $( "#found" ).text($secretsFound);
 }
