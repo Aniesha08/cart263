@@ -12,6 +12,8 @@ to match your project! Write JavaScript to do amazing things below!
 
 $(document).ready(setup);
 let $spans;
+let $secretsFound;
+let $secretsTotal;
 
 function setup() {
   setInterval(update, 500);
