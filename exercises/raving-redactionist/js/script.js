@@ -26,6 +26,7 @@ function setup() {
   $( "#total" ).text($secretsTotal);
   console.log($secretsTotal);
 
+  // mouseover event handler for all secrets
   $('.secret').on( "mouseover", overSecret);
 
   $spans.click(spanClicked);
@@ -51,4 +52,9 @@ function spanClicked(){
   $(this).removeClass('revealed');
 
   console.log('Span clicked!');
+}
+
+function overSecret(){
+  //apply the css style to the secrets found on mouseover
+  $(this).addClass("found");
 }
