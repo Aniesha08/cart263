@@ -13,7 +13,7 @@ to match your project! Write JavaScript to do amazing things below!
 $(document).ready(setup);
 let $spans;
 let $secretsFound;
-let $secretsTotal;
+let $secretsTotal = $('#found');
 
 function setup() {
   setInterval(update, 500);
@@ -28,6 +28,7 @@ function setup() {
 
   // mouseover event handler for all secrets
   $('.secret').on( "mouseover", overSecret);
+  $('#found').off("mouseover", overSecret);
 
   $spans.click(spanClicked);
 }
@@ -57,4 +58,6 @@ function spanClicked(){
 function overSecret(){
   //apply the css style to the secrets found on mouseover
   $(this).addClass("found");
+  //$(this).off("mouseover", "found");
+  $secretsFound++;
 }
