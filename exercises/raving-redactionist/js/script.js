@@ -5,9 +5,6 @@
 Raving Redactionist
 Aniesha Sangarapillai
 
-This is a template. Fill in the title, author, and this description
-to match your project! Write JavaScript to do amazing things below!
-
 *********************************************************************/
 
 $(document).ready(setup);
@@ -20,7 +17,7 @@ function setup() {
   $spans = $('span');
 
   //calculate total number of secrets
-  $secretsTotal = $('.secret').length;
+   $secretsTotal = $('.secret').length;
 
   //display the total secrets
   $( "#total" ).text($secretsTotal);
@@ -28,19 +25,18 @@ function setup() {
 
   // mouseover event handler for all secrets
   $('.secret').on( "mouseover", overSecret);
-  $('#found').off("mouseover", overSecret);
 
   $spans.click(spanClicked);
 }
 
 function update(){
-  console.log('Update!');
+//  console.log('Update!');
   $spans.each(updateSpan);
 }
 
 function updateSpan(){
   let random = Math.random();
-  console.log('Updating Span!');
+//  console.log('Updating Span!');
 
 if (random < 0.1) {
   $(this).removeClass('redacted');
@@ -52,14 +48,14 @@ function spanClicked(){
   $(this).addClass('redacted');
   $(this).removeClass('revealed');
 
-  console.log('Span clicked!');
+//  console.log('Span clicked!');
 }
 
 function overSecret(){
   //apply the css style to the secrets found on mouseover
   $(this).addClass("found");
-  //$(this).off("mouseover", "found");
-  console.log($secretsFound);
+  $(this).off("mouseover");
+//  console.log($secretsFound);
   $secretsFound++;
-  $( "#found" ).text($secretsFound);
+  $("#found").text($secretsFound);
 }
