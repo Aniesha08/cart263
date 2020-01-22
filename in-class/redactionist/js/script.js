@@ -19,7 +19,6 @@ function setup() {
   $spans.click(spanClicked);
 }
 
-
 function update(){
   console.log('Update!');
   $spans.each(updateSpan);
