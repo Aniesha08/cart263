@@ -12,42 +12,45 @@ References:
 window.onload = setup;
 document.addEventListener('keydown', handleKeyEvent);
 
-// let rockX = 40;
-// let rockY = 610;
-// let rockR = 35;
-// let rockS = 0;
-// let rockE = 2 * Math.PI;
-// let rockSpeed = 0;
 // SABINE ADD :: make these global
 let canvas;
 let canvasContext;
 let rock;
 let mountain;
 let mountainBack;
-
 let rockBg;
-function preload() {
-  rockBg = loadImage('https://www.textures.com/system/gallery/photos/3D%20Scans/ps132998/132998_header.jpg');
-}
+let rockX;
+let rockY;
+let rockRot;
+let triC1 = [[1300,650], [0,200]];
+let triC2 = [[800,650],[0,650]];
+let triC3 = [[1300,200],[500,650]];
+let TO_RADIANS = Math.PI/180;
 
 
 function setup() {
-  //createCanvas(windowWidth, windowHeight);
   canvas  = document.getElementById("canvas");
+  rockBg  = document.getElementById("rockie");
   // SABINE :: YOU named this "rock" and i renamed it canvas Context - as it is not a rock it is the context that allows for drawing
   canvasContext = canvas.getContext('2d');
-  canvas.width = "1200";
+  canvas.width = "1300";
   canvas.height = "650";
 
-  mountainBack = new MountainBack (500,550,1000,220,900,100);
+  mountainBack = new MountainBack (0,200,0,650,500,650);
   mountainBack.displayMountainBack();
 
-  mountain = new Mountain (1200,650,300,650,1200,25);
+  mountain = new Mountain (1300,650,800,650,1300,200);
   mountain.displayMountain();
 
-  // make a rock:
-  rock = new Rock(40,625,25,0,2*Math.PI);
+  // mountainBack = new MountainBack (0,200,0,650,500,650);
+  // mountainBack.displayMountainBack();
+  //
+  // mountain = new Mountain (1300,650,800,650,1300,200);
+  // mountain.displayMountain();
+
+  rock = new Rock(rockBg,0,590);
   rock.displayRock();
+
   requestAnimationFrame(animate);
 }
 
@@ -58,7 +61,6 @@ function animate(){
   mountain.displayMountain();
   rock.displayRock();
   requestAnimationFrame(animate);
-
 }
 
 function handleKeyEvent(){
@@ -70,12 +72,14 @@ function handleKeyEvent(){
 
 // SABINE:: made a class for the rock object
 class Rock{
-  constructor(rockX, rockY, rockR, rockS, rockE){
+  constructor(rockBg, rockX, rockY){
+    this.rockBg = rockBg;
     this.rockX = rockX;
-    this.rockR = rockR;
     this.rockY = rockY;
-    this.rockS = rockS;
-    this.rockE = rockE;
+    this.rockRot = 0;
+    //this.rockR = rockR;
+    // this.rockS = rockS;
+    // this.rockE = rockE;
     //have two speeds  - one for x and one for y
     this.rockSpeedX =0.0;
     this.rockSpeedY =0.0;
@@ -83,21 +87,27 @@ class Rock{
     this.rockDirectionY =1.0;
   }
 
-displayRock(){
+  displayRock(){
+  //  canvasContext.rotate(this.rockRot);
+    canvasContext.save();
+    canvasContext.translate(0, 0);
+    canvasContext.rotate(0 * TO_RADIANS);
+    canvasContext.drawImage(this.rockBg, this.rockX, this.rockY);
+    canvasContext.restore();
+  //  canvasContext.rotate(-this.rockRot);
+  //  canvasContext.rotate(this.rockRot);
 //  console.log("display");
-  canvasContext.beginPath();
-  canvasContext.arc (this.rockX, this.rockY, this.rockR,this.rockS,this.rockE);
-  //canvasContext.style.backgroundImage = "url('assets/images/rock.jpg')";
-  canvasContext.fillStyle = rockBg;
-  //canvasContext.background = rockBg;
-  canvasContext.fill();
-  canvasContext.closePath();
+//  canvasContext.beginPath();
+//  canvasContext.arc (this.rockX, this.rockY, this.rockR,this.rockS,this.rockE);
+//  canvasContext.fill();
+//  canvasContext.closePath();
 }
 
 updateRock(){
   this.rockSpeedX = this.rockSpeedX*this.rockDirectionX;
   this.rockX += this.rockSpeedX;
   this.rockY += this.rockSpeedY;
+  this.rockRot++;
 }
 
 moveRock(){
@@ -116,11 +126,11 @@ moveRock(){
 }
 
 stopRock(){
-  if (this.rockX <= 25){
+  if (this.rockX <= 0){
   //  this.rockx = canvas.width - this.rockR;
   //  this.rockX = 0;
-  this.rockX = 25;
-  this.rockY = 625;
+  this.rockX = 0;
+  this.rockY = 590;
   this.rockSpeedX = 0;
   this.rockDirectionX=-0;
   }
@@ -139,9 +149,9 @@ class MountainBack{
 
   displayMountainBack(){
     canvasContext.beginPath();
-    canvasContext.moveTo(500,550);
-    canvasContext.lineTo(1000,220);
-    canvasContext.lineTo(900,100);
+    canvasContext.moveTo(0,200);
+    canvasContext.lineTo(0,650);
+    canvasContext.lineTo(500,650);
     canvasContext.fillStyle = "#461f2f";
     canvasContext.fill();
   }
@@ -159,9 +169,9 @@ class Mountain{
 
   displayMountain(){
     canvasContext.beginPath();
-    canvasContext.moveTo(1200,650);
-    canvasContext.lineTo(300,650);
-    canvasContext.lineTo(1200,25);
+    canvasContext.moveTo(1300,650);
+    canvasContext.lineTo(800,650);
+    canvasContext.lineTo(1300,200);
     canvasContext.fillStyle = "#311b25";
     canvasContext.fill();
   }
