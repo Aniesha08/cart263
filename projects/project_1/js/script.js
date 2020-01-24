@@ -16,8 +16,8 @@ document.addEventListener('keydown', handleKeyEvent);
 let canvas;
 let canvasContext;
 let rock;
-let mountain;
-let mountainBack;
+let mountainRight;
+let mountainLeft;
 let rockBg;
 let rockX;
 let rockY;
@@ -33,23 +33,23 @@ function setup() {
   canvas.width = "1300";
   canvas.height = "650";
 
-  mountainBack = new MountainLeft (0,200,0,650,500,650);
-  mountainBack.displayMountainLeft();
+  mountainLeft = new MountainLeft (0,200,0,650,500,650);
+  //mountainLeft.displayMountainLeft();
 
-  mountain = new MountainRight (1300,650,800,650,1300,200);
-  mountain.displayMountainRight();
+  mountainRight = new MountainRight (1300,650,800,650,1300,200);
+  //mountainRight.displayMountainRight();
 
   rock = new Rock(rockBg,0,590);
-  rock.displayRock();
+//  rock.displayRock();
 
   requestAnimationFrame(animate);
 }
 
 function animate(){
-  //console.log("in animate");
   canvasContext.clearRect(0,0,canvas.width,canvas.height);
-  mountainBack.displayMountainLeft();
-  mountain.displayMountainRight();
+  //mountainLeft.displayMountainLeft();
+  //mountainRight.displayMountainRight();
+  mountainShow();
   rock.displayRock();
   requestAnimationFrame(animate);
 }
@@ -114,6 +114,7 @@ moveRock(){
 
   console.log(this.rockX);
   //console.log(this.rockY);
+
 }
 
 stopRock(){
@@ -127,6 +128,19 @@ stopRock(){
   }
 }
 } //class
+
+// If the rock position is greater or less than half the width of the canvas, display the mountain on the opposite side of the rock direction
+function mountainShow(){
+  if (rock.rockX >= canvas.width/2){
+    console.log("mountain at 100");
+    mountainLeft.displayMountainLeft();
+  }
+
+  if (rock.rockX <= canvas.width/2){
+    console.log("mountain at 100");
+    mountainRight.displayMountainRight();
+  }
+}
 
 class MountainLeft{
   constructor(x1, y1, x2, y2, x3, y3){
