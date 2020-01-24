@@ -22,9 +22,6 @@ let rockBg;
 let rockX;
 let rockY;
 let rockRot;
-let triC1 = [[1300,650], [0,200]];
-let triC2 = [[800,650],[0,650]];
-let triC3 = [[1300,200],[500,650]];
 let TO_RADIANS = Math.PI/180;
 
 
@@ -36,17 +33,11 @@ function setup() {
   canvas.width = "1300";
   canvas.height = "650";
 
-  mountainBack = new MountainBack (0,200,0,650,500,650);
-  mountainBack.displayMountainBack();
+  mountainBack = new MountainLeft (0,200,0,650,500,650);
+  mountainBack.displayMountainLeft();
 
-  mountain = new Mountain (1300,650,800,650,1300,200);
-  mountain.displayMountain();
-
-  // mountainBack = new MountainBack (0,200,0,650,500,650);
-  // mountainBack.displayMountainBack();
-  //
-  // mountain = new Mountain (1300,650,800,650,1300,200);
-  // mountain.displayMountain();
+  mountain = new MountainRight (1300,650,800,650,1300,200);
+  mountain.displayMountainRight();
 
   rock = new Rock(rockBg,0,590);
   rock.displayRock();
@@ -57,8 +48,8 @@ function setup() {
 function animate(){
   //console.log("in animate");
   canvasContext.clearRect(0,0,canvas.width,canvas.height);
-  mountainBack.displayMountainBack();
-  mountain.displayMountain();
+  mountainBack.displayMountainLeft();
+  mountain.displayMountainRight();
   rock.displayRock();
   requestAnimationFrame(animate);
 }
@@ -137,7 +128,7 @@ stopRock(){
 }
 } //class
 
-class MountainBack{
+class MountainLeft{
   constructor(x1, y1, x2, y2, x3, y3){
     this.x1 = x1;
     this.y1 = x1;
@@ -147,7 +138,7 @@ class MountainBack{
     this.y3 = x1;
   }
 
-  displayMountainBack(){
+  displayMountainLeft(){
     canvasContext.beginPath();
     canvasContext.moveTo(0,200);
     canvasContext.lineTo(0,650);
@@ -157,7 +148,7 @@ class MountainBack{
   }
 }
 
-class Mountain{
+class MountainRight{
   constructor(x1, y1, x2, y2, x3, y3){
     this.x1 = x1;
     this.y1 = x1;
@@ -167,12 +158,12 @@ class Mountain{
     this.y3 = x1;
   }
 
-  displayMountain(){
+  displayMountainRight(){
     canvasContext.beginPath();
     canvasContext.moveTo(1300,650);
     canvasContext.lineTo(800,650);
-    canvasContext.lineTo(1300,200);
-    canvasContext.fillStyle = "#311b25";
+    canvasContext.lineTo(1300,250);
+    canvasContext.fillStyle = "#461f2f";
     canvasContext.fill();
   }
 }
