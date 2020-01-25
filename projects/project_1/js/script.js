@@ -22,7 +22,11 @@ let rockBg;
 let rockX;
 let rockY;
 let rockRot;
+let rockSound;
 
+function preload(){
+  rockSound = loadSound('assets/sounds/rockroll.mp3');
+}
 
 function setup() {
   canvas  = document.getElementById("canvas");
@@ -33,13 +37,10 @@ function setup() {
   canvas.height = "650";
 
   mountainLeft = new MountainLeft (0,200,0,650,500,650);
-  //mountainLeft.displayMountainLeft();
 
   mountainRight = new MountainRight (1300,650,800,650,1300,200);
-  //mountainRight.displayMountainRight();
 
   rock = new Rock(rockBg,30,620,60,60);
-//  rock.displayRock();
 
   requestAnimationFrame(animate);
 }
@@ -97,24 +98,20 @@ moveRock(){
   this.rockSpeedX =2;
   this.rockDirectionX=2;
   this.rockRot += 5;
+  rockSound.play();
   }
 
   if (event.keyCode=== 37){
   this.rockSpeedX =2;
   this.rockDirectionX=-2;
   this.rockRot -= 5;
-//  this.rockRot--;
   }
 
   console.log(this.rockX);
-  //console.log(this.rockY);
-
 }
 
 stopRock(){
   if (this.rockX <= 30){
-  //  this.rockx = canvas.width - this.rockR;
-  //  this.rockX = 0;
   this.rockX = 30;
   this.rockY = 620;
   this.rockSpeedX = 0;
