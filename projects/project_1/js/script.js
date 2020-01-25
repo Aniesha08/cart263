@@ -10,7 +10,16 @@ References:
 *********************************************************************/
 
 window.onload = setup;
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+// let rockSound = new AudioContext();
 document.addEventListener('keydown', handleKeyEvent);
+
+document.addEventListener('keydown', function() {
+    let rockSound  = new AudioContext();
+    rockSound.resume().then(() => {
+    console.log('Playback resumed successfully');
+  });
+});
 
 // SABINE ADD :: make these global
 let canvas;
@@ -22,11 +31,11 @@ let rockBg;
 let rockX;
 let rockY;
 let rockRot;
-let rockSound;
 
-function preload(){
-  rockSound = loadSound('assets/sounds/rockroll.mp3');
-}
+// function preload(){
+//     rockSound = loadSound('assets/sounds/rockroll.mp3');
+//   //  rockSound = loadSound('https://github.com/Aniesha08/cart263/blob/master/projects/project_1/assets/sounds/rockroll.mp3');
+//    }
 
 function setup() {
   canvas  = document.getElementById("canvas");
@@ -98,7 +107,7 @@ moveRock(){
   this.rockSpeedX =2;
   this.rockDirectionX=2;
   this.rockRot += 5;
-  rockSound.play();
+  // rockSound.play();
   }
 
   if (event.keyCode=== 37){
@@ -116,6 +125,7 @@ stopRock(){
   this.rockY = 620;
   this.rockSpeedX = 0;
   this.rockDirectionX=-0;
+  this.rockRot = 0;
   }
 }
 } //class
