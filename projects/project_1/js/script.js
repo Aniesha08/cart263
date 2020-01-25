@@ -6,6 +6,9 @@ Sisyphus
 by Aniesha Sangarapillai
 
 References:
+https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#webaudio
+https://blog.loadimpact.com/blog/web-development/webaudio_explained
+
 
 *********************************************************************/
 
@@ -31,6 +34,7 @@ let rockBg;
 let rockX;
 let rockY;
 let rockRot;
+//let rockSound;
 
 // function preload(){
 //     rockSound = loadSound('assets/sounds/rockroll.mp3');
@@ -56,9 +60,8 @@ function setup() {
 
 function animate(){
   canvasContext.clearRect(0,0,canvas.width,canvas.height);
-  //mountainLeft.displayMountainLeft();
-  //mountainRight.displayMountainRight();
-  mountainShow();
+  // mountainShow();
+  mountainRight.displayMountainRight();
   rock.displayRock();
   requestAnimationFrame(animate);
 }
@@ -103,17 +106,32 @@ updateRock(){
 }
 
 moveRock(){
+// rock will move fast until it reaches the tip of the mountain
+// when the user presses the U key to move the rock up the mountain, the rock will go up really slow and never make it up on time.
+
+  // RIGHT ARROW
   if (event.keyCode === 39){
   this.rockSpeedX =2;
   this.rockDirectionX=2;
-  this.rockRot += 5;
-  // rockSound.play();
+  this.rockRot += 15;
+//  rockSound.play();
   }
 
+  // LEFT ARROW
   if (event.keyCode=== 37){
   this.rockSpeedX =2;
   this.rockDirectionX=-2;
-  this.rockRot -= 5;
+  this.rockRot -= 15;
+  }
+
+  // U KEY (MOVE UP)
+  if (event.keyCode === 85){
+  // this.rockSpeedY =0.5;
+  // this.rockDirectionY=2;
+  this.rockSpeedX = 2;
+  this.rockDirectionX=2;
+  this.rockY -= 3;
+  this.rockRot += 2;
   }
 
   console.log(this.rockX);
@@ -130,17 +148,18 @@ stopRock(){
 }
 } //class
 
-// If the rock position is greater or less than half the width of the canvas, display the mountain on the opposite side of the rock direction
-function mountainShow(){
-  if (rock.rockX >= canvas.width/2){
-    console.log("mountain pass half of canvas");
-    mountainLeft.displayMountainLeft();
-  }
-
-  if (rock.rockX <= canvas.width/2){
-    mountainRight.displayMountainRight();
-  }
-}
+// // If the rock position is greater or less than half the width of the canvas, display the mountain on the opposite side of the rock direction
+// function mountainShow(){
+//   if (rock.rockX >= canvas.width/2){
+//     console.log("mountain pass half of canvas");
+//     mountainLeft.displayMountainLeft();
+//     mountainRight.displayMountainRight();
+//   }
+//
+//   if (rock.rockX <= canvas.width/2){
+//     mountainRight.displayMountainRight();
+//   }
+// }
 
 class MountainLeft{
   constructor(x1, y1, x2, y2, x3, y3){
