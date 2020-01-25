@@ -22,7 +22,6 @@ let rockBg;
 let rockX;
 let rockY;
 let rockRot;
-let TO_RADIANS = Math.PI/180;
 
 
 function setup() {
@@ -39,7 +38,7 @@ function setup() {
   mountainRight = new MountainRight (1300,650,800,650,1300,200);
   //mountainRight.displayMountainRight();
 
-  rock = new Rock(rockBg,0,590);
+  rock = new Rock(rockBg,30,620,60,60);
 //  rock.displayRock();
 
   requestAnimationFrame(animate);
@@ -63,14 +62,14 @@ function handleKeyEvent(){
 
 // SABINE:: made a class for the rock object
 class Rock{
-  constructor(rockBg, rockX, rockY){
+  constructor(rockBg, rockX, rockY, rockW, rockH){
     this.rockBg = rockBg;
     this.rockX = rockX;
     this.rockY = rockY;
+    this.rockW = rockW;
+    this.rockH = rockH;
     this.rockRot = 0;
-    //this.rockR = rockR;
-    // this.rockS = rockS;
-    // this.rockE = rockE;
+
     //have two speeds  - one for x and one for y
     this.rockSpeedX =0.0;
     this.rockSpeedY =0.0;
@@ -79,37 +78,32 @@ class Rock{
   }
 
   displayRock(){
-  //  canvasContext.rotate(this.rockRot);
     canvasContext.save();
-    canvasContext.translate(0, 0);
-    canvasContext.rotate(0 * TO_RADIANS);
-    canvasContext.drawImage(this.rockBg, this.rockX, this.rockY);
+    canvasContext.translate(this.rockX , this.rockY);
+    canvasContext.rotate(Math.PI / 180 * (this.rockRot += 0.0));
+    canvasContext.translate(-this.rockW/2.0, -this.rockH/2.0);
+    canvasContext.drawImage(this.rockBg, 0, 0, this.rockW, this.rockH);
     canvasContext.restore();
-  //  canvasContext.rotate(-this.rockRot);
-  //  canvasContext.rotate(this.rockRot);
-//  console.log("display");
-//  canvasContext.beginPath();
-//  canvasContext.arc (this.rockX, this.rockY, this.rockR,this.rockS,this.rockE);
-//  canvasContext.fill();
-//  canvasContext.closePath();
 }
 
 updateRock(){
   this.rockSpeedX = this.rockSpeedX*this.rockDirectionX;
   this.rockX += this.rockSpeedX;
   this.rockY += this.rockSpeedY;
-  this.rockRot++;
 }
 
 moveRock(){
   if (event.keyCode === 39){
   this.rockSpeedX =2;
   this.rockDirectionX=2;
+  this.rockRot += 5;
   }
 
   if (event.keyCode=== 37){
   this.rockSpeedX =2;
   this.rockDirectionX=-2;
+  this.rockRot -= 5;
+//  this.rockRot--;
   }
 
   console.log(this.rockX);
@@ -118,11 +112,11 @@ moveRock(){
 }
 
 stopRock(){
-  if (this.rockX <= 0){
+  if (this.rockX <= 30){
   //  this.rockx = canvas.width - this.rockR;
   //  this.rockX = 0;
-  this.rockX = 0;
-  this.rockY = 590;
+  this.rockX = 30;
+  this.rockY = 620;
   this.rockSpeedX = 0;
   this.rockDirectionX=-0;
   }
@@ -132,12 +126,11 @@ stopRock(){
 // If the rock position is greater or less than half the width of the canvas, display the mountain on the opposite side of the rock direction
 function mountainShow(){
   if (rock.rockX >= canvas.width/2){
-    console.log("mountain at 100");
+    console.log("mountain pass half of canvas");
     mountainLeft.displayMountainLeft();
   }
 
   if (rock.rockX <= canvas.width/2){
-    console.log("mountain at 100");
     mountainRight.displayMountainRight();
   }
 }
