@@ -9,20 +9,22 @@ References:
 https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#webaudio
 https://blog.loadimpact.com/blog/web-development/webaudio_explained
 
+http://vaidehijoshi.github.io/blog/2015/01/06/the-final-countdown-using-javascripts-setinterval-plus-clearinterval-methods/
+
 
 *********************************************************************/
 
 window.onload = setup;
-window.AudioContext = window.AudioContext || window.webkitAudioContext;
+// window.AudioContext = window.AudioContext || window.webkitAudioContext;
 // let rockSound = new AudioContext();
 document.addEventListener('keydown', handleKeyEvent);
 
-document.addEventListener('keydown', function() {
-    let rockSound  = new AudioContext();
-    rockSound.resume().then(() => {
-    console.log('Playback resumed successfully');
-  });
-});
+// document.addEventListener('keydown', function() {
+//     let rockSound  = new AudioContext();
+//     rockSound.resume().then(() => {
+//     console.log('Playback resumed successfully');
+//   });
+// });
 
 // SABINE ADD :: make these global
 let canvas;
@@ -34,6 +36,9 @@ let rockBg;
 let rockX;
 let rockY;
 let rockRot;
+let sec = 15;
+let timer = setInterval(countDown, 1000);
+//let counter = 0;
 //let rockSound;
 
 // function preload(){
@@ -43,11 +48,14 @@ let rockRot;
 
 function setup() {
   canvas  = document.getElementById("canvas");
-  rockBg  = document.getElementById("rockie");
+
   // SABINE :: YOU named this "rock" and i renamed it canvas Context - as it is not a rock it is the context that allows for drawing
   canvasContext = canvas.getContext('2d');
   canvas.width = "1300";
-  canvas.height = "650";
+  canvas.height = "650";;
+  console.log(sec);
+
+  rockBg  = document.getElementById("rockie");
 
   mountainLeft = new MountainLeft (0,200,0,650,500,650);
 
@@ -60,7 +68,9 @@ function setup() {
 
 function animate(){
   canvasContext.clearRect(0,0,canvas.width,canvas.height);
-  // mountainShow();
+  canvasContext.font = "30px Arial";
+  canvasContext.fillStyle = '#FFFFFF';
+  canvasContext.fillText("Time:" + sec,1170,50)
   mountainRight.displayMountainRight();
   rock.displayRock();
   requestAnimationFrame(animate);
@@ -70,6 +80,14 @@ function handleKeyEvent(){
   rock.moveRock();
   rock.updateRock();
   rock.stopRock();
+}
+
+function countDown(){
+  sec--;
+  console.log(sec);
+  if (sec === 0) {
+    console.log("timer done");
+  }
 }
 
 
@@ -148,18 +166,6 @@ stopRock(){
 }
 } //class
 
-// // If the rock position is greater or less than half the width of the canvas, display the mountain on the opposite side of the rock direction
-// function mountainShow(){
-//   if (rock.rockX >= canvas.width/2){
-//     console.log("mountain pass half of canvas");
-//     mountainLeft.displayMountainLeft();
-//     mountainRight.displayMountainRight();
-//   }
-//
-//   if (rock.rockX <= canvas.width/2){
-//     mountainRight.displayMountainRight();
-//   }
-// }
 
 class MountainLeft{
   constructor(x1, y1, x2, y2, x3, y3){
