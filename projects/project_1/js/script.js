@@ -36,9 +36,14 @@ let rockBg;
 let rockX;
 let rockY;
 let rockRot;
-let sec = 15;
-let timer = setInterval(countDown, 1000);
-//let counter = 0;
+let sec = 20;
+//let timer = setInterval(rock.countDown(), 1000);
+//let timer = setInterval(rock.moveRock(), 1000);
+//let timer = setInterval(rock.updateRock(), 1000);
+//let timer = setInterval(countDown, 1000);
+let timer;
+let timerStarted=false;
+
 //let rockSound;
 
 // function preload(){
@@ -57,8 +62,6 @@ function setup() {
 
   rockBg  = document.getElementById("rockie");
 
-  mountainLeft = new MountainLeft (0,200,0,650,500,650);
-
   mountainRight = new MountainRight (1300,650,800,650,1300,200);
 
   rock = new Rock(rockBg,30,620,60,60);
@@ -70,29 +73,36 @@ function animate(){
   canvasContext.clearRect(0,0,canvas.width,canvas.height);
   canvasContext.font = "30px Arial";
   canvasContext.fillStyle = '#FFFFFF';
-  canvasContext.fillText("Time:" + sec,1170,50)
+  canvasContext.fillText("Time: " + sec,1160,50)
   mountainRight.displayMountainRight();
   rock.displayRock();
   requestAnimationFrame(animate);
 }
 
 function handleKeyEvent(){
+
   rock.moveRock();
   rock.updateRock();
+  // rock.countDown();
   rock.stopRock();
 }
 
 function countDown(){
   sec--;
-  console.log(sec);
-  if (sec === 0) {
-    console.log("timer done");
+
+  if (sec <= 0) {
+  clearInterval(timer);
+    rock.rockX = 30;
+    rock.rockY = 620;
+    timerStarted =false;
+    sec = 20;
   }
 }
 
 
 // SABINE:: made a class for the rock object
 class Rock{
+
   constructor(rockBg, rockX, rockY, rockW, rockH){
     this.rockBg = rockBg;
     this.rockX = rockX;
@@ -115,12 +125,22 @@ class Rock{
     canvasContext.translate(-this.rockW/2.0, -this.rockH/2.0);
     canvasContext.drawImage(this.rockBg, 0, 0, this.rockW, this.rockH);
     canvasContext.restore();
-}
+  }
 
 updateRock(){
   this.rockSpeedX = this.rockSpeedX*this.rockDirectionX;
   this.rockX += this.rockSpeedX;
   this.rockY += this.rockSpeedY;
+  //
+  // if (this.rockX >= 30){
+  //   sec--;
+  //   //
+  //   if (sec <= 0) {
+  //   clearInterval(timer);
+  //   this.rockX = 30;
+  //   this.rockY = 620;
+  //   }
+  // }
 }
 
 moveRock(){
@@ -129,10 +149,19 @@ moveRock(){
 
   // RIGHT ARROW
   if (event.keyCode === 39){
+     //  function countDown(){
+     //  sec--;
+     //
+     //  if (sec <= 0) {
+     //  clearInterval(timer);
+     //  this.rockX = 30;
+     //  this.rockY = 620;
+     //  }
+     // }
+
   this.rockSpeedX =2;
   this.rockDirectionX=2;
   this.rockRot += 15;
-//  rockSound.play();
   }
 
   // LEFT ARROW
@@ -144,15 +173,26 @@ moveRock(){
 
   // U KEY (MOVE UP)
   if (event.keyCode === 85){
-  // this.rockSpeedY =0.5;
-  // this.rockDirectionY=2;
   this.rockSpeedX = 2;
   this.rockDirectionX=2;
   this.rockY -= 3;
-  this.rockRot += 2;
+  this.rockRot += 5;
   }
 
-  console.log(this.rockX);
+  if(event.keyCode === 39){
+    if(timerStarted ===false){
+      timer = setInterval(countDown, 1000);
+      timerStarted =true;
+      console.log("started timer");
+
+    }
+
+  }
+
+  //rockSound.play();
+  //rockSound.loop();
+
+  //console.log(this.rockX);
 }
 
 stopRock(){
@@ -162,30 +202,12 @@ stopRock(){
   this.rockSpeedX = 0;
   this.rockDirectionX=-0;
   this.rockRot = 0;
+  //rockSound.stop();
   }
 }
+
 } //class
 
-
-class MountainLeft{
-  constructor(x1, y1, x2, y2, x3, y3){
-    this.x1 = x1;
-    this.y1 = x1;
-    this.x2 = x1;
-    this.y2 = x1;
-    this.x3 = x1;
-    this.y3 = x1;
-  }
-
-  displayMountainLeft(){
-    canvasContext.beginPath();
-    canvasContext.moveTo(0,200);
-    canvasContext.lineTo(0,650);
-    canvasContext.lineTo(500,650);
-    canvasContext.fillStyle = "#461f2f";
-    canvasContext.fill();
-  }
-}
 
 class MountainRight{
   constructor(x1, y1, x2, y2, x3, y3){
@@ -202,7 +224,7 @@ class MountainRight{
     canvasContext.moveTo(1300,650);
     canvasContext.lineTo(800,650);
     canvasContext.lineTo(1300,250);
-    canvasContext.fillStyle = "#461f2f";
+    canvasContext.fillStyle = "#66003d";
     canvasContext.fill();
   }
 }

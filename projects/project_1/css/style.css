@@ -16,14 +16,14 @@ div#container{
 }
 
 canvas{
-  /*background-image: linear-gradient(to bottom, #0d7b92 , #5bbeba);*/
-  /*background-image: linear-gradient(to bottom, #001d58 , #034e9f);*/
-  background-image: linear-gradient(to bottom, #472a66 ,  #ed6139);
+  background-image: url("../assets/images/sky_background.png");
+  /*background-image: linear-gradient(to bottom, #472a66 ,  #ed6139);*/
 }
 
 p{
   font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 2em;
+  line-height: 24px;
 }
 
 footer{
