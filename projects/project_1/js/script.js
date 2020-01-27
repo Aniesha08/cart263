@@ -6,25 +6,14 @@ Sisyphus
 by Aniesha Sangarapillai
 
 References:
-https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#webaudio
-https://blog.loadimpact.com/blog/web-development/webaudio_explained
-
-http://vaidehijoshi.github.io/blog/2015/01/06/the-final-countdown-using-javascripts-setinterval-plus-clearinterval-methods/
-
+Background image & rock, my own illustration.
+Rock sound: https://freesound.org/people/AlanCat/sounds/381645/
 
 *********************************************************************/
 
 window.onload = setup;
-// window.AudioContext = window.AudioContext || window.webkitAudioContext;
-// let rockSound = new AudioContext();
-document.addEventListener('keydown', handleKeyEvent);
 
-// document.addEventListener('keydown', function() {
-//     let rockSound  = new AudioContext();
-//     rockSound.resume().then(() => {
-//     console.log('Playback resumed successfully');
-//   });
-// });
+document.addEventListener('keydown', handleKeyEvent);
 
 // SABINE ADD :: make these global
 let canvas;
@@ -37,21 +26,20 @@ let rockX;
 let rockY;
 let rockRot;
 let sec = 20;
-//let timer = setInterval(rock.countDown(), 1000);
-//let timer = setInterval(rock.moveRock(), 1000);
-//let timer = setInterval(rock.updateRock(), 1000);
-//let timer = setInterval(countDown, 1000);
 let timer;
 let timerStarted=false;
 
-//let rockSound;
+let rockSound;
 
-// function preload(){
-//     rockSound = loadSound('assets/sounds/rockroll.mp3');
-//   //  rockSound = loadSound('https://github.com/Aniesha08/cart263/blob/master/projects/project_1/assets/sounds/rockroll.mp3');
-//    }
+
 
 function setup() {
+  rockSound = document.createElement("audio");
+  rockSound.setAttribute("src","assets/sounds/rockroll.mp3");
+  document.body.appendChild(rockSound);
+  rockSound.pause();
+
+
   canvas  = document.getElementById("canvas");
 
   // SABINE :: YOU named this "rock" and i renamed it canvas Context - as it is not a rock it is the context that allows for drawing
@@ -83,7 +71,6 @@ function handleKeyEvent(){
 
   rock.moveRock();
   rock.updateRock();
-  // rock.countDown();
   rock.stopRock();
 }
 
@@ -131,16 +118,6 @@ updateRock(){
   this.rockSpeedX = this.rockSpeedX*this.rockDirectionX;
   this.rockX += this.rockSpeedX;
   this.rockY += this.rockSpeedY;
-  //
-  // if (this.rockX >= 30){
-  //   sec--;
-  //   //
-  //   if (sec <= 0) {
-  //   clearInterval(timer);
-  //   this.rockX = 30;
-  //   this.rockY = 620;
-  //   }
-  // }
 }
 
 moveRock(){
@@ -149,19 +126,10 @@ moveRock(){
 
   // RIGHT ARROW
   if (event.keyCode === 39){
-     //  function countDown(){
-     //  sec--;
-     //
-     //  if (sec <= 0) {
-     //  clearInterval(timer);
-     //  this.rockX = 30;
-     //  this.rockY = 620;
-     //  }
-     // }
-
   this.rockSpeedX =2;
   this.rockDirectionX=2;
   this.rockRot += 15;
+    rockSound.play();
   }
 
   // LEFT ARROW
@@ -169,6 +137,7 @@ moveRock(){
   this.rockSpeedX =2;
   this.rockDirectionX=-2;
   this.rockRot -= 15;
+  rockSound.play();
   }
 
   // U KEY (MOVE UP)
@@ -177,6 +146,7 @@ moveRock(){
   this.rockDirectionX=2;
   this.rockY -= 3;
   this.rockRot += 5;
+  rockSound.play();
   }
 
   if(event.keyCode === 39){
@@ -184,15 +154,8 @@ moveRock(){
       timer = setInterval(countDown, 1000);
       timerStarted =true;
       console.log("started timer");
-
     }
-
   }
-
-  //rockSound.play();
-  //rockSound.loop();
-
-  //console.log(this.rockX);
 }
 
 stopRock(){
@@ -202,7 +165,6 @@ stopRock(){
   this.rockSpeedX = 0;
   this.rockDirectionX=-0;
   this.rockRot = 0;
-  //rockSound.stop();
   }
 }
 
