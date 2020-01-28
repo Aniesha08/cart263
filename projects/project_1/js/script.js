@@ -68,6 +68,11 @@ function animate(){
   canvasContext.font = "30px Arial";
   canvasContext.fillStyle = '#FFFFFF';
   canvasContext.fillText("Time: " + sec,1160,50)
+
+  // canvasContext.font = "30px Arial";
+  // canvasContext.fillStyle = '#FFFFFF';
+  // canvasContext.fillText("Time:",1150,50)
+
   mountainRight.displayMountainRight();
   rock.displayRock();
   requestAnimationFrame(animate);
