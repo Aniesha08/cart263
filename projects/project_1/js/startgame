@@ -1,0 +1,12 @@
+"use strict";
+
+window.onload = setup;
+let startGame;
+let canvas;
+let canvasContext;
+
+function setup() {
+canvas  = document.getElementById("canvas");
+canvasContext = canvas.getContext('2d');
+canvas.width = "1300";
+canvas.height = "650";

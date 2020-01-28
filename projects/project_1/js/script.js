@@ -51,7 +51,8 @@ function setup() {
   // SABINE :: YOU named this "rock" and i renamed it canvas Context - as it is not a rock it is the context that allows for drawing
   canvasContext = canvas.getContext('2d');
   canvas.width = "1300";
-  canvas.height = "650";;
+  canvas.height = "650";
+  //canvas.style.background = "url ('../assets/images/sky_background.png')";
   console.log(sec);
 
   rockBg  = document.getElementById("rockie");
@@ -67,11 +68,7 @@ function animate(){
   canvasContext.clearRect(0,0,canvas.width,canvas.height);
   canvasContext.font = "30px Arial";
   canvasContext.fillStyle = '#FFFFFF';
-  canvasContext.fillText("Time: " + sec,1160,50)
-
-  // canvasContext.font = "30px Arial";
-  // canvasContext.fillStyle = '#FFFFFF';
-  // canvasContext.fillText("Time:",1150,50)
+  canvasContext.fillText("Time: " + sec,1160,50);
 
   mountainRight.displayMountainRight();
   rock.displayRock();
@@ -79,7 +76,6 @@ function animate(){
 }
 
 function handleKeyEvent(){
-
   rock.moveRock();
   rock.updateRock();
   rock.stopRock();
