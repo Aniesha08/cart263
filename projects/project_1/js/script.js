@@ -8,6 +8,7 @@ by Aniesha Sangarapillai
 References:
 Background image & rock, my own illustration.
 Rock sound: https://freesound.org/people/AlanCat/sounds/381645/
+Time Over sound: https://freesound.org/people/deleted_user_877451/sounds/76376/
 
 *********************************************************************/
 
@@ -15,7 +16,7 @@ window.onload = setup;
 
 document.addEventListener('keydown', handleKeyEvent);
 
-// SABINE ADD :: make these global
+// global variables
 let canvas;
 let canvasContext;
 let rock;
@@ -25,19 +26,24 @@ let rockBg;
 let rockX;
 let rockY;
 let rockRot;
-let sec = 20;
+let sec = 25;
 let timer;
 let timerStarted=false;
 
+// sounds for variables
 let rockSound;
-
-
+let timeOver;
 
 function setup() {
   rockSound = document.createElement("audio");
   rockSound.setAttribute("src","assets/sounds/rockroll.mp3");
   document.body.appendChild(rockSound);
   rockSound.pause();
+
+  timeOver = document.createElement("audio");
+  timeOver.setAttribute("src","assets/sounds/time_over.mp3");
+  document.body.appendChild(timeOver);
+  timeOver.pause();
 
 
   canvas  = document.getElementById("canvas");
@@ -78,11 +84,12 @@ function countDown(){
   sec--;
 
   if (sec <= 0) {
+    timeOver.play();
   clearInterval(timer);
     rock.rockX = 30;
     rock.rockY = 620;
     timerStarted =false;
-    sec = 20;
+    sec = 25;
   }
 }
 
@@ -129,7 +136,7 @@ moveRock(){
   this.rockSpeedX =2;
   this.rockDirectionX=2;
   this.rockRot += 15;
-    rockSound.play();
+  rockSound.play();
   }
 
   // LEFT ARROW
