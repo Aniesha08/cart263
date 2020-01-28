@@ -1,0 +1,47 @@
+body {
+  position: relative;
+}
+
+h1{
+  text-align: center;
+  font-family: 'IM Fell Great Primer SC', serif;
+  font-size: 5em;
+  margin: 0;
+  padding:0;
+  color: #422412;
+}
+
+div#container{
+  text-align:center;
+  margin-bottom: 3em;
+}
+
+canvas{
+background-image: url("../assets/images/sky_background.png");
+}
+
+p{
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 2em;
+  line-height: 24px;
+}
+
+footer{
+  text-align: center;
+  margin-bottom: 2em;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button{
+  background-color: white;
+  padding: 1em;
+  width:180px;
+  position: absolute;
+  left: 610px;
+  top: 500px;
+  font-size: 18px;
+}
+
+/* #rockie{
+  transform-origin: center;
+} */

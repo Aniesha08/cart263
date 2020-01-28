@@ -5,7 +5,8 @@ let startGame;
 let canvas;
 let canvasContext;
 
-startGame.addEventListener ('click', start);
+startGame = document.createElement("button");
+startGame.addEventListener('click', start);
 
 function setup(){
 canvas  = document.getElementById("canvas");
@@ -13,7 +14,6 @@ canvasContext = canvas.getContext('2d');
 canvas.width = "1300";
 canvas.height = "650";
 
-startGame = document.createElement("button");
 startGame.innerHTML = "Start Game";
 document.body.appendChild(startGame);
 
@@ -30,5 +30,5 @@ function draw(){
 }
 
 function start(){
-  console.log("play game");
+  window.location.assign("https://aniesha08.github.io/cart263/projects/project_1/")
 }
