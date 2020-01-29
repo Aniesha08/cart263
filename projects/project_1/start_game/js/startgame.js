@@ -21,14 +21,14 @@ draw();
 }
 
 function draw(){
-  canvasContext.font = "28px Arial";
-  canvasContext.fillStyle = '#FFFFFF';
-  canvasContext.fillText("Try to get the rock up the mountain within 25sec.",350,250);
-  canvasContext.fillText("Press the RIGHT and LEFT arrow keys to roll the rock forwards or backwards.",180,300);
-  canvasContext.fillText("Press U to roll the rock up the mountain.",400,350);
-  canvas.style.background = "#66003d";
+canvasContext.font = "28px Arial";
+canvasContext.fillStyle = '#FFFFFF';
+canvasContext.fillText("Try to get the rock up the mountain within 25sec.",350,250);
+canvasContext.fillText("Press the RIGHT and LEFT arrow keys to roll the rock forwards or backwards.",180,300);
+canvasContext.fillText("Press U to roll the rock up the mountain.",400,350);
+canvas.style.background = "#66003d";
 }
 
 function start(){
-  window.location.assign("https://aniesha08.github.io/cart263/projects/project_1/")
+window.location.assign("https://aniesha08.github.io/cart263/projects/project_1/")
 }
