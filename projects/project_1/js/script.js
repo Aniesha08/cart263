@@ -173,6 +173,7 @@ stopRock(){
 if (this.rockX <= 30){
 this.rockX = 30;
 this.rockY = 620;
+this.rockSpeedX = 0;
 this.rockDirectionX=-0;
 this.rockRot = 0;
 }
