@@ -8,7 +8,8 @@ by Aniesha Sangarapillai
 References:
 Background image & rock, my own illustration.
 Rock sound: https://freesound.org/people/AlanCat/sounds/381645/
-Time Over sound: https://freesound.org/people/deleted_user_877451/sounds/76376/
+Time over sound: https://freesound.org/people/deleted_user_877451/sounds/76376/
+Also see help log folder, for Sabine assistance.
 
 *********************************************************************/
 
