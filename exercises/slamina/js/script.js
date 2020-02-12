@@ -2,13 +2,12 @@
 
 /*****************
 
-Title of Project
-Author Name
-
-This is a template. You must fill in the title,
-author, and this description to match your project!
+Slamina Voice Command
+Aniesha Sangarapillai
 
 ******************/
+
+// Define variables
 
 let animals = ["aardvark",
       "alligator",
@@ -149,12 +148,15 @@ let correctAnimal;
 let answers = [];
 const NUM_OPTIONS = 5;
 
+
 $(document).ready(setup);
 
 function setup() {
   newRound();
+  voiceCommands();
 }
 
+// Create buttons to click
 function addButton(label){
   let $div = $('<div></div>')
   $div.addClass('guess');
@@ -165,7 +167,32 @@ function addButton(label){
   $div.on("click", handleGuess);
 }
 
+//Annyang voice commands and actions
+function voiceCommands(){
+  if (annyang) {
+
+    let commands = {
+    'I give up': function() {
+     $('.guess').each(checkCorrect);
+     setTimeout(newRound, 1000); //start a new round once displayed the correct answer
+    }
+  };
+
+    annyang.addCommands(commands);
+    annyang.start();
+  }
+}
+
+// Check through all the divs to reveal the correct answer
+function checkCorrect(){
+    if ($(this).text() == correctAnimal) {
+      $(this).css("background-color", "#90ee90");
+    }
+}
+
+// Generate a new round
 function newRound(){
+  $('.guess').remove();
   answers = []; // empty answers array
 
   // for loop to go through animals array within the options
@@ -174,8 +201,8 @@ function newRound(){
     addButton(answer);
     answers.push(answer);
   }
-  correctAnimal = answers[Math.floor(Math.random() * answers.length)];
-  sayBackwards(correctAnimal);
+    correctAnimal = answers[Math.floor(Math.random() * answers.length)];
+    sayBackwards(correctAnimal);
 }
 
 function handleGuess(){
@@ -192,6 +219,7 @@ function handleGuess(){
   }
 }
 
+// Say the name of the animal backwards
 function sayBackwards(text){
   let backwardsText = text.split('').reverse().join('');
   let options = {rate: 1, pitch: 1};
