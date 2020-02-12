@@ -171,14 +171,24 @@ function addButton(label){
 function voiceCommands(){
   if (annyang) {
 
-    let commands = {
+    // reveal the correct answer when the user says they give up
+    let giveup = {
     'I give up': function() {
      $('.guess').each(checkCorrect);
      setTimeout(newRound, 1000); //start a new round once displayed the correct answer
     }
   };
 
-    annyang.addCommands(commands);
+    // repeat animal name backwards
+    let repeat = {
+    'Say it again': function() {
+    sayBackwards(correctAnimal);
+    console.log("you working?");
+    }
+  };
+
+    annyang.addCommands(giveup);
+    annyang.addCommands(repeat);
     annyang.start();
   }
 }
