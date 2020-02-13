@@ -169,6 +169,7 @@ function addButton(label){
 
 //Annyang voice commands and actions
 function voiceCommands(){
+
   if (annyang) {
 
     // reveal the correct answer when the user says they give up
@@ -183,12 +184,31 @@ function voiceCommands(){
     let repeat = {
     'Say it again': function() {
     sayBackwards(correctAnimal);
-    console.log("you working?");
     }
+  };
+
+    let guess = {
+      // capture the name of the animal guessed
+      'I think it is *animal': function(animal) {
+      //console.log("guess:: "+animal);
+
+      if (animal == correctAnimal) {
+      $(this).css("background-color", "#90ee90");
+      setTimeout(newRound, 1000);
+      }
+
+      else{
+      sayBackwards(correctAnimal);
+      console.log("Incorrect");
+      }
+
+      console.log("correct:: "+correctAnimal);
+   }
   };
 
     annyang.addCommands(giveup);
     annyang.addCommands(repeat);
+    annyang.addCommands(guess);
     annyang.start();
   }
 }
