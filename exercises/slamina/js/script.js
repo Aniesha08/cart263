@@ -147,6 +147,8 @@ let animals = ["aardvark",
 let correctAnimal;
 let answers = [];
 const NUM_OPTIONS = 5;
+let score = 0;
+//let scoreUpdate;
 
 
 $(document).ready(setup);
@@ -154,6 +156,7 @@ $(document).ready(setup);
 function setup() {
   newRound();
   voiceCommands();
+  scoreDisplay();
 }
 
 // Create buttons to click
@@ -163,8 +166,14 @@ function addButton(label){
   $div.text(label);
   $div.button();
   $div.appendTo('body');
-
   $div.on("click", handleGuess);
+}
+
+function scoreDisplay(){
+  let $points = $('<p>SCORE: </p>')
+  $points.text('SCORE: ' + score);
+  $points.appendTo('body');
+  console.log(score);
 }
 
 //Annyang voice commands and actions
@@ -178,40 +187,54 @@ function voiceCommands(){
      $('.guess').each(checkCorrect);
      setTimeout(newRound, 1000); //start a new round once displayed the correct answer
     }
-  };
+  }; // end of repeat
 
     // repeat animal name backwards
     let repeat = {
     'Say it again': function() {
     sayBackwards(correctAnimal);
     }
-  };
+  }; // end of repeat
 
     let guess = {
       // capture the name of the animal guessed
       'I think it is *animal': function(animal) {
-      //console.log("guess:: "+animal);
 
       if (animal == correctAnimal) {
       $(this).css("background-color", "#90ee90");
+      //setTimeout(newRound, 1000);
+
+      //score++;
+      //score += 1;
+    //  console.log(score);
+      scoreUpdate();
+      }
+
+      // else{
+      // sayBackwards(correctAnimal);
+      // }
       setTimeout(newRound, 1000);
-      }
-
-      else{
-      sayBackwards(correctAnimal);
-      console.log("Incorrect");
-      }
-
-      console.log("correct:: "+correctAnimal);
+      console.log("yes::"+ correctAnimal);
    }
-  };
+ }; // end of guess
 
     annyang.addCommands(giveup);
     annyang.addCommands(repeat);
     annyang.addCommands(guess);
     annyang.start();
   }
+
 }
+
+function scoreUpdate(){
+score ++;
+console.log(score);
+}
+
+// scoreUpdate = function (){
+//    score += 1;
+//    console.log(score);
+// }
 
 // Check through all the divs to reveal the correct answer
 function checkCorrect(){
