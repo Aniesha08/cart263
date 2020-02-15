@@ -1,0 +1,62 @@
+{
+  "insect": [
+    "spider",
+    "cockroach",
+    "bumble-bee",
+    "caterpillar",
+    "wormy",
+    "beetle",
+    "head lice",
+    "mosquito",
+    "housefly",
+    "assassin bug",
+    "butterfly",
+    "leech",
+    "flea",
+    "bed bug",
+    "cricket"
+    ],
+
+  "place": [
+    "the water spout",
+    "the bedroom attic",
+    "my underwear",
+    "my purple pants",
+    "my comfy bed",
+    "my ceiling",
+    "my curly hair",
+    "my favorite shirt",
+    "my little arm",
+    "my snotty nose"
+    ],
+
+  "liquid": [
+    "rain",
+    "soap",
+    "snow",
+    "slime",
+    "blood",
+    "soup",
+    "jus",
+    "pee",
+    "coffee",
+    "tears"
+    ],
+
+  "noun": [
+    "sun",
+    "plane",
+    "monster",
+    "egg",
+    "fish"
+  ],
+
+  "verb": [
+    "dried",
+    "blew",
+    "drowned",
+    "drank",
+    "sucked"
+  ]        
+
+}
