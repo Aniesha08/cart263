@@ -12,6 +12,14 @@ author, and this description to match your project!
 
 $(document).ready(setup);
 
+let insect;
+let place;
+let liquid;
+let noun;
+let verb;
+let container;
+let lyrics;
+
 function setup(){
   $.getJSON("data/replace.json", dataLoaded);
   voiceCommands();
@@ -19,13 +27,13 @@ function setup(){
 
 function dataLoaded(data) {
   // defined variables for words to replace in lyrics
-  let insect = getRandomElement(data.insect);
-  let place = getRandomElement(data.place);
-  let liquid = getRandomElement(data.liquid);
-  let noun = getRandomElement(data.noun);
-  let verb = getRandomElement(data.verb);
-  let container = document.getElementById("lyrics_display");
-  let lyrics = document.createTextNode("Itsy-bitsy " + insect + " climbed up " + place + "," + " Down came the " + liquid + " and washed the " +
+  insect = getRandomElement(data.insect);
+  place = getRandomElement(data.place);
+  liquid = getRandomElement(data.liquid);
+  noun = getRandomElement(data.noun);
+  verb = getRandomElement(data.verb);
+  container = document.getElementById("lyrics_display");
+  lyrics = document.createTextNode("Itsy-bitsy " + insect + " climbed up " + place + "," + " Down came the " + liquid + " and washed the " +
               insect + " Out" + "," + " Out came the " + noun + " and " + verb + " up all the " + liquid + "," + " And the itsy-bitsy " + insect + " climbed up " + place + " again.");
 
   container.appendChild(lyrics);
@@ -36,15 +44,20 @@ function dataLoaded(data) {
   console.log(noun);
   console.log(verb);
   console.log(lyrics);
-  console.log(container);
 
 } // end of dataLoaded
 
 function voiceCommands(){
   if (annyang) {
 
+    let sayLyrics = {
+    '*lyrics': function() {
+    console.log("saying lyrics");
+    }
+    }; // end of repeat
+
     console.log("annyang working");
-    // annyang.addCommands(guess);
+    annyang.addCommands(sayLyrics);
     annyang.start();
     }
 } // end of voiceCommands
