@@ -14,6 +14,7 @@ $(document).ready(setup);
 
 function setup(){
   $.getJSON("data/replace.json", dataLoaded);
+  voiceCommands();
 } // end of setup
 
 function dataLoaded(data) {
@@ -36,7 +37,17 @@ function dataLoaded(data) {
   console.log(verb);
   console.log(lyrics);
   console.log(container);
+
 } // end of dataLoaded
+
+function voiceCommands(){
+  if (annyang) {
+
+    console.log("annyang working");
+    // annyang.addCommands(guess);
+    annyang.start();
+    }
+} // end of voiceCommands
 
 // Get a random element from the array
 function getRandomElement(array){
