@@ -18,15 +18,28 @@ function setup(){
 
 function dataLoaded(data) {
   // defined variables for words to replace in lyrics
-  let insect = data.insect;
-  let place = data.place;
-  let liquid = data.liquid;
-  let noun = data.noun;
-  let verb = data.verb;
+  let insect = getRandomElement(data.insect);
+  let place = getRandomElement(data.place);
+  let liquid = getRandomElement(data.liquid);
+  let noun = getRandomElement(data.noun);
+  let verb = getRandomElement(data.verb);
+  let container = document.getElementById("lyrics_display");
+  let lyrics = document.createTextNode("Itsy-bitsy " + insect + " climbed up " + place + "," + " Down came the " + liquid + " and washed the " +
+              insect + " Out" + "," + " Out came the " + noun + " and " + verb + " up all the " + liquid + "," + " And the itsy-bitsy " + insect + " climbed up " + place + " again.");
+
+  container.appendChild(lyrics);
 
   console.log(insect);
   console.log(place);
   console.log(liquid);
   console.log(noun);
   console.log(verb);
+  console.log(lyrics);
+  console.log(container);
 } // end of dataLoaded
+
+// Get a random element from the array
+function getRandomElement(array){
+  let element = array[Math.floor(Math.random() * array.length)];
+  return element;
+ }
