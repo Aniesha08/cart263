@@ -10,139 +10,139 @@ Aniesha Sangarapillai
 // Define variables
 
 let animals = ["aardvark",
-      "alligator",
-      "alpaca",
-      "antelope",
-      "ape",
-      "armadillo",
-      "baboon",
-      "badger",
-      "bat",
-      "bear",
-      "beaver",
-      "bison",
-      "boar",
-      "buffalo",
-      "bull",
-      "camel",
-      "canary",
-      "capybara",
-      "cat",
-      "chameleon",
-      "cheetah",
-      "chimpanzee",
-      "chinchilla",
-      "chipmunk",
-      "cougar",
-      "cow",
-      "coyote",
-      "crocodile",
-      "crow",
-      "deer",
-      "dingo",
-      "dog",
-      "donkey",
-      "dromedary",
-      "elephant",
-      "elk",
-      "ewe",
-      "ferret",
-      "finch",
-      "fish",
-      "fox",
-      "frog",
-      "gazelle",
-      "gila monster",
-      "giraffe",
-      "gnu",
-      "goat",
-      "gopher",
-      "gorilla",
-      "grizzly bear",
-      "ground hog",
-      "guinea pig",
-      "hamster",
-      "hedgehog",
-      "hippopotamus",
-      "hog",
-      "horse",
-      "hyena",
-      "ibex",
-      "iguana",
-      "impala",
-      "jackal",
-      "jaguar",
-      "kangaroo",
-      "koala",
-      "lamb",
-      "lemur",
-      "leopard",
-      "lion",
-      "lizard",
-      "llama",
-      "lynx",
-      "mandrill",
-      "marmoset",
-      "mink",
-      "mole",
-      "mongoose",
-      "monkey",
-      "moose",
-      "mountain goat",
-      "mouse",
-      "mule",
-      "muskrat",
-      "mustang",
-      "mynah bird",
-      "newt",
-      "ocelot",
-      "opossum",
-      "orangutan",
-      "oryx",
-      "otter",
-      "ox",
-      "panda",
-      "panther",
-      "parakeet",
-      "parrot",
-      "pig",
-      "platypus",
-      "polar bear",
-      "porcupine",
-      "porpoise",
-      "prairie dog",
-      "puma",
-      "rabbit",
-      "raccoon",
-      "ram",
-      "rat",
-      "reindeer",
-      "reptile",
-      "rhinoceros",
-      "salamander",
-      "seal",
-      "sheep",
-      "shrew",
-      "silver fox",
-      "skunk",
-      "sloth",
-      "snake",
-      "squirrel",
-      "tapir",
-      "tiger",
-      "toad",
-      "turtle",
-      "walrus",
-      "warthog",
-      "weasel",
-      "whale",
-      "wildcat",
-      "wolf",
-      "wolverine",
-      "wombat",
-      "woodchuck",
-      "yak",
-      "zebra"];
+"alligator",
+"alpaca",
+"antelope",
+"ape",
+"armadillo",
+"baboon",
+"badger",
+"bat",
+"bear",
+"beaver",
+"bison",
+"boar",
+"buffalo",
+"bull",
+"camel",
+"canary",
+"capybara",
+"cat",
+"chameleon",
+"cheetah",
+"chimpanzee",
+"chinchilla",
+"chipmunk",
+"cougar",
+"cow",
+"coyote",
+"crocodile",
+"crow",
+"deer",
+"dingo",
+"dog",
+"donkey",
+"dromedary",
+"elephant",
+"elk",
+"ewe",
+"ferret",
+"finch",
+"fish",
+"fox",
+"frog",
+"gazelle",
+"gila monster",
+"giraffe",
+"gnu",
+"goat",
+"gopher",
+"gorilla",
+"grizzly bear",
+"ground hog",
+"guinea pig",
+"hamster",
+"hedgehog",
+"hippopotamus",
+"hog",
+"horse",
+"hyena",
+"ibex",
+"iguana",
+"impala",
+"jackal",
+"jaguar",
+"kangaroo",
+"koala",
+"lamb",
+"lemur",
+"leopard",
+"lion",
+"lizard",
+"llama",
+"lynx",
+"mandrill",
+"marmoset",
+"mink",
+"mole",
+"mongoose",
+"monkey",
+"moose",
+"mountain goat",
+"mouse",
+"mule",
+"muskrat",
+"mustang",
+"mynah bird",
+"newt",
+"ocelot",
+"opossum",
+"orangutan",
+"oryx",
+"otter",
+"ox",
+"panda",
+"panther",
+"parakeet",
+"parrot",
+"pig",
+"platypus",
+"polar bear",
+"porcupine",
+"porpoise",
+"prairie dog",
+"puma",
+"rabbit",
+"raccoon",
+"ram",
+"rat",
+"reindeer",
+"reptile",
+"rhinoceros",
+"salamander",
+"seal",
+"sheep",
+"shrew",
+"silver fox",
+"skunk",
+"sloth",
+"snake",
+"squirrel",
+"tapir",
+"tiger",
+"toad",
+"turtle",
+"walrus",
+"warthog",
+"weasel",
+"whale",
+"wildcat",
+"wolf",
+"wolverine",
+"wombat",
+"woodchuck",
+"yak",
+"zebra"];
 
 let correctAnimal;
 let answers = [];
@@ -155,7 +155,6 @@ $(document).ready(setup);
 function setup() {
   newRound();
   voiceCommands();
-  scoreDisplay();
 }
 
 // Create buttons to click
@@ -168,7 +167,7 @@ function addButton(label){
   $div.on("click", handleGuess);
 }
 
-// Created a tag display the score
+// Created a tag to display the score
 function scoreDisplay(){
   let $points = $("<p id = 'points'></p>");
   $points.text('SCORE: ' + score);
@@ -182,33 +181,40 @@ function voiceCommands(){
 
     // reveal the correct answer when the user says they give up
     let giveup = {
-    'I give up': function() {
-     $('.guess').each(checkCorrect);
-     setTimeout(newRound, 1000); //start a new round once displayed the correct answer
-    }
-  }; // end of repeat
+      'I give up': function() {
+        $('.guess').each(checkCorrect);
+        score = 0;
+        console.log("wrong");
+        setTimeout(newRound, 1000); //start a new round once displayed the correct answer
+      }
+    }; // end of give up
 
     // repeat animal name backwards
     let repeat = {
-    'Say it again': function() {
-    sayBackwards(correctAnimal);
-    }
-  }; // end of repeat
+      'Say it again': function() {
+        sayBackwards(correctAnimal);
+      }
+    }; // end of repeat
 
     let guess = {
       // capture the name of the animal guessed
       'I think it is *animal': function(animal) {
         console.log("animal"+animal);
-      // set the animal and correct animal name to lowercase for better detection
-      if (animal.toLowerCase() === correctAnimal.toLowerCase()) {
-         $('.guess').each(checkCorrect);
+        // set the animal and correct animal name to lowercase for better detection
+        if (animal.toLowerCase() === correctAnimal.toLowerCase()) {
+          $('.guess').each(checkCorrect);
 
-      scoreUpdate(); // update the score if the answer is correct
+          scoreUpdate(); // update the score if the answer is correct
+        }
+
+        else {
+          score = 0;
+          scoreReset();
+        }
+
+        setTimeout(newRound, 1000);
       }
-
-      setTimeout(newRound, 1000);
-   }
- }; // end of guess
+    }; // end of guess
 
     // annyang commands and initialization
     annyang.addCommands(giveup);
@@ -216,15 +222,15 @@ function voiceCommands(){
     annyang.addCommands(guess);
     annyang.start();
   }
-
-}
+} // end of voice commands
 
 // Check through all the divs to reveal the correct answer
 function checkCorrect(){
-    if ($(this).text() == correctAnimal) {
-      $(this).css("background-color", "#90ee90");
-    }
+  if ($(this).text() == correctAnimal) {
+    $(this).css("background-color", "#90ee90");
+  }
 }
+
 
 // Generate a new round
 function newRound(){
@@ -237,31 +243,44 @@ function newRound(){
     addButton(answer);
     answers.push(answer);
   }
-    correctAnimal = answers[Math.floor(Math.random() * answers.length)];
-    sayBackwards(correctAnimal);
+  correctAnimal = answers[Math.floor(Math.random() * answers.length)];
+  sayBackwards(correctAnimal);
+  scoreUpdate();
 }
 
+// Function to verify the answer clicked
 function handleGuess(){
   if ($(this).text() == correctAnimal) {
     // change set once the correct animal is guessed
     $('.guess').remove();
-    scoreUpdate();
+
     setTimeout(newRound, 100);
   }
 
   else {
     // if guessed animal is wrong shake and repeat correct animal name
     $('.guess').effect('shake');
+    score = 0;
+    scoreReset();
     sayBackwards(correctAnimal);
   }
 }
 
 // Update the score by incrementing the point
 function scoreUpdate(){
-let $points = $("#points");
-$points.text('SCORE: ' + score);
-score ++;
-console.log(score);
+  $("#points").remove();
+  scoreDisplay();
+  let $points = $("#points");
+  $points.text('SCORE: ' + score);
+  score ++;
+  console.log(score);
+}
+
+function scoreReset(){
+  $("#points").remove();
+  scoreDisplay();
+  let $points = $("#points");
+  $points.text('SCORE: ' + score);
 }
 
 // Say the name of the animal backwards
