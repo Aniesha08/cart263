@@ -19,10 +19,16 @@ let noun;
 let verb;
 let container;
 let lyrics;
+let $egg;
+// let $eggOpen;
+//let egg = document.getElementById("egg");
 
 function setup(){
   $.getJSON("data/replace.json", dataLoaded);
   voiceCommands();
+  $egg = $('#egg_closed');
+
+  //egg.style.background = "red";
 } // end of setup
 
 function dataLoaded(data) {
@@ -38,22 +44,29 @@ function dataLoaded(data) {
 
   container.appendChild(lyrics);
 
-  console.log(insect);
+/*  console.log(insect);
   console.log(place);
   console.log(liquid);
   console.log(noun);
   console.log(verb);
-  console.log(lyrics);
+  console.log(lyrics);*/
 
 } // end of dataLoaded
 
 function voiceCommands(){
+
   if (annyang) {
+    // let egg = document.getElementById("egg");
 
     let sayLyrics = {
     '*lyrics': function() {
+    //'*insect':function(){
+      console.log(insect);
+    $egg.attr("src", "assets/images/egg2.png");
+    // egg.style.backgroundColor = "red";
     console.log("saying lyrics");
     }
+
     }; // end of repeat
 
     console.log("annyang working");

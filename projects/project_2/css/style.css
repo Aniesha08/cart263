@@ -23,17 +23,20 @@ div#egg{
   width:50%;
   height: 100vh;
   float: left;
-  /* background-color: #8CFFAB; */
-  background-color: #ffe000;
-  /* background-color: #6AFFDF; */
+  background-color: #ffe000; 
 }
 
 div#egg_display{
-  border: 2px solid white;
+  /* border: 2px solid white; */
   width: 70%;
   height: 70vh;
   margin: 0 auto;
   margin-top: 1em;
+  text-align: center;
+}
+
+.egg{
+  width: 90%;
 }
 
 div#lyrics{
@@ -54,9 +57,9 @@ p#lyrics_display{
 }
 
 footer p{
-  clear: all;
+  /* clear: all; */
   color: #8CFFAB;
-  background-color: #6c5bcc; 
+  background-color: #6c5bcc;
   font-family: 'Open Sans', sans-serif;
   text-align: center;
   padding-top: 30px;
