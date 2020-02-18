@@ -164,7 +164,7 @@ function addButton(label){
   $div.addClass('guess');
   $div.text(label);
   $div.button();
-  $div.appendTo('body');
+  $div.appendTo('#container');
   $div.on("click", handleGuess);
 }
 
@@ -172,7 +172,7 @@ function addButton(label){
 function scoreDisplay(){
   let $points = $("<p id = 'points'></p>");
   $points.text('SCORE: ' + score);
-  $points.appendTo('body');
+  $points.appendTo('#container');
 }
 
 //Annyang voice commands and actions
@@ -219,14 +219,6 @@ function voiceCommands(){
 
 }
 
-// Update the score by incrementing the point
-function scoreUpdate(){
-let $points = $("#points");
-$points.text('SCORE: ' + score);
-score ++;
-console.log(score);
-}
-
 // Check through all the divs to reveal the correct answer
 function checkCorrect(){
     if ($(this).text() == correctAnimal) {
@@ -253,6 +245,7 @@ function handleGuess(){
   if ($(this).text() == correctAnimal) {
     // change set once the correct animal is guessed
     $('.guess').remove();
+    scoreUpdate();
     setTimeout(newRound, 100);
   }
 
@@ -261,6 +254,14 @@ function handleGuess(){
     $('.guess').effect('shake');
     sayBackwards(correctAnimal);
   }
+}
+
+// Update the score by incrementing the point
+function scoreUpdate(){
+let $points = $("#points");
+$points.text('SCORE: ' + score);
+score ++;
+console.log(score);
 }
 
 // Say the name of the animal backwards
