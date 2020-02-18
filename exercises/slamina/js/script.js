@@ -148,7 +148,6 @@ let correctAnimal;
 let answers = [];
 const NUM_OPTIONS = 5;
 let score = 0;
-//let scoreUpdate;
 
 
 $(document).ready(setup);
@@ -169,11 +168,11 @@ function addButton(label){
   $div.on("click", handleGuess);
 }
 
+// Created a tag display the score
 function scoreDisplay(){
-  let $points = $('<p>SCORE: </p>')
+  let $points = $("<p id = 'points'></p>");
   $points.text('SCORE: ' + score);
   $points.appendTo('body');
-  console.log(score);
 }
 
 //Annyang voice commands and actions
@@ -199,25 +198,19 @@ function voiceCommands(){
     let guess = {
       // capture the name of the animal guessed
       'I think it is *animal': function(animal) {
+        console.log("animal"+animal);
+      // set the animal and correct animal name to lowercase for better detection
+      if (animal.toLowerCase() === correctAnimal.toLowerCase()) {
+         $('.guess').each(checkCorrect);
 
-      if (animal == correctAnimal) {
-      $(this).css("background-color", "#90ee90");
-      //setTimeout(newRound, 1000);
-
-      //score++;
-      //score += 1;
-    //  console.log(score);
-      scoreUpdate();
+      scoreUpdate(); // update the score if the answer is correct
       }
 
-      // else{
-      // sayBackwards(correctAnimal);
-      // }
       setTimeout(newRound, 1000);
-      console.log("yes::"+ correctAnimal);
    }
  }; // end of guess
 
+    // annyang commands and initialization
     annyang.addCommands(giveup);
     annyang.addCommands(repeat);
     annyang.addCommands(guess);
@@ -226,15 +219,13 @@ function voiceCommands(){
 
 }
 
+// Update the score by incrementing the point
 function scoreUpdate(){
+let $points = $("#points");
+$points.text('SCORE: ' + score);
 score ++;
 console.log(score);
 }
-
-// scoreUpdate = function (){
-//    score += 1;
-//    console.log(score);
-// }
 
 // Check through all the divs to reveal the correct answer
 function checkCorrect(){
