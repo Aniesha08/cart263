@@ -20,7 +20,6 @@ p{
 }
 
 #container{
-  /* background-color: red; */
   width: 50%;
   padding: 14em;
   text-align: center;
@@ -28,6 +27,7 @@ p{
   background-image: url("https://github.com/Aniesha08/cart263/blob/master/exercises/slamina/assets/images/deer.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: red;
 }
 
 footer p{
