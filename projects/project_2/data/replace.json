@@ -59,6 +59,24 @@
     "drowned",
     "drank",
     "sucked"
+  ],
+
+  "surprise": [
+    "/assets/images/egg_1.png",
+    "/assets/images/egg_2.png",
+    "/assets/images/egg_3.png",
+    "/assets/images/egg_4.png",
+    "/assets/images/egg_5.png",
+    "/assets/images/egg_6.png",
+    "/assets/images/egg_7.png",
+    "/assets/images/egg_8.png",
+    "/assets/images/egg_9.png",
+    "/assets/images/egg_10.png",
+    "/assets/images/egg_11.png",
+    "/assets/images/egg_12.png",
+    "/assets/images/egg_13.png",
+    "/assets/images/egg_14.png",
+    "/assets/images/egg_15.png"
   ]
 
 }
