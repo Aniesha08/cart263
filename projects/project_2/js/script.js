@@ -69,8 +69,6 @@ function voiceCommands(){
         //'*insect':function(){
         console.log(insect);
         $egg.attr("src", surpriseEgg);
-        // $egg.attr("src", "assets/images/egg2.png");
-        // egg.style.backgroundColor = "red";
         console.log("saying lyrics");
       }
 

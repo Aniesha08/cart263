@@ -19,16 +19,23 @@ This is the style file for this project.
   margin-top: 1em;
 }
 
+#subtitle{
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  color: #6c5bcc;
+  font-size: 24px;
+}
+
 div#egg{
   width:50%;
   height: 100vh;
   float: left;
-  background-color: #ffe000; 
+  background-color: #ffe000;
 }
 
 div#egg_display{
   /* border: 2px solid white; */
-  width: 70%;
+  width: 65%;
   height: 70vh;
   margin: 0 auto;
   margin-top: 1em;
