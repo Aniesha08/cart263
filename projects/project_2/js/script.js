@@ -51,6 +51,8 @@ function setup(){
 // When the user clicks on the button, a new set of lyrics will load
 function restartGame(){
   console.log("button clicked");
+
+  // dataLoaded();
 }
 
 
@@ -87,12 +89,15 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
   if (annyang) {
 
     let sayLyricsOne = {
-      'itsy bitsy :insectA climbed up my :placeA Down came the :liquidA and clean the :insectA out': function(insectA,placeA,liquidA) {
+      '*tag Down came the :liquidA and clean the :insectA out': function(tag,liquidA,insectA) {
+        console.log("insect:: "+insectA);
+
+      //'itsy bitsy :insectA climbed up my :placeA Down came the :liquidA and clean the :insectA out': function(insectA,placeA,liquidA) {
         // console.log(insect);
         // console.log(place);
         // console.log(liquid);
 
-        if(insect.toLowerCase() === insectA.toLowerCase() && place.toLowerCase() === placeA.toLowerCase() && liquid.toLowerCase() === liquidA.toLowerCase()){
+      if(insect.toLowerCase() === insectA.toLowerCase() || liquid.toLowerCase() === liquidA.toLowerCase()){
           $egg.attr("src", happyEgg);
           $(container).empty();
           container.appendChild(secondLine);
@@ -101,7 +106,7 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
 
         else{
           $egg.attr("src", sadEgg);
-          console.log("WRONG INSECT");
+          console.log("WRONG");
         }
 
       }
@@ -109,11 +114,11 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
     }; // end of sayLyricsOne
 
     let sayLyricsTwo = {
-      'Out came the :noun and :verb up all the :liquidA': function(nounA,verbA,liquidA) {
+      'Out came the :noun *tag': function(nounA,tag) {
         // console.log(noun);
         // console.log(verb);
         // console.log(liquid);
-        if(noun.toLowerCase() === nounA.toLowerCase() && verb.toLowerCase() === verbA.toLowerCase() && liquid.toLowerCase() === liquidA.toLowerCase()){
+        if(noun.toLowerCase() === nounA.toLowerCase()){
           $egg.attr("src", happyEgg);
           $(container).empty();
           container.appendChild(thirdLine);
@@ -122,7 +127,7 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
 
         else{
           $egg.attr("src", sadEgg);
-          console.log("WRONG LIQUID");
+          console.log("WRONG");
         }
 
       }
@@ -130,28 +135,26 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
     }; // end of sayLyricsTwo
 
     let sayLyricsThree = {
-      'And the itsy bitsy :insect climbed up my :placeA again': function(insectA,placeA) {
+      '*tag :placeA again': function(tag,placeA) {
         // console.log(insect);
         // console.log(place);
-        if(insect.toLowerCase() === insectA.toLowerCase() && place.toLowerCase() === placeA.toLowerCase()){
+        if(place.toLowerCase() === placeA.toLowerCase()){
           $egg.attr("src", surpriseEgg);
           console.log("line three complete");
           $(container).empty();
-
           $congrats.show();
-
           $playAgain.show();
-          $playAgain.css("backgroundColor: red;")
           // responsiveVoice.speak("Wonderful! Say more to see more surprises!", "UK English Female", {pitch: 1});
         }
 
         else{
           $egg.attr("src", sadEgg);
-          console.log("WRONG LIQUID");
+          console.log("WRONG");
         }
       }
 
     }; // end of sayLyricsThree
+
 
     console.log("annyang working");
     annyang.addCommands(sayLyricsOne);
