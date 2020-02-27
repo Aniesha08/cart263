@@ -68,13 +68,13 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
   if (annyang) {
 
     let sayLyricsOne = {
-      'itsy bitsy :insectA climbed up my :place Down came the :liquid and clean the :insectA out': function(insectA,place,liquid) {
+      'itsy bitsy :insectA climbed up my :placeA Down came the :liquidA and clean the :insectA out': function(insectA,placeA,liquidA) {
         // console.log(insect);
         // console.log(place);
         // console.log(liquid);
 
-        if(insect.toLowerCase() === insectA.toLowerCase()){
-          // $egg.attr("src", happyEgg);
+        if(insect.toLowerCase() === insectA.toLowerCase() && place.toLowerCase() === placeA.toLowerCase() && liquid.toLowerCase() === liquidA.toLowerCase()){
+          $egg.attr("src", happyEgg);
           $(container).empty();
           container.appendChild(secondLine);
           console.log("line one complete");
@@ -90,11 +90,11 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
     }; // end of sayLyricsOne
 
     let sayLyricsTwo = {
-      'Out came the :noun and :verb up all the :liquidA': function(noun,verb,liquidA) {
+      'Out came the :noun and :verb up all the :liquidA': function(nounA,verbA,liquidA) {
         // console.log(noun);
         // console.log(verb);
         // console.log(liquid);
-        if(liquid.toLowerCase() === liquidA.toLowerCase()){
+        if(noun.toLowerCase() === nounA.toLowerCase() && verb.toLowerCase() === verbA.toLowerCase() && liquid.toLowerCase() === liquidA.toLowerCase()){
           $egg.attr("src", happyEgg);
           $(container).empty();
           container.appendChild(thirdLine);
@@ -111,10 +111,10 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
     }; // end of sayLyricsTwo
 
     let sayLyricsThree = {
-      'And the itsy bitsy :insect climbed up my :placeA again': function(insect,placeA) {
+      'And the itsy bitsy :insect climbed up my :placeA again': function(insectA,placeA) {
         // console.log(insect);
         // console.log(place);
-        if(place.toLowerCase() === placeA.toLowerCase()){
+        if(insect.toLowerCase() === insectA.toLowerCase() && place.toLowerCase() === placeA.toLowerCase()){
           $egg.attr("src", surpriseEgg);
           console.log("line three complete");
           //  console.log("saying lyrics");
