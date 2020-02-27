@@ -71,6 +71,9 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
         // console.log(place);
         // console.log(liquid);
 
+        $(container).empty();
+        container.appendChild(secondLine);
+
         console.log("line one complete");
       }
 
@@ -81,6 +84,9 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
         // console.log(noun);
         // console.log(verb);
         // console.log(liquid);
+
+        $(container).empty();
+        container.appendChild(thirdLine);
 
         console.log("line two complete");
       }
