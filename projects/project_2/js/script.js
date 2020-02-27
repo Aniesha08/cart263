@@ -71,36 +71,53 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
         // console.log(place);
         // console.log(liquid);
 
-        $(container).empty();
-        container.appendChild(secondLine);
+        if(insect.toLowerCase() === insectA.toLowerCase()){
+          $(container).empty();
+          container.appendChild(secondLine);
+          console.log("line one complete");
+        }
 
-        console.log("line one complete");
+        else{
+          console.log("WRONG INSECT");
+        }
+
       }
 
     }; // end of sayLyricsOne
 
     let sayLyricsTwo = {
-      'Out came the :noun and :verb up all the :liquid': function(noun,verb,liquid) {
+      'Out came the :noun and :verb up all the :liquidA': function(noun,verb,liquidA) {
         // console.log(noun);
         // console.log(verb);
         // console.log(liquid);
+        if(liquid.toLowerCase() === liquidA.toLowerCase()){
+          $(container).empty();
+          container.appendChild(thirdLine);
+          console.log("line two complete");
+        }
 
-        $(container).empty();
-        container.appendChild(thirdLine);
+        else{
+          console.log("WRONG LIQUID");
+        }
 
-        console.log("line two complete");
       }
 
     }; // end of sayLyricsTwo
 
     let sayLyricsThree = {
-      'And the itsy bitsy :insect climbed up my :place again': function(insect,place) {
+      'And the itsy bitsy :insect climbed up my :placeA again': function(insect,placeA) {
         // console.log(insect);
         // console.log(place);
-        console.log("line three complete");
-        $egg.attr("src", surpriseEgg);
-        //  console.log("saying lyrics");
-        // responsiveVoice.speak("Wonderful! Say more to see more surprises!", "UK English Female", {pitch: 1});
+        if(place.toLowerCase() === placeA.toLowerCase()){
+          $egg.attr("src", surpriseEgg);
+          console.log("line three complete");
+          //  console.log("saying lyrics");
+          // responsiveVoice.speak("Wonderful! Say more to see more surprises!", "UK English Female", {pitch: 1});
+        }
+
+        else{
+          console.log("WRONG LIQUID");
+        }
       }
 
     }; // end of sayLyricsThree
@@ -110,6 +127,7 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
     annyang.addCommands(sayLyricsTwo);
     annyang.addCommands(sayLyricsThree);
     annyang.start();
+    annyang.debug();
   }
 } // end of voiceCommands
 
