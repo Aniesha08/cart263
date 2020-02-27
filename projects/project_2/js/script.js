@@ -28,6 +28,8 @@ let thirdLine;
 // surprise egg variables
 let surpriseEgg;
 let $egg;
+let sadEgg = "/assets/images/wrong.png";
+let happyEgg = "/assets/images/egg_closed.gif";
 
 function setup(){
   $.getJSON("data/replace.json", dataLoaded);
@@ -44,7 +46,7 @@ function dataLoaded(data){
 
   container = document.getElementById("lyrics_display");
 
-  let lyrics_one = insect + " climbed up my " + place + "," + " Down came the " + liquid + " and washed the " +insect;
+  let lyrics_one = insect + " climbed up my " + place + "," + " Down came the " + liquid + " and clean the " +insect;
   firstLine = document.createTextNode("Itsy bitsy " +lyrics_one+" out.");
   container.appendChild(firstLine);
 
@@ -66,18 +68,20 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
   if (annyang) {
 
     let sayLyricsOne = {
-      'itsy bitsy :insectA climbed up my :place Down came the :liquid and washed the :insectA out': function(insectA,place,liquid) {
+      'itsy bitsy :insectA climbed up my :place Down came the :liquid and clean the :insectA out': function(insectA,place,liquid) {
         // console.log(insect);
         // console.log(place);
         // console.log(liquid);
 
         if(insect.toLowerCase() === insectA.toLowerCase()){
+          // $egg.attr("src", happyEgg);
           $(container).empty();
           container.appendChild(secondLine);
           console.log("line one complete");
         }
 
         else{
+          $egg.attr("src", sadEgg);
           console.log("WRONG INSECT");
         }
 
@@ -91,12 +95,14 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
         // console.log(verb);
         // console.log(liquid);
         if(liquid.toLowerCase() === liquidA.toLowerCase()){
+          $egg.attr("src", happyEgg);
           $(container).empty();
           container.appendChild(thirdLine);
           console.log("line two complete");
         }
 
         else{
+          $egg.attr("src", sadEgg);
           console.log("WRONG LIQUID");
         }
 
@@ -116,6 +122,7 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
         }
 
         else{
+          $egg.attr("src", sadEgg);
           console.log("WRONG LIQUID");
         }
       }
