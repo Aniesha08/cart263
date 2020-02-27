@@ -31,10 +31,28 @@ let $egg;
 let sadEgg = "/assets/images/wrong.png";
 let happyEgg = "/assets/images/egg_closed.gif";
 
+let $congrats;
+let $playAgain;
+
 function setup(){
   $.getJSON("data/replace.json", dataLoaded);
   $egg = $('#egg_closed');
+
+  $congrats = $("#congrats");
+  $congrats.hide();
+
+  $playAgain = $("#play_again");
+  $playAgain.hide();
+
+  $playAgain.click(restartGame);
 } // end of setup
+
+
+// When the user clicks on the button, a new set of lyrics will load
+function restartGame(){
+  console.log("button clicked");
+}
+
 
 function dataLoaded(data){
   // defined variables for words to replace in lyrics
@@ -62,6 +80,7 @@ function dataLoaded(data){
   voiceCommands(lyrics_one, lyrics_two, lyrics_three, container);
 
 } // end of dataLoaded
+
 
 function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
 
@@ -117,7 +136,12 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
         if(insect.toLowerCase() === insectA.toLowerCase() && place.toLowerCase() === placeA.toLowerCase()){
           $egg.attr("src", surpriseEgg);
           console.log("line three complete");
-          //  console.log("saying lyrics");
+          $(container).empty();
+
+          $congrats.show();
+
+          $playAgain.show();
+          $playAgain.css("backgroundColor: red;")
           // responsiveVoice.speak("Wonderful! Say more to see more surprises!", "UK English Female", {pitch: 1});
         }
 
