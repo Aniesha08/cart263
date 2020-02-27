@@ -12,6 +12,8 @@ author, and this description to match your project!
 
 $(document).ready(setup);
 
+// GLOBAL VARIABLES
+// lyrics variables
 let insect;
 let place;
 let liquid;
@@ -19,63 +21,88 @@ let noun;
 let verb;
 let container;
 let lyrics;
+let firstLine;
+let secondLine;
+let thirdLine;
+
+// surprise egg variables
 let surpriseEgg;
 let $egg;
 
-// let $eggOpen;
-//let egg = document.getElementById("egg");
-
 function setup(){
   $.getJSON("data/replace.json", dataLoaded);
-  voiceCommands();
   $egg = $('#egg_closed');
-
-  //egg.style.background = "red";
 } // end of setup
 
-function dataLoaded(data) {
+function dataLoaded(data){
   // defined variables for words to replace in lyrics
   insect = getRandomElement(data.insect);
   place = getRandomElement(data.place);
   liquid = getRandomElement(data.liquid);
   noun = getRandomElement(data.noun);
   verb = getRandomElement(data.verb);
-  container = document.getElementById("lyrics_display");
-  lyrics = document.createTextNode("Itsy-bitsy " + insect + " climbed up " + place + "," + " Down came the " + liquid + " and washed the " +
-  insect + " Out" + "," + " Out came the " + noun + " and " + verb + " up all the " + liquid + "," + " And the itsy-bitsy " + insect + " climbed up " + place + " again.");
 
-  container.appendChild(lyrics);
+  container = document.getElementById("lyrics_display");
+
+  let lyrics_one = insect + " climbed up my " + place + "," + " Down came the " + liquid + " and washed the " +insect;
+  firstLine = document.createTextNode("Itsy bitsy " +lyrics_one+" out.");
+  container.appendChild(firstLine);
+
+  let lyrics_two = noun + " and " + verb + " up all the " + liquid;
+  secondLine = document.createTextNode(" Out came the " +lyrics_two+",");
+
+  let lyrics_three =  insect + " climbed up my " + place;
+  thirdLine = document.createTextNode(" And the itsy bitsy " +lyrics_three+" again.");
 
   surpriseEgg = getRandomElement(data.surprise);
-  console.log(surpriseEgg);
+  // console.log(surpriseEgg);
 
-  /*  console.log(insect);
-  console.log(place);
-  console.log(liquid);
-  console.log(noun);
-  console.log(verb);
-  console.log(lyrics);
-  console.log("surpriseEgg");*/
+  voiceCommands(lyrics_one, lyrics_two, lyrics_three, container);
 
 } // end of dataLoaded
 
-function voiceCommands(){
+function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
 
   if (annyang) {
-    // let egg = document.getElementById("egg");
 
-    let sayLyrics = {
-      '*lyrics': function() {
-        //'*insect':function(){
-        console.log(insect);
-        $egg.attr("src", surpriseEgg);
-        console.log("saying lyrics");
+    let sayLyricsOne = {
+      'itsy bitsy :insectA climbed up my :place Down came the :liquid and washed the :insectA out': function(insectA,place,liquid) {
+        // console.log(insect);
+        // console.log(place);
+        // console.log(liquid);
+
+        console.log("line one complete");
       }
 
-    }; // end of repeat
+    }; // end of sayLyricsOne
+
+    let sayLyricsTwo = {
+      'Out came the :noun and :verb up all the :liquid': function(noun,verb,liquid) {
+        // console.log(noun);
+        // console.log(verb);
+        // console.log(liquid);
+
+        console.log("line two complete");
+      }
+
+    }; // end of sayLyricsTwo
+
+    let sayLyricsThree = {
+      'And the itsy bitsy :insect climbed up my :place again': function(insect,place) {
+        // console.log(insect);
+        // console.log(place);
+        console.log("line three complete");
+        $egg.attr("src", surpriseEgg);
+        //  console.log("saying lyrics");
+        // responsiveVoice.speak("Wonderful! Say more to see more surprises!", "UK English Female", {pitch: 1});
+      }
+
+    }; // end of sayLyricsThree
 
     console.log("annyang working");
-    annyang.addCommands(sayLyrics);
+    annyang.addCommands(sayLyricsOne);
+    annyang.addCommands(sayLyricsTwo);
+    annyang.addCommands(sayLyricsThree);
     annyang.start();
   }
 } // end of voiceCommands

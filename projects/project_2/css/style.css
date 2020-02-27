@@ -46,11 +46,18 @@ div#egg_display{
   width: 90%;
 }
 
+#see_more{
+  font-family: 'Luckiest Guy', cursive;
+  text-align: center;
+  color: white;
+  font-size: 60px;}
+
 div#lyrics{
   width:50%;
   height: 100vh;
   float: left;
-  background-color: #CA5CCC;
+  /* background-color: #CA5CCC; */
+  background-color: #72cc5c;
 }
 
 p#lyrics_display{

@@ -2,32 +2,32 @@
   "insect": [
     "spider",
     "cockroach",
-    "bumble-bee",
+    "bumblebee",
     "caterpillar",
-    "wormy",
+    "worm",
     "beetle",
-    "head lice",
+    "headlice",
     "mosquito",
     "housefly",
-    "assassin bug",
+    "ladybug",
     "butterfly",
     "leech",
     "flea",
-    "bed bug",
+    "bedbug",
     "cricket"
     ],
 
   "place": [
-    "the water spout",
-    "the bedroom attic",
-    "my underwear",
-    "my purple pants",
-    "my comfy bed",
-    "my ceiling",
-    "my curly hair",
-    "my favorite shirt",
-    "my little arm",
-    "my snotty nose"
+    "leg",
+    "attic",
+    "underwear",
+    "pants",
+    "bed",
+    "ceiling",
+    "hair",
+    "shirt",
+    "arm",
+    "nose"
     ],
 
   "liquid": [
@@ -38,7 +38,7 @@
     "blood",
     "soup",
     "jus",
-    "pee",
+    "cola",
     "coffee",
     "tears",
     "vomit"
