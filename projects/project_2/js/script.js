@@ -29,9 +29,9 @@ let thirdLine;
 
 // egg variables
 let $egg;
-let jumpingEgg = "/assets/images/egg_jumping.gif";
-let happyEgg = "/assets/images/egg_closed.gif";
-let sadEgg = "/assets/images/wrong.png";
+let jumpingEgg = "https://aniesha08.github.io/cart263/projects/project_2/assets/images/egg_jumping.gif";
+let happyEgg = "https://aniesha08.github.io/cart263/projects/project_2/assets/images/egg_closed.gif";
+let sadEgg = "https://aniesha08.github.io/cart263/projects/project_2/assets/images/wrong.png";
 let surpriseEgg;
 
 // game start and end variables
