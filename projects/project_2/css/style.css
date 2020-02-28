@@ -10,41 +10,43 @@ This is the style file for this project.
   box-sizing: border-box;
 }
 
+
+/* Game Start Styles */
+
 #title{
   font-family: 'Luckiest Guy', cursive;
-  font-size: 60px;
-  letter-spacing: 2px;
-  color: #6c5bcc;
   text-align: center;
-  margin-top: 1em;
-}
-
-#subtitle{
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  font-size: 50px;
   color: #6c5bcc;
-  font-size: 24px;
 }
 
-div#egg{
-  width:50%;
-  height: 100vh;
-  float: left;
-  background-color: #ffe000;
+#message{
+  font-family: 'Indie Flower', cursive;
+  text-align: center;
+  color: #ffffff;
+  font-size: 40px;
+  padding: 30px;
 }
 
-div#egg_display{
-  /* border: 2px solid white; */
-  width: 65%;
-  height: 70vh;
+#start_play{
+  font-family: 'Luckiest Guy', cursive;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  background-color: #6c5bcc;
+  color: #ffe000;
+  padding: 0.5em;
+  width: 50%;
   margin: 0 auto;
-  margin-top: 1em;
-  text-align: center;
 }
 
-.egg{
-  width: 90%;
+#start_play:hover{
+  background-color: #ffe000;
+  color: #6c5bcc;
 }
+
+
+/* Play Again Styles */
 
 #play_again{
   font-family: 'Luckiest Guy', cursive;
@@ -57,12 +59,48 @@ div#egg_display{
   width: 50%;
   margin: 0 auto;}
 
+#play_again:hover{
+  background-color: #ffe000;
+  color: #6c5bcc;
+}
+
+
+/* Egg Styles */
+
+div#egg{
+  width:50%;
+  height: 100vh;
+  float: left;
+  background-color: #ffe000;
+  text-align:center;
+}
+
+div#egg_display{
+  width: 75%;
+  height: 70vh;
+  margin: 0 auto;
+  margin-top: 5em;
+  text-align: center;
+}
+
+.egg{
+  width: 90%;
+}
+
+#egg_jump{
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 5em;
+}
+
+
+/* Lyrics Container Styles */
+
 div#lyrics{
   width:50%;
   height: 100vh;
   float: left;
-  /* background-color: #CA5CCC; */
-  background-color: #72cc5c;
+  background-color: #00BCD4;
 }
 
 p#lyrics_display{
@@ -70,26 +108,16 @@ p#lyrics_display{
   text-align: center;
   color: white;
   font-size: 45px;
-  margin-top:32%;
-  /* margin-bottom: 30%; */
+  margin-top:25%;
   padding: 30px;
 }
 
-p#congrats{
-  font-family: 'Indie Flower', cursive;
-  text-align: center;
-  color: #ffe000;
-  font-size: 40px;
-  /* margin-top:35%; */
-  /* margin-bottom: 30%; */
-  padding: 20px;
-}
 
-footer p{
-  /* clear: all; */
-  color: #8CFFAB;
+footer{
+  clear: both;
+  padding: 30px;
   background-color: #6c5bcc;
   font-family: 'Open Sans', sans-serif;
   text-align: center;
-  padding-top: 30px;
+  color: #ffffff;
 }
