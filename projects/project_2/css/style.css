@@ -17,7 +17,7 @@ This is the style file for this project.
   font-family: 'Luckiest Guy', cursive;
   text-align: center;
   font-size: 50px;
-  color: #6c5bcc;
+  color: #ffe000;
 }
 
 #message{
@@ -108,7 +108,7 @@ p#lyrics_display{
   text-align: center;
   color: white;
   font-size: 45px;
-  margin-top:25%;
+  margin-top:20%;
   padding: 30px;
 }
 

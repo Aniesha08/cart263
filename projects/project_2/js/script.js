@@ -9,6 +9,8 @@ Itsy Bitsy is a kids game which mimics the Itsy Bitsy Spider rhyme. Instead, the
 and make no sense by generating random words to replace the words from the original rhyme. The lyrics become creepy and silly too!
 The user needs to say the lyrics of the rhuyme to pass each line. At the end of the third line, the egg will reveal a surprise!
 
+Sound Credit: [Crowd Wow Surprise People] by dersuperanton
+https://freesound.org/people/dersuperanton/sounds/437645/
 ******************/
 
 $(document).ready(setup);
@@ -40,6 +42,8 @@ let $message;
 let $startPlay;
 let $playAgain;
 
+let wowSound;
+
 // General setup code for loading data and images
 function setup(){
   $.getJSON("data/replace.json", dataLoaded);
@@ -55,6 +59,11 @@ function setup(){
   $playAgain = $("#play_again");
   $playAgain.hide();
   $playAgain.click(restartGame);
+
+  wowSound = document.createElement("audio");
+  wowSound.setAttribute("src","https://aniesha08.github.io/cart263/projects/project_2/assets/sounds/wow.wav");
+  document.body.appendChild(wowSound);
+  wowSound.pause();
 } // end of setup
 
 // When the user clicks on the "Let's Play!" button, the user will be directed the the lyrics page
@@ -171,6 +180,7 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
         // verify if the user has said the place correctly
         if(place.toLowerCase() === placeA.toLowerCase()){
           console.log("line three complete");
+          wowSound.play();
 
           // reveal the surprise
           $egg.attr("src", surpriseEgg);
@@ -180,6 +190,7 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
           // replace the title and message from the startGame page to a Congratulations page
           $title.show();
           $title.text("Congratulations!");
+          $title.css("color", "#6c5bcc;");
           $message.show();
           $message.text("Don't leave! More surprises are waiting for you!");
 
