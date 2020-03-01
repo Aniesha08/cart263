@@ -11,7 +11,14 @@ This is the style file for this project.
 }
 
 
-/* Game Start Styles */
+/* Game Start & Congrats Page Styles */
+
+div#center{
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+  -webkit-transform:translate(0%, -50%);
+}
 
 #title{
   font-family: 'Luckiest Guy', cursive;
@@ -45,9 +52,6 @@ This is the style file for this project.
   color: #6c5bcc;
 }
 
-
-/* Play Again Styles */
-
 #play_again{
   font-family: 'Luckiest Guy', cursive;
   text-align: center;
@@ -71,7 +75,6 @@ div#egg{
   width:50%;
   height: 100vh;
   float: left;
-  background-color: #ffe000;
   background-image: url("https://aniesha08.github.io/cart263/projects/project_2/assets/images/background.png");
   background-size:76%;
   text-align:center;
@@ -103,6 +106,7 @@ div#lyrics{
   height: 100vh;
   float: left;
   background-color: #00BCD4;
+  padding: 20px;
 }
 
 p#lyrics_display{
@@ -110,10 +114,24 @@ p#lyrics_display{
   text-align: center;
   color: white;
   font-size: 45px;
-  margin-top:20%;
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+  -webkit-transform:translate(0%, -50%);
+  /* margin-top:20%;*/
   padding: 30px;
 }
 
+/* Progress Bar Styles */
+#progressbar{
+  width:30%;
+  margin: 0 auto;
+}
+
+.ui-widget-header{
+  background: #fbdf2d !important;
+  border: 1px solid #fbdf2d !important;
+}
 
 footer{
   clear: both;

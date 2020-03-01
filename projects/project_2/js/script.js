@@ -44,6 +44,8 @@ let $playAgain;
 
 let wowSound;
 
+let $value = $("#progressbar").progressbar("option", "value");
+
 // General setup code for loading data and images
 function setup(){
   $.getJSON("data/replace.json", dataLoaded);
@@ -64,16 +66,26 @@ function setup(){
   wowSound.setAttribute("src","https://aniesha08.github.io/cart263/projects/project_2/assets/sounds/wow.wav");
   document.body.appendChild(wowSound);
   wowSound.pause();
+
+  $("#progressbar").progressbar({
+    value: 33
+  });
+
+  $("#progressbar").progressbar().hide();
+
 } // end of setup
 
 // When the user clicks on the "Let's Play!" button, the user will be directed the the lyrics page
 function startGame(){
+  $("#progressbar").progressbar().show();
   setupGame();
 } // end of startGame
 
 // When the user clicks on the "Play Again" button, the game will restart by revealing a new set of lyrics
 function restartGame(){
   console.log("button clicked");
+  $("#progressbar").progressbar().show();
+  $("#progressbar").progressbar("option", "value", 33);
   setupGame();
 } // end of restartGame
 
@@ -138,9 +150,10 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
         // verify if the user has said either the insect name OR liquid name correctly
         if(insect.toLowerCase() === insectA.toLowerCase() || liquid.toLowerCase() === liquidA.toLowerCase()){
           $egg.attr("src", happyEgg);
-          // proceed to the next line
           $(container).empty();
+          // proceed to the next line and increase progress bar value
           container.appendChild(secondLine);
+          $( "#progressbar" ).progressbar( "option", "value", 66 );
           console.log("line one complete");
         }
 
@@ -160,7 +173,8 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
         if(noun.toLowerCase() === nounA.toLowerCase()){
           $egg.attr("src", happyEgg);
           $(container).empty();
-          // proceed to the next line
+          // proceed to the next line and increase progress bar value
+          $( "#progressbar" ).progressbar( "option", "value", 100 );
           container.appendChild(thirdLine);
           console.log("line two complete");
         }
@@ -186,6 +200,8 @@ function voiceCommands(lyrics_one, lyrics_two, lyrics_three, container){
           $egg.attr("src", surpriseEgg);
           $lyrics.css("background-color", "#FF9800;");
           $(container).empty();
+
+          $( "#progressbar" ).progressbar().hide();
 
           // replace the title and message from the startGame page to a Congratulations page
           $title.show();
