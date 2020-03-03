@@ -18,9 +18,13 @@ The following is one of the outcomes from the randomly generated lyrics:
 The outcome of the lyrics covers the themes of repetition, humour, surprise, weirdness nonsense and sometimes even violence. The weirdness of the lyrics creates a sense of amusement which can stimulate a sense of addiction. In the congratulations page, I have mentioned that more surprises are waiting as a prompt to make the child play the game again. When the child plays the game again, they will realize that the lyrics are not the same as before and that the lyrics are weird and funny. This will make the child curious every time as to what the next lyrics might be. Therefore, they will want to continue to play the game. The surprises also are not the same every time. For the surprises, I chose random objects that I have found in my house to add another layer of weirdness to the game. There is no educational purpose to the game, just like the millions and millions of children youtube videos that are in the dark rabbit hole mentioned by Bridle. They just feed off of children’s engagement to create more and more of the same videos and to create profit. Some lyrics from my game may be silly and funny while some may turn out to be violent such: “…Down came the monster and punched up all the blood”. Through my game, children may be caught saying things that they are not supposed to say which will then create a bad influence on them, just like how kids are fed kids videos that have content that is not suitable for kids at all. By replacing words from the lyrics, just like the functionality of keyword salads in Youtube videos, my game shines light on its negative consequences. 
 
 Credits:
+
 Egg Illustrations: Myself
+
 Background Image: Myself
+
 Surprise Images: Taken & Edited by Myself
+
 Wow Sound: “Crowd Wow Surprise People” by dersuperanton (https://freesound.org/people/dersuperanton/sounds/437645/). 
 
 Here is the link to the screen recording or the project:
