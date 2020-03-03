@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap" rel="stylesheet">
 
-  <!-- Libraries -->
+  <!-- JQuery Libraries -->
   <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -25,21 +25,22 @@
   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
   crossorigin="anonymous"></script>
 
+  <!-- Voice Interaction Libraries -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
-  <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
 
   <!-- My script(s) -->
   <script src="js/script.js"></script>
 </head>
 
 <body>
+  <!-- This section will show the egg which will dynamically change through javascript depending on the state of the game-->
   <div id="egg">
     <div id="egg_display">
       <img id="egg_closed" class="egg" src="https://aniesha08.github.io/cart263/projects/project_2/assets/images/egg_jumping.gif" alt=""/>
     </div><!--end of egg display-->
   </div><!-- end of egg-->
 
-
+  <!-- The second half of the section will display the text for the start page, the lyrics and the congratulations page. The text will be dynamically chnaged through javascript-->
   <div id="lyrics">
     <p id="lyrics_display"></p>
     <div id="center">
@@ -49,7 +50,7 @@
       <!--buttons-->
       <div id="start_play">Let's play!</div>
       <div id="play_again">Play again</div>
-    </div>
+    </div><!--end of center-->
     <div id="progressbar"></div>
   </div><!--end of lyrics-->
 

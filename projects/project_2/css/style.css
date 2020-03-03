@@ -118,7 +118,6 @@ p#lyrics_display{
   top: 50%;
   transform: translate(0%, -50%);
   -webkit-transform:translate(0%, -50%);
-  /* margin-top:20%;*/
   padding: 30px;
 }
 
@@ -132,6 +131,8 @@ p#lyrics_display{
   background: #fbdf2d !important;
   border: 1px solid #fbdf2d !important;
 }
+
+/* Footer Style */
 
 footer{
   clear: both;
