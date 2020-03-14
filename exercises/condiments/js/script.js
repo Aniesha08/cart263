@@ -11,6 +11,8 @@ Uses:
 Corpora
 https://github.com/dariusk/corpora
 
+Assignment Completed by: Aniesha Sangarapillai
+
 */
 
 $(document).ready(function() {
@@ -97,7 +99,7 @@ function gotData(data) {
       indefiniteOccupation = 'an';
       console.log("indef occupation");
     }
-  }
+  } // end of for loop
 
   // Now we can construct our description with a template string
   // We have the basic structure of a sentence and we substitute in the
@@ -107,7 +109,6 @@ function gotData(data) {
   // Finally, we add it to the page and hey presto!
   $('body').append(description);
 }
-
 
 
 // dataError()
