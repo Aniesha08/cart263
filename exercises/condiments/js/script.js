@@ -22,7 +22,7 @@ $(document).ready(function() {
     loadCondiment();
     // empty the body so that the phrase does not appear one after another all-tougether
     $('body').empty();
-    console.log("body clicked");
+    // console.log("body clicked");
   });
 
 });
@@ -34,8 +34,8 @@ function loadCondiment(){
   // the location of the file, and a function to call when the data
   // is available...
   $.getJSON('data/data.json')
-    .done(gotData)
-    .fail(dataError);
+  .done(gotData)
+  .fail(dataError);
 }
 
 // gotData (data)
@@ -65,19 +65,50 @@ function gotData(data) {
   let room = getRandomElement(data.rooms);
 
   // celebrities
-  let celebrities = getRandomElement(data.celebrities);
+  let celebrity = getRandomElement(data.celebrities);
 
   // occupations
-  let occupations = getRandomElement(data.occupations);
+  let occupation = getRandomElement(data.occupations);
+
+  // defined the vowels
+  // identified in the array the vowels
+  let vowels = ["a","e","i","o","u"];
+
+  // made sure that the indefinite cat, room and occupation first have "a" if the conditions don't apply
+  let indefiniteCat = "a";
+  let indefiniteRoom = "a";
+  let indefiniteOccupation = "a";
+
+  // created a for loop to go through the vowels
+  for(let i=0; i< vowels.length; i++) {
+    // need to convert the cats names to lowercase first
+    // if the first letter of the cat starts with a vowel, change the article to "an"
+    if (cat.charAt(0).toLowerCase() === vowels[i]) {
+      indefiniteCat = 'an';
+      console.log("indef cat");
+    }
+    // if the first letter of the room starts with a vowel, change the article to "an"
+    else if (room.charAt(0) === vowels[i]) {
+      indefiniteRoom = 'an';
+      console.log("indef room");
+    }
+    // if the first letter of the occupation starts with a vowel, change the article to "an"
+    else if (occupation.charAt(0) === vowels[i]) {
+      indefiniteOccupation = 'an';
+      console.log("indef occupation");
+    }
+  }
 
   // Now we can construct our description with a template string
   // We have the basic structure of a sentence and we substitute in the
   // values we've just calculated
-  let description = `${condiment} ${verb} like a ${cat} in a ${room} with ${celebrities} and a ${occupations}.`;
+  let description = `${condiment} ${verb} like ${indefiniteCat} ${cat} in ${indefiniteRoom} ${room} with ${celebrity} and ${indefiniteOccupation} ${occupation}.`;
 
   // Finally, we add it to the page and hey presto!
   $('body').append(description);
 }
+
+
 
 // dataError()
 //
