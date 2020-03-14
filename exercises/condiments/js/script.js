@@ -14,9 +14,21 @@ https://github.com/dariusk/corpora
 */
 
 $(document).ready(function() {
+  // display the condiment description when the page is loaded
+  loadCondiment();
 
-  // The first thing we need to do is load the data we're going
-  // to use to get random words.
+  // if the user clicks on the page (body), update the condiment description
+  $("body").click(function (event) {
+    loadCondiment();
+    // empty the body so that the phrase does not appear one after another all-tougether
+    $('body').empty();
+    console.log("body clicked");
+  });
+
+});
+
+function loadCondiment(){
+  // load the data we're going to use to get random words.
   //
   // For that we use jQuery's .getJSON() function, which we give
   // the location of the file, and a function to call when the data
@@ -24,7 +36,7 @@ $(document).ready(function() {
   $.getJSON('data/data.json')
     .done(gotData)
     .fail(dataError);
-});
+}
 
 // gotData (data)
 //
@@ -64,7 +76,7 @@ function gotData(data) {
   let description = `${condiment} ${verb} like a ${cat} in a ${room} with ${celebrities} and a ${occupations}.`;
 
   // Finally, we add it to the page and hey presto!
-  $('body').append(description)
+  $('body').append(description);
 }
 
 // dataError()
