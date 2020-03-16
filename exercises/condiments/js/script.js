@@ -46,8 +46,8 @@ function loadCondiment(){
 // The data itself will be in the 'data' argument as a JavaScript object.
 function gotData(data) {
   // Now we select random elements from the three arrays inside
-  // our JSON to get a random condiment, cat, and room. Then we add those
-  // words onto our page by setting the text of the appropriate span.
+  // our JSON to get a random condiment, cat, and room, celebrity and occupation.
+  // Then we add those words onto our page by setting the text of the appropriate span.
 
   // First the condiment
   // Get a random condiment from the condiments array in the JSON
@@ -72,18 +72,20 @@ function gotData(data) {
   // occupations
   let occupation = getRandomElement(data.occupations);
 
-  // defined the vowels
-  // identified in the array the vowels
+  // CHECK VOWELS
+  // define the vowels by
+  // storing the vowels in an array
   let vowels = ["a","e","i","o","u"];
 
-  // made sure that the indefinite cat, room and occupation first have "a" if the conditions don't apply
+  // set default indefinite article
+  // made sure that the indefinite cat, room and occupation first have "a" in front of them if the conditions don't apply
   let indefiniteCat = "a";
   let indefiniteRoom = "a";
   let indefiniteOccupation = "a";
 
   // created a for loop to go through the vowels
   for(let i=0; i< vowels.length; i++) {
-    // need to convert the cats names to lowercase first
+    // need to convert the cats names to read as lowercase first
     // if the first letter of the cat starts with a vowel, change the article to "an"
     if (cat.charAt(0).toLowerCase() === vowels[i]) {
       indefiniteCat = 'an';
@@ -121,7 +123,7 @@ function dataError(request, text, error) {
 
 // getRandomElement ()
 //
-// Returns a random element from the array provided
+// Returns a random element from the arrays of data from the JSON file
 function getRandomElement(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
