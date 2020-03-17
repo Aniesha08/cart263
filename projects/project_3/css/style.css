@@ -113,8 +113,8 @@ width:45%;
 float: left;
 margin-left: 20px;}
 
-input#myText{
-  width: 70%;
+input.myText{
+  width: 60%;
 }
 
 button{
