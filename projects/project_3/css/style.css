@@ -3,3 +3,72 @@
 This is the style file for this project.
 
 **********************************************/
+
+*{
+  box-sizing: none;
+  margin: 0;
+  padding: 0;
+}
+
+/******* INSTA PAGE SECTION *******/
+.insta_page{
+  float: left;
+  background-color: #ffffff;
+  height: 100vh;
+  width: 70%;
+}
+
+#profile_info{
+  width:100%;
+  background-color: black;
+  /* border: 1px solid black;
+  height: 10vh; */
+}
+
+#prof_pic{
+  width: 20%;
+  background-color: blue;
+  float: left;
+}
+
+#user_info{
+  width: 80%;
+  float: left;
+  background-color: red;
+}
+
+#thumb_imgs{margin: 0 auto;
+/* background-color: red; */
+margin-top: 2em;
+width: 80%;}
+
+.row{
+  width:100%;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  clear: both;
+  background-color: grey;
+  margin: 0 auto;
+}
+
+.thumbnail{width: 29%;
+  background-color: yellow;
+  float: left;
+  margin-bottom: 2em;
+  margin-left: 1.5em;
+}
+
+
+
+/******** EMOTIONS BAR SECTION *******/
+.emotions_bar{
+  float:left;
+  background-color: #eae8e8;
+  height: 100vh;
+  width: 30%;
+}
+
+h1.emotions{
+  color: #333;
+  margin: 30px;
+}
