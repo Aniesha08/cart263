@@ -10,43 +10,69 @@ This is the style file for this project.
   padding: 0;
 }
 
+h1, h2, h3{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
 /******* INSTA PAGE SECTION *******/
 .insta_page{
   float: left;
   background-color: #ffffff;
-  height: 100vh;
+  /* height: 100vh; */
   width: 70%;
 }
 
 #profile_info{
-  width:100%;
-  background-color: black;
-  /* border: 1px solid black;
-  height: 10vh; */
+  width:80%;
+  margin: 0 auto;
+  /* background-color: black; */
+  margin-top:30px;
+  height: 25vh;
+  /* border: 1px solid black;*/
 }
 
 #prof_pic{
-  width: 20%;
-  background-color: blue;
+  width: 35%;
+  /* background-color: blue; */
   float: left;
 }
 
+#pro{
+  width:50%;
+  margin-left: 70px;
+}
+
 #user_info{
-  width: 80%;
+  width: 65%;
   float: left;
-  background-color: red;
+  /* background-color: red; */
+}
+
+span#status{
+  background-color: lightgreen;
+  color: white;
+  margin-left: 0.15;
+}
+
+hr{
+  clear: both;
+  width: 50%;
+  color: #e8e8e8;
+  margin: 0 auto;
+  margin-bottom: 30px;
 }
 
 #thumb_imgs{margin: 0 auto;
 /* background-color: red; */
-margin-top: 2em;
+margin-top: 1em;
 width: 80%;}
 
 .row{
   width:100%;
   margin-top: 2em;
   margin-bottom: 1em;
-  clear: both;
+  clear: left;
   background-color: grey;
   margin: 0 auto;
 }
@@ -144,6 +170,8 @@ button{
   background-color: #eae8e8;
   height: 100vh;
   width: 30%;
+  position: fixed;
+  right: 0;
 }
 
 h1.emotions{

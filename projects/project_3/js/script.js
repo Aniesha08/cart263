@@ -57,7 +57,6 @@ $span2.click(function() {
 } // end of toggleModal
 
 
-
 function writeComment1() {
   // take the value that is being typed in the input field
   let $text1 = $("#myText1").val();
