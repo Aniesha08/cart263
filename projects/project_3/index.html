@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="css/style.css" />
 
   <!--Fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Lobster+Two&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
   <!-- Libraries -->
@@ -28,12 +29,16 @@
 
 <body>
   <div class="insta_page">
+    <div id="topbar">
+      <p>InstaEmotion <span id="loggedIn">Logged In</span></p>
+    </div>
     <div id="profile_info">
       <div id="prof_pic"><img id="pro" src="/assets/images/profile_pic.png"/></div><!--end of profile pic-->
 
       <div id="user_info">
         <h2> aniesha.sangarapillai <span id="status">&nbsp;active&nbsp;</span></h2>
-        <h3> 9 posts | 100 followers | 250 following </h1>
+        <h3 id="followers"> <span class="bold">9</span> posts &nbsp; &nbsp; &nbsp; <span class="bold">100</span> followers &nbsp; &nbsp; &nbsp; <span class="bold">250</span> following </h1>
+        <p id="bio">User bio goes here</p>
         </div><!--end of user info-->
       </div><!--end of profile info-->
 
@@ -95,11 +100,13 @@
         </div>
       </div>
 
+    <footer id="insta_footer">CART 263 | Project 3 | Aniesha Sangarapillai</footer>
     </div><!--end of insta page-->
 
     <div class="emotions_bar">
       <h1 class="emotions">Emotions Bar</h1>
     </div>
+
   </body>
 
   </html>

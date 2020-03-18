@@ -19,6 +19,10 @@ body{
   background-color: #fafafa;
 }
 
+.bold{
+  font-weight: bold;
+}
+
 /******* LOGIN PAGE *******/
 
 #login_bar{
@@ -55,7 +59,7 @@ body{
   font-size: 14px;
 }
 
-footer{
+#login_footer{
   font-family: 'Roboto', sans-serif;
   text-align: center;
   font-size: 14px;
@@ -67,12 +71,39 @@ footer{
   width: 100%;
 }
 
+
 /******* INSTA PAGE SECTION *******/
 .insta_page{
   float: left;
-  background-color: #ffffff;
+  background-color: #fafafa;
   /* height: 100vh; */
   width: 70%;
+}
+
+#topbar{
+  padding: 1em;
+  width:100%;
+  background-color: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  position:relative;
+}
+
+#topbar p{
+  font-family: 'Lobster Two', cursive;
+  font-size: 24px;
+  margin-left: 1em;
+}
+
+#loggedIn{
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  margin-left: 25px;
+  background-color: #5aa8f9;
+  color: white;
+  padding: 0.5em;
+  border-radius: 5px;
+  position: absolute;
+  right: 70px;
 }
 
 #profile_info{
@@ -82,6 +113,16 @@ footer{
   margin-top:30px;
   height: 25vh;
   /* border: 1px solid black;*/
+}
+
+#followers{
+  margin-top: 0.5em;
+}
+
+#bio{
+  font-family: 'Roboto', sans-serif;
+  /* font-style: italic; */
+  margin-top: 0.75em;
 }
 
 #prof_pic{
@@ -136,6 +177,18 @@ width: 80%;}
   float: left;
   margin-bottom: 2em;
   margin-left: 1.5em;
+}
+
+#insta_footer{
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  font-size: 14px;
+  background-color: #fff;
+  border-top: 1px solid #e8e8e8;
+  color: #ababab;
+  padding: 1em;
+  width: 100%;
+  clear: both;
 }
 
 /******MODAL CODE********/

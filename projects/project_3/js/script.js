@@ -20,9 +20,9 @@ function logIn(){
   let $username = $("#username");
   let $password = $("#password");
 
-  let userlength = $("#username").val().length;
-
-  let $login = $(login_button);
+  // let userlength = $("#username").val().length;
+  // 
+  // let $login = $(login_button);
 
   // if the user clicks on the username text field, clear the text field
   $username.click(function() {
