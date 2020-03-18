@@ -50,11 +50,20 @@ body{
   padding: 1em;
 }
 
+.left{
+  font-family: 'Roboto', sans-serif;
+  color: #cccbcb;
+  text-align: left;
+  padding-left: 4em;
+  margin-bottom: 0.25em;
+  font-size: 14px;
+}
+
 #login_button{
   width:72%;
   padding: 0.5em;
   margin-bottom: 3em;
-  background-color: #5aa8f9;
+  background-color: #5aa8f985;
   border: none;
   font-size: 14px;
 }
