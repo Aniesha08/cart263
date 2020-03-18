@@ -21,7 +21,7 @@ function logIn(){
   let $password = $("#password");
 
   // let userlength = $("#username").val().length;
-  // 
+  //
   // let $login = $(login_button);
 
   // if the user clicks on the username text field, clear the text field
@@ -110,5 +110,4 @@ function writeComment1() {
     if (commentNum < 3) {
       commentNum++;
     }
-  // }
 } // end of writeComment
