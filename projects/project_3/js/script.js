@@ -17,7 +17,7 @@ function setup(){
 
 function logIn(){
   // variable for password text field which counts the length of its characters
-  let $password = $("#password").val().length;
+  let $password = $("#password").val();
   // variable for login button
   let $login = $("#login_button");
 
@@ -25,6 +25,7 @@ function logIn(){
   $("#password").keyup(function() {
     // increase the length value of the password character typed
     $password++;
+    console.log($password);
     // if the user typed less that 6 characters for the password...
     if ($password < 6){
       // disable the click function of the login button
