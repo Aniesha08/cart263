@@ -218,43 +218,29 @@ width: 80%;}
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
-.modal-content {
+.ui-draggable .ui-dialog-titlebar{
+  background-color: #fff;
+  border: none;
+}
+
+.ui-dialog.ui-corner-all.ui-widget.ui-widget-content.ui-front.ui-draggable.ui-resizable{
+  position: fixed !important;
+  width: 50% !important;
   background-color: #fefefe;
-  margin: auto;
+  margin: auto !important;
+  margin-top: 2em !important;
   padding: 20px;
-  border: 1px solid #888;
-  width: 65%;
-  height: 400px; /* edited */
+  border: none;
+  height: 450px !important;
 }
 
-/* The Close Button */
-#close1 {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+button.ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-close{
+  border: none;
 }
 
-#close1:hover,
-#close1:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-#close2 {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-#close2:hover,
-#close2:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+.pic{
+  width: 40%;
+  float:left;
 }
 
 /* my edits */

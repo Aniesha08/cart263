@@ -12,8 +12,22 @@ let commentNum = 1;
 
 function setup(){
   logIn();
-  toggleModal();
+
+  // Code by Pippin
+  // For every image div
+  $('.image').each(function() {
+    // Find the modal child div and turn it into a dialog
+    let $dialog = $(this).children('.modal').dialog({
+      autoOpen: false,
+      modal: true
+    });
+    // Store the dialog as data in the image div so we can use it later
+    $(this).data('modal', $dialog);
+  });
+  // Listen for clicks on the image div
+  $('.image').on('click', toggleModal);
 } // end of setup
+
 
 function logIn(){
   // variable for password text field which counts the length of its characters
@@ -47,74 +61,40 @@ function logIn(){
 } //end of logIn
 
 function toggleModal(){
-  // Get the modal
-  let $modal1 = $("#myModal1");
-  let $modal2 = $("#myModal2");
+  // Get the modal dialog from this image div's data
+  let $dialog = $(this).data('modal');
+  // Open it
+  $dialog.dialog('open');
 
-  // Get the image that opens the modal
-  let $imageClick1 = $("#img_click1");
-  let $imageClick2 = $("#img_click2");
+  // let $comment1 = $("#comment1");
+  // let $comment2 = $("#comment2");
+  // let $comment3 = $("#comment3");
+  // let $comment4 = $("#comment4");
+  //
+  // $comment1.click(writeComment);
+  // $comment2.click(writeComment);
+  // $comment3.click(writeComment);
+  // $comment4.click(writeComment);
+  let $commentButton = $(".comment_button");
+  $commentButton.click(writeComment);
 
-  let $comment1 = $("#comment1");
-  let $comment2 = $("#comment2");
-
-  // Get the <span> element that closes the modal
-  let $span1 = $("#close1");
-  let $span2 = $("#close2");
-
-  // When the user clicks the image, open the modal
-  $imageClick1.click(function() {
-    console.log("clicked");
-    $modal1.css("display", "block")
-  });
-
-  $imageClick2.click(function() {
-    console.log("clicked");
-    $modal2.css("display", "block")
-  });
-
-  $comment1.click(writeComment1);
-  $comment2.click(writeComment1);
-
-  // When the user clicks on <span> (x), close the modal
-  $span1.click(function() {
-    $modal1.css("display", "none")
-  });
-
-  $span2.click(function() {
-    $modal2.css("display", "none")
-  });
 
 } // end of toggleModal
 
-
-// function writeComment1() {
-//   // take the value that is being typed in the input field
-//   let $text1 = $("#myText1").val();
-//   let $commentDisplay1 = $("#display_comment1")
-//   // and display the comment in the display comment paragraph
-//   $commentDisplay1.css("margin-bottom", "1em");
-//   $commentDisplay1.append($text1);
-//   // clear the comment that was typed in the input after submitting the comment
-//   $('input').val('');
-// } // end of writeComment
-
-
-function writeComment1() {
-  // for (let i = 1; i < 3; i++){
+function writeComment() {
+  console.log("button clicked");
   // take the value that is being typed in the input field
   let $text = $(`#myText${commentNum}`).val();
   let $commentDisplay1 = $(`#display_comment${commentNum}`);
 
-  if (commentNum === 1){
-    console.log($text);
-  }
+  console.log($text);
+
   // and display the comment in the display comment paragraph
   $commentDisplay1.css("margin-bottom", "1em");
   $commentDisplay1.append($text);
   // clear the comment that was typed in the input after submitting the comment
   $('input').val('');
-  if (commentNum < 3) {
+  if (commentNum > 0) {
     commentNum++;
   }
 } // end of writeComment
