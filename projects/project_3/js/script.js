@@ -80,7 +80,7 @@ function toggleModal(){
 
   $commentButton.each(function() {
     $commentButton.click(writeComment);
-  }
+  });
 
 
 } // end of toggleModal

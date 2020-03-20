@@ -4,6 +4,8 @@ This is the style file for this project.
 
 **********************************************/
 
+/******* GENERAL STYLES *******/
+
 *{
   box-sizing: none;
   margin: 0;
@@ -85,7 +87,6 @@ body{
 .insta_page{
   float: left;
   background-color: #fafafa;
-  /* height: 100vh; */
   width: 70%;
 }
 
@@ -118,10 +119,8 @@ body{
 #profile_info{
   width:80%;
   margin: 0 auto;
-  /* background-color: black; */
   margin-top:30px;
   height: 25vh;
-  /* border: 1px solid black;*/
 }
 
 #followers{
@@ -130,13 +129,11 @@ body{
 
 #bio{
   font-family: 'Roboto', sans-serif;
-  /* font-style: italic; */
   margin-top: 0.75em;
 }
 
 #prof_pic{
   width: 35%;
-  /* background-color: blue; */
   float: left;
 }
 
@@ -148,7 +145,6 @@ body{
 #user_info{
   width: 65%;
   float: left;
-  /* background-color: red; */
 }
 
 span#status{
@@ -167,10 +163,11 @@ hr{
   margin-bottom: 30px;
 }
 
-#thumb_imgs{margin: 0 auto;
-/* background-color: red; */
-margin-top: 1em;
-width: 80%;}
+#thumb_imgs{
+  margin: 0 auto;
+  margin-top: 1em;
+  width: 80%;
+}
 
 .row{
   width:100%;
@@ -181,7 +178,8 @@ width: 80%;}
   margin: 0 auto;
 }
 
-.thumbnail{width: 29%;
+.thumbnail{
+  width: 29%;
   background-color: yellow;
   float: left;
   margin-bottom: 2em;
@@ -243,17 +241,20 @@ button.ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-
   float:left;
 }
 
-/* my edits */
-.img{
-width:48%;
-background-color:red;
-float:left;}
+.account_name{
+  width:70%;
+}
+
+.caption{
+  font-size: 14px;
+  font-style: italic;
+  margin-bottom: 2em;
+}
 
 .comments{
-width:45%;
-/* background-color:lightblue; */
-float: left;
-margin-left: 20px;}
+  width:45%;
+  float: left;
+  margin-left: 20px;}
 
 input.myText{
   width: 60%;
@@ -263,7 +264,6 @@ button{
   width:30%;
   background-color: lightgrey;
   color: #fff;
-  /* display: block; */
 }
 
 /******** EMOTIONS BAR SECTION *******/
