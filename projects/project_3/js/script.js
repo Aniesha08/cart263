@@ -78,6 +78,10 @@ function toggleModal(){
   let $commentButton = $(".comment_button");
   $commentButton.click(writeComment);
 
+  $commentButton.each(function() {
+    $commentButton.click(writeComment);
+  }
+
 
 } // end of toggleModal
 
