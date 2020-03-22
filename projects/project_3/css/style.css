@@ -25,6 +25,10 @@ body{
   font-weight: bold;
 }
 
+.blue{
+  color: blue;
+}
+
 /******* LOGIN PAGE *******/
 
 #login_bar{
@@ -180,7 +184,7 @@ hr{
 
 .thumbnail{
   width: 29%;
-  background-color: yellow;
+  /* background-color: yellow; */
   float: left;
   margin-bottom: 2em;
   margin-left: 1.5em;
@@ -237,7 +241,7 @@ button.ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-
 }
 
 .pic{
-  width: 40%;
+  width: 50%;
   float:left;
 }
 
@@ -265,6 +269,52 @@ button{
   background-color: lightgrey;
   color: #fff;
 }
+
+
+.dropbtn {
+  background-color: lightgrey; /*my edit*/
+  color: white;
+  padding: 2px; /*my edit*/
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 300px; /*my edit*/
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding: 2px; /*my edit*/
+}
+
+.dropdown-content a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding: 2px; /*my edit*/
+  width: 290px;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #5aa8f9; /*my edit*/
+}
+
+
 
 /******** EMOTIONS BAR SECTION *******/
 .emotions_bar{

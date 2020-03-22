@@ -26,7 +26,10 @@ function setup(){
   });
   // Listen for clicks on the image div
   $('.image').on('click', toggleModal);
-} // end of setup
+  // End code by Pippin
+  // If an option is selected from the dropdown, perform the writeComment function
+  $('.dropdown-content p').on('click', writeComment);
+} // End of setup
 
 
 function logIn(){
@@ -66,39 +69,35 @@ function toggleModal(){
   // Open it
   $dialog.dialog('open');
 
-  // let $comment1 = $("#comment1");
-  // let $comment2 = $("#comment2");
-  // let $comment3 = $("#comment3");
-  // let $comment4 = $("#comment4");
-  //
-  // $comment1.click(writeComment);
-  // $comment2.click(writeComment);
-  // $comment3.click(writeComment);
-  // $comment4.click(writeComment);
-  let $commentButton = $(".comment_button");
-  $commentButton.click(writeComment);
-
-  $commentButton.each(function() {
-    $commentButton.click(writeComment);
-  });
-
-
 } // end of toggleModal
 
 function writeComment() {
-  console.log("button clicked");
-  // take the value that is being typed in the input field
-  let $text = $(`#myText${commentNum}`).val();
-  let $commentDisplay1 = $(`#display_comment${commentNum}`);
+  // Code re-edited based on Sabine guidance
+  //SABINE: this.className == the class of the comment button
+  let theOption = this.className;
+  console.log(this.className);
+  //the modal associated
+  let theButtonIdNumber = theOption.substring(7);
+  console.log(theButtonIdNumber);
+  // SABINE: get the modal box - as the comments are appended to this modal
+  let theModalBox = $("#modal"+theButtonIdNumber);
+  console.log(theModalBox);
+  // let modalName = "#modal"+theButtonIdNumber;
+  // console.log(modalName);
 
-  console.log($text);
+  // define the text of each comment
+  // let theText = $(modalName+" .comment"+theButtonIdNumber).text();
+
+  //get the selected comment to append:
+  let theText = $("#modal"+theButtonIdNumber+" .comment"+theButtonIdNumber).text();
+  // let theText = $(".comment"+theButtonIdNumber).text();
+
+  // the comment will be appended to display comment paragraph
+  // let $commentDisplay = $("#modal"+theButtonIdNumber+ ".display_comment");
+  let $commentDisplay = $(".display_comment");
+  console.log(theText);
 
   // and display the comment in the display comment paragraph
-  $commentDisplay1.css("margin-bottom", "1em");
-  $commentDisplay1.append($text);
-  // clear the comment that was typed in the input after submitting the comment
-  $('input').val('');
-  if (commentNum > 0) {
-    commentNum++;
-  }
+  $commentDisplay.css("margin-bottom", "1em");
+  $commentDisplay.append(theText+"<br/>");
 } // end of writeComment
