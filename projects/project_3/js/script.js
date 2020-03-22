@@ -29,6 +29,10 @@ function setup(){
   // End code by Pippin
   // If an option is selected from the dropdown, perform the writeComment function
   $('.dropdown-content p').on('click', writeComment);
+
+  // Disable resizable and draggable property from modal
+  $(".ui-dialog").resizable('disable').removeClass('ui-state-disabled');
+  $(".ui-dialog").draggable('disable').removeClass('ui-state-disabled');
 } // End of setup
 
 
@@ -68,7 +72,6 @@ function toggleModal(){
   let $dialog = $(this).data('modal');
   // Open it
   $dialog.dialog('open');
-
 } // end of toggleModal
 
 function writeComment() {

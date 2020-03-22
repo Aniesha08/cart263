@@ -220,6 +220,8 @@ hr{
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+/* end code modal from w3schools */
+
 .ui-draggable .ui-dialog-titlebar{
   background-color: #fff;
   border: none;
@@ -260,9 +262,9 @@ button.ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-
   float: left;
   margin-left: 20px;}
 
-input.myText{
+/* input.myText{
   width: 60%;
-}
+} */
 
 button{
   width:30%;
@@ -270,6 +272,8 @@ button{
   color: #fff;
 }
 
+/******DROPDOWN MENU CSS*******/
+/* CSS From: https://www.w3schools.com/css/tryit.asp?filename=trycss_dropdown_button */
 
 .dropbtn {
   background-color: lightgrey; /*my edit*/
@@ -278,7 +282,7 @@ button{
   font-size: 16px;
   border: none;
   cursor: pointer;
-  width: 300px; /*my edit*/
+  width: 250px; /*my edit*/
 }
 
 .dropdown {
@@ -313,7 +317,6 @@ button{
 .dropdown:hover .dropbtn {
   background-color: #5aa8f9; /*my edit*/
 }
-
 
 
 /******** EMOTIONS BAR SECTION *******/
