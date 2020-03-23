@@ -93,32 +93,28 @@ function toggleModal(){
 } // end of toggleModal
 
 function writeComment() {
-  // Code re-edited based on Sabine guidance
-  //SABINE: this.className == the class of the comment button
-  let theOption = this.className;
-  console.log(this.className);
-  //the modal associated
-  let theButtonIdNumber = theOption.substring(7);
-  console.log(theButtonIdNumber);
-  // SABINE: get the modal box - as the comments are appended to this modal
-  let theModalBox = $("#modal"+theButtonIdNumber);
-  console.log(theModalBox);
-  // let modalName = "#modal"+theButtonIdNumber;
-  // console.log(modalName);
+  // Code re-edited based on Sabine's guidance via ZOOM (March 23)
+  // get the comment box of the selected comment
+  let commentBox = $(this).parent().attr("id");
+  console.log($(this).parent().attr("id"));
 
-  // define the text of each comment
-  // let theText = $(modalName+" .comment"+theButtonIdNumber).text();
+  // get the number associated with the comment box
+  let number = commentBox.substring(10);
+  console.log(number);
 
-  //get the selected comment to append:
-  let theText = $("#modal"+theButtonIdNumber+" .comment"+theButtonIdNumber).text();
-  // let theText = $(".comment"+theButtonIdNumber).text();
-
-  // the comment will be appended to display comment paragraph
-  // let $commentDisplay = $("#modal"+theButtonIdNumber+ ".display_comment");
-  let $commentDisplay = $(".display_comment");
+  // get the text from the selected comment to append:
+  let theText = $(this).text();
   console.log(theText);
 
-  // and display the comment in the display comment paragraph
+  // the comment will be displayed in the display comment paragraph
+  let $commentDisplay = $("#display_comment"+number);
+  // end of code re-edited with Sabine
+
+  // create a space between the dropdown and the comment display by adding a margin-bottom
   $commentDisplay.css("margin-bottom", "1em");
+  // with the empty(), only 1 comment will be displayed on the display paragraph
+  // all won't display one after another
+  $commentDisplay.empty();
+  // and display the comment in the display comment paragraph
   $commentDisplay.append(theText+"<br/>");
 } // end of writeComment
