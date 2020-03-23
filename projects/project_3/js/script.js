@@ -33,6 +33,24 @@ function setup(){
   // Disable resizable and draggable property from modal
   $(".ui-dialog").resizable('disable').removeClass('ui-state-disabled');
   $(".ui-dialog").draggable('disable').removeClass('ui-state-disabled');
+
+  $( function() {
+  $( "#happy_progress" ).progressbar({
+    value: 37
+  });
+  $( "#encouragement_progress" ).progressbar({
+    value: 37
+  });
+  $( "#disgust_progress" ).progressbar({
+    value: 37
+  });
+  $( "#jealousy_progress" ).progressbar({
+    value: 37
+  });
+  $( "#anger_progress" ).progressbar({
+    value: 37
+  });
+} );
 } // End of setup
 
 
