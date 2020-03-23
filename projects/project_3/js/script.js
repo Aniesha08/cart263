@@ -8,7 +8,9 @@ author, and this description to match your project!
 ******************/
 
 $(document).ready(setup);
-let commentNum = 1;
+
+// variable for emotions progressbar
+let happiness = $("#happy_progress");
 
 function setup(){
   logIn();
@@ -34,23 +36,26 @@ function setup(){
   $(".ui-dialog").resizable('disable').removeClass('ui-state-disabled');
   $(".ui-dialog").draggable('disable').removeClass('ui-state-disabled');
 
-  $( function() {
+
   $( "#happy_progress" ).progressbar({
-    value: 37
+    value: 0
   });
+
   $( "#encouragement_progress" ).progressbar({
-    value: 37
+    value: 0
   });
   $( "#disgust_progress" ).progressbar({
-    value: 37
+    value: 0
   });
   $( "#jealousy_progress" ).progressbar({
-    value: 37
+    value: 0
   });
   $( "#anger_progress" ).progressbar({
-    value: 37
+    value: 0
   });
-} );
+
+  emotionsPoints();
+
 } // End of setup
 
 
@@ -117,4 +122,52 @@ function writeComment() {
   $commentDisplay.empty();
   // and display the comment in the display comment paragraph
   $commentDisplay.append(theText+"<br/>");
+
+  // POINTS
+
+  let points = $(this).attr("point");
+  console.log(points);
+
+  if (points == 1){
+    $("#happy_progress").progressbar({
+        value: +5
+    });
+  } // end of points 1
+
+  if (points == 2){
+    $("#encouragement_progress").progressbar({
+        value: +10
+    });
+  } // end of points 2
+
+  // if (points == 3){
+  //   $( "#disgust_progress" ).progressbar({
+  //       value: +15
+  //   });
+  // } // end of points 3
+
+  if (points == 4){
+    $("#disgust_progress").progressbar({
+        value: +20
+    });
+  } // end of points 4
+
+  if (points == 5){
+    $("#jealousy_progress").progressbar({
+        value: +25
+    });
+  } // end of points 5
+
+  if (points == 6){
+    $("#anger_progress").progressbar({
+        value: +30
+    });
+  } // end of points 5
+
 } // end of writeComment
+
+
+function emotionsPoints(){
+  // let points = $(this).attr("point");
+  // console.log(points);
+}
