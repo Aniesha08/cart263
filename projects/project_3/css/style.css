@@ -374,3 +374,13 @@ h1.emotions{
 #anger_progress .ui-widget-header{
   background: red !important;
 }
+
+.dropdown-content p{
+  border-bottom: 1px solid lightgrey;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.noline{
+  border-bottom: 0px !important;
+}

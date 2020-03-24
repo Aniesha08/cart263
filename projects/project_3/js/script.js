@@ -124,19 +124,33 @@ function writeComment() {
   $commentDisplay.append(theText+"<br/>");
 
   // POINTS
-
+  // Get the points attribute for the comments
   let points = $(this).attr("point");
+  // pass the points to the emotionsPoints() function
+  emotionsPoints(points);
   console.log(points);
 
+} // end of writeComment
+
+
+function emotionsPoints(points){
+  // if the points attribute == point attribute value (depending on the emotion), increase the value in the progress bar for each emotion with the value given
   if (points == 1){
+    // get the current value for happiness
+    let happyValue = $("#happy_progress").progressbar( "option", "value" );
+    // increase its value by 5 in the happiness progressbar
     $("#happy_progress").progressbar({
-        value: +5
+        value: happyValue+5
     });
   } // end of points 1
 
+
   if (points == 2){
+    // get the current value for encouragement
+    let encouragementValue = $("#encouragement_progress").progressbar( "option", "value" );
+    // increase its value by 10 in the encouragement progressbar
     $("#encouragement_progress").progressbar({
-        value: +10
+        value: encouragementValue+10
     });
   } // end of points 2
 
@@ -147,27 +161,29 @@ function writeComment() {
   // } // end of points 3
 
   if (points == 4){
+    // get the current value for disgust
+    let disgustValue = $("#disgust_progress").progressbar("option", "value");
+    // increase its value by 20 in the disgust progressbar
     $("#disgust_progress").progressbar({
-        value: +20
+        value: disgustValue+20
     });
   } // end of points 4
 
   if (points == 5){
+    // get the current value for jealous
+    let jealousyValue = $("#jealousy_progress").progressbar("option", "value");
+    // increase its value by 25 in the jealousy progressbar
     $("#jealousy_progress").progressbar({
-        value: +25
+        value: jealousyValue+25
     });
   } // end of points 5
 
   if (points == 6){
+    // get the current value for anger
+    let angerValue = $( "#anger_progress" ).progressbar("option", "value");
+    // increase its value by 30 in the anger progressbar
     $("#anger_progress").progressbar({
-        value: +30
+        value: angerValue+30
     });
   } // end of points 5
-
-} // end of writeComment
-
-
-function emotionsPoints(){
-  // let points = $(this).attr("point");
-  // console.log(points);
-}
+} // end of emotionsPoints
