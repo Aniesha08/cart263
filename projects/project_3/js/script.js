@@ -108,8 +108,10 @@ function writeComment() {
   console.log(number);
 
   // get the text from the selected comment to append:
+  // let user = $("<p>user :</p>");
   let theText = $(this).text();
-  console.log(theText);
+  // var user = $('<img src="/assets/images/email-1.png"/>');
+  // console.log(user + theText);
 
   // the comment will be displayed in the display comment paragraph
   let $commentDisplay = $("#display_comment"+number);
@@ -121,7 +123,7 @@ function writeComment() {
   // all won't display one after another
   $commentDisplay.empty();
   // and display the comment in the display comment paragraph
-  $commentDisplay.append(theText+"<br/>");
+  $commentDisplay.append("<img class='user_image' src='/assets/images/user.png'>" + "&nbsp;" + theText+"<br/>");
 
   // POINTS
   // Get the points attribute for the comments
