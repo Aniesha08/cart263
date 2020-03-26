@@ -100,37 +100,49 @@ function toggleModal(){
 function writeComment() {
   // Code re-edited based on Sabine's guidance via ZOOM (March 23)
   // get the comment box of the selected comment
-  let commentBox = $(this).parent().attr("id");
-  console.log($(this).parent().attr("id"));
+  let commentBox = $(this).parent().attr("id"); // with Sabine
 
   // get the number associated with the comment box
-  let number = commentBox.substring(10);
-  console.log(number);
+  let number = commentBox.substring(10); // with Sabine
 
-  // get the text from the selected comment to append:
-  // let user = $("<p>user :</p>");
-  let theText = $(this).text();
-  // var user = $('<img src="/assets/images/email-1.png"/>');
-  // console.log(user + theText);
+  // define the text from the selected comment to append:
+  let theText = $(this).text(); // with Sabine
+  // define the text from the child element (the response) that comes right after the selected comment tag
+  let response = $(this).next().text();
 
   // the comment will be displayed in the display comment paragraph
-  let $commentDisplay = $("#display_comment"+number);
-  // end of code re-edited with Sabine
+  let $commentDisplay = $("#display_comment"+number); // with Sabine
+  // the response will be displayed right after the comment in the display response paragraph
+  let $responseDisplay = $("#display_response"+number);
 
-  // create a space between the dropdown and the comment display by adding a margin-bottom
-  $commentDisplay.css("margin-bottom", "1em");
-  // with the empty(), only 1 comment will be displayed on the display paragraph
+  // css styling for the comments
+  $commentDisplay.css({
+   'margin-bottom' : '0.5em',
+   'font-size' : '14px'
+  });
+  // css styling for the responses
+  $responseDisplay.css({
+   'margin-bottom' : '1em',
+   'margin-left' : '45px',
+   'font-size' : '14px',
+   'font-style' : 'italic'
+  });
+
+  // with the empty(), only 1 comment and response will be displayed on the display paragraphs
   // all won't display one after another
   $commentDisplay.empty();
-  // and display the comment in the display comment paragraph
-  $commentDisplay.append("<img class='user_image' src='/assets/images/user.png'>" + "&nbsp;" + theText+"<br/>");
+  $responseDisplay.empty();
+  // and finally, append the comment & response with the profile image of the user & profile owner
+  $commentDisplay.append("<img class='user_image' src='https://aniesha08.github.io/cart263/projects/project_3/assets/images/user.png'>" + "&nbsp;" + theText);
+  $responseDisplay.append("<img class='user_image' src='https://aniesha08.github.io/cart263/projects/project_3/assets/images/responder.png'>" + "&nbsp;" + response);
 
   // POINTS
   // Get the points attribute for the comments
   let points = $(this).attr("point");
+  // let response = $(".response"+points).text();
+  // console.log(response);
   // pass the points to the emotionsPoints() function
   emotionsPoints(points);
-  console.log(points);
 
 } // end of writeComment
 

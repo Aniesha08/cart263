@@ -269,7 +269,13 @@ button.ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-
 .comments{
   width:45%;
   float: left;
-  margin-left: 20px;}
+  margin-left: 20px;
+}
+
+.user_image{width:8%;
+  position: relative;
+  top: 5px;
+}
 
 .dropdown-content p{
   border-bottom: 1px solid lightgrey;
@@ -281,9 +287,9 @@ button.ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-
   border-bottom: 0px !important;
 }
 
-.user_image{width:8%;
-position: relative;
-top: 5px;}
+.hide{
+  display: none;
+}
 
 button{
   width:30%;
