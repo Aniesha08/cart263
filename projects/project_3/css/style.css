@@ -277,6 +277,12 @@ button.ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-
   top: 5px;
 }
 
+.emoji{
+  width: 5%;
+  position: relative;
+  top: 1px;
+}
+
 .dropdown-content p{
   border-bottom: 1px solid lightgrey;
   font-size: 12px;
