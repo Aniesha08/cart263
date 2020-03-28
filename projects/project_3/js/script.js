@@ -112,11 +112,11 @@ function writeComment() {
   // get the number associated with the comment box
   let number = commentBox.substring(10); // with Sabine
 
-  let emoji = $("img.emoji").html();
-  console.log(emoji);
+  // let emoji = $(".emoji").html();
+  // console.log(emoji);
 
   // define the text from the selected comment to append:
-  let theText = $(this).text() + emoji; // with Sabine
+  let theText = $(this).text(); // with Sabine
   console.log(theText);
   // define the text from the child element (the response) that comes right after the selected comment tag
   let response = $(this).next().text();
