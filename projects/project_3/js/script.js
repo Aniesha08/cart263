@@ -41,15 +41,22 @@ function setup(){
     value: 0
   });
 
+  $( "#inspiration_progress" ).progressbar({
+    value: 0
+  });
+
   $( "#encouragement_progress" ).progressbar({
     value: 0
   });
-  $( "#disgust_progress" ).progressbar({
+
+  $( "#disapproval_progress" ).progressbar({
     value: 0
   });
+
   $( "#jealousy_progress" ).progressbar({
     value: 0
   });
+
   $( "#anger_progress" ).progressbar({
     value: 0
   });
@@ -156,31 +163,38 @@ function emotionsPoints(points){
     $("#happy_progress").progressbar({
         value: happyValue+5
     });
+
   } // end of points 1
 
 
   if (points == 2){
+    // get the current value for inspiration
+    let inspirationValue = $("#inspiration_progress").progressbar( "option", "value" );
+    // increase its value by 10 in the inspiration progressbar
+    $("#inspiration_progress").progressbar({
+        value: inspirationValue+10
+    });
+  } // end of points 2
+
+  if (points == 3){
     // get the current value for encouragement
     let encouragementValue = $("#encouragement_progress").progressbar( "option", "value" );
     // increase its value by 10 in the encouragement progressbar
     $("#encouragement_progress").progressbar({
         value: encouragementValue+10
     });
-  } // end of points 2
-
-  // if (points == 3){
-  //   $( "#disgust_progress" ).progressbar({
-  //       value: +15
-  //   });
-  // } // end of points 3
+  } // end of points 3
 
   if (points == 4){
-    // get the current value for disgust
-    let disgustValue = $("#disgust_progress").progressbar("option", "value");
-    // increase its value by 20 in the disgust progressbar
-    $("#disgust_progress").progressbar({
-        value: disgustValue+20
+    // get the current value for disapproval
+    let disapprovalValue = $("#disapproval_progress").progressbar("option", "value");
+    // increase its value by 20 in the disapproval progressbar
+    $("#disapproval_progress").progressbar({
+        value: disapprovalValue+20
     });
+    if (disapprovalValue == 100){
+      alert("greater than 100");
+    }
   } // end of points 4
 
   if (points == 5){
@@ -190,6 +204,10 @@ function emotionsPoints(points){
     $("#jealousy_progress").progressbar({
         value: jealousyValue+25
     });
+    console.log(jealousyValue);
+    if (jealousyValue == 75){
+      alert("greater than 75");
+    }
   } // end of points 5
 
   if (points == 6){

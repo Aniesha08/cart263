@@ -232,14 +232,14 @@ hr{
   width: 50% !important;
   background-color: #fefefe;
   margin: auto !important;
-  margin-top: 2em !important;
+  margin-top: 1em !important;
   padding: 20px;
   border: none;
-  height: 480px !important;
+  height: 520px !important;
 }
 
 .ui-dialog .ui-dialog-content{
-  height: 480px !important;
+  height: 520px !important;
   overflow: hidden !important;;
 }
 
@@ -279,7 +279,7 @@ button.ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-
 
 .dropdown-content p{
   border-bottom: 1px solid lightgrey;
-  font-size: 15px;
+  font-size: 12px;
   margin-bottom: 5px;
 }
 
@@ -375,11 +375,15 @@ h1.emotions{
   background: #FFEB3B !important;
 }
 
+#inspiration_progress .ui-widget-header{
+  background: blue !important;
+}
+
 #encouragement_progress .ui-widget-header{
   background: #FFC107 !important;
 }
 
-#disgust_progress .ui-widget-header{
+#disapproval_progress .ui-widget-header{
   background: #8BC34A !important;
 }
 
