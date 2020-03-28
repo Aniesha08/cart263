@@ -400,3 +400,9 @@ h1.emotions{
 #anger_progress .ui-widget-header{
   background: red !important;
 }
+
+.emotions_emojis{
+  width: 6%;
+  position: relative;
+  top: 3px;
+}
