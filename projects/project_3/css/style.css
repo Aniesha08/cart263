@@ -29,6 +29,10 @@ body{
   color: blue;
 }
 
+a{
+  color: #03a9f4;
+}
+
 /******* LOGIN PAGE *******/
 
 #login_bar{
@@ -353,15 +357,16 @@ button{
 /******** EMOTIONS BAR SECTION *******/
 .emotions_bar{
   float:left;
-  background-color: #eae8e8;
+  background-color: #3a3a3a;
   height: 100vh;
   width: 30%;
   position: fixed;
   right: 0;
+  color: #fff;
 }
 
 h1.emotions{
-  color: #333;
+  color: #fff;
   margin: 30px;
 }
 
@@ -405,4 +410,32 @@ h1.emotions{
   width: 6%;
   position: relative;
   top: 3px;
+}
+
+/* DEACTIVATION PAGE */
+
+#grey{
+  background-color: #3a3a3a;
+}
+
+#deactivation_msg{
+  width:50%;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+}
+
+#deactivation_msg h1{
+  margin-top: 1em;
+}
+
+#size{
+  width: 15%;
+  margin-top: 8em;
+}
+
+#text{
+  font-family: 'Roboto', sans-serif;
+  margin-top: 0.5em;
+  line-height: 22px;
 }
