@@ -97,6 +97,7 @@ function logIn(){
 
 } //end of logIn
 
+
 function toggleModal(){
   // Get the modal dialog from this image div's data
   let $dialog = $(this).data('modal');
@@ -104,7 +105,9 @@ function toggleModal(){
   $dialog.dialog('open');
 } // end of toggleModal
 
+
 function writeComment() {
+  // DEFINE SELECTED COMMENT & RESPONSE
   // Code re-edited based on Sabine's guidance via ZOOM (March 23)
   // get the comment box of the selected comment
   let commentBox = $(this).parent().attr("id"); // with Sabine
@@ -112,17 +115,47 @@ function writeComment() {
   // get the number associated with the comment box
   let number = commentBox.substring(10); // with Sabine
 
-  // let emoji = $(".emoji").html();
-  // console.log(emoji);
-
   // define the text from the selected comment to append:
   let theText = $(this).text(); // with Sabine
   console.log(theText);
   // define the text from the child element (the response) that comes right after the selected comment tag
   let response = $(this).next().text();
+  // END OF DEFINE SELECTED COMMENT & RESPONSE
 
+
+  // DEFINE USER IMAGE
+  // define the user image in front of comment and response
+  let user = "<img class='user_image' src='https://aniesha08.github.io/cart263/projects/project_3/assets/images/user.png'>";
+  let responder = "<img class='user_image' src='https://aniesha08.github.io/cart263/projects/project_3/assets/images/responder.png'>";
+  // END OF USER IMAGE
+
+
+  // DEFINE EMOJIS
+  // get the number of the emoji attribute from the selected comment
+  let emojiNumber = $(this).attr("emoji");
+  console.log(emojiNumber);
+
+  // get the src of the emoji that is contained in the selected comment
+  // by finding the image tag that contains the class ".comment_emoji"+emojiNumber
+  let commentEmoji = $(this).find(".comment_emoji"+emojiNumber).attr('src');
+  console.log(commentEmoji);
+
+  let displayCommentEmoji = "<img class='emoji' src="+commentEmoji+">";
+
+  // get the src of the emoji that is contained in the RESPONSE of the selected comment
+  // by targeting the child element that comes next from the selected comment1
+  // and finding the image tag that contains the class ".response_emoji"+emojiNumber
+  let responseEmoji = $(this).next().find(".response_emoji"+emojiNumber).attr('src');
+  console.log(responseEmoji);
+
+  let displayResponseEmoji = "<img class='emoji' src="+responseEmoji+">";
+  // END OF EMOJIS
+
+
+  // DISPLAY COMMENT & RESPONSE
   // the comment will be displayed in the display comment paragraph
   let $commentDisplay = $("#display_comment"+number); // with Sabine
+
   // the response will be displayed right after the comment in the display response paragraph
   let $responseDisplay = $("#display_response"+number);
 
@@ -144,14 +177,14 @@ function writeComment() {
   $commentDisplay.empty();
   $responseDisplay.empty();
   // and finally, append the comment & response with the profile image of the user & profile owner
-  $commentDisplay.append("<img class='user_image' src='https://aniesha08.github.io/cart263/projects/project_3/assets/images/user.png'>" + "&nbsp;" + theText);
-  $responseDisplay.append("<img class='user_image' src='https://aniesha08.github.io/cart263/projects/project_3/assets/images/responder.png'>" + "&nbsp;" + response);
+  $commentDisplay.append(user + "&nbsp;" + theText + displayCommentEmoji);
+  $responseDisplay.append(responder + "&nbsp;" + response + displayResponseEmoji);
+  // END OF DISPLAY COMMENT & RESPONSE
+
 
   // POINTS
   // Get the points attribute for the comments
   let points = $(this).attr("point");
-  // let response = $(".response"+points).text();
-  // console.log(response);
   // pass the points to the emotionsPoints() function
   emotionsPoints(points);
 

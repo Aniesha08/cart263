@@ -378,11 +378,11 @@ h1.emotions{
 }
 
 #happy_progress .ui-widget-header{
-  background: #FFEB3B !important;
+  background: #ffe500 !important;
 }
 
 #inspiration_progress .ui-widget-header{
-  background: blue !important;
+  background: #2196f3 !important;
 }
 
 #encouragement_progress .ui-widget-header{
