@@ -112,18 +112,6 @@ a{
   margin-left: 1em;
 }
 
-#loggedIn{
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  margin-left: 25px;
-  background-color: #5aa8f9;
-  color: white;
-  padding: 0.5em;
-  border-radius: 5px;
-  position: absolute;
-  right: 70px;
-}
-
 #profile_info{
   width:80%;
   margin: 0 auto;
@@ -365,6 +353,22 @@ button{
   color: #fff;
 }
 
+#left{
+  margin-right: 30px;
+  margin-top: 15px;
+}
+
+#loggedIn{
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  background-color: #5aa8f9;
+  color: white;
+  padding: 0.5em;
+  border-radius: 5px;
+  position: absolute;
+  right: 30px;
+}
+
 h1.emotions{
   color: #fff;
   margin: 30px;
@@ -387,11 +391,11 @@ h1.emotions{
 }
 
 #inspiration_progress .ui-widget-header{
-  background: #2196f3 !important;
+  background: #FFC107 !important;
 }
 
 #encouragement_progress .ui-widget-header{
-  background: #FFC107 !important;
+  background: #2196f3 !important;
 }
 
 #disapproval_progress .ui-widget-header{

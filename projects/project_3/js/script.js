@@ -9,9 +9,6 @@ author, and this description to match your project!
 
 $(document).ready(setup);
 
-// variable for emotions progressbar
-let happiness = $("#happy_progress");
-
 function setup(){
   logIn();
 
@@ -61,7 +58,7 @@ function setup(){
     value: 0
   });
 
-  emotionsPoints();
+  emotionsBar();
 
 } // End of setup
 
@@ -186,24 +183,29 @@ function writeComment() {
   // Get the points attribute for the comments
   let points = $(this).attr("point");
   // pass the points to the emotionsPoints() function
-  emotionsPoints(points);
+  emotionsBar(points);
 
 } // end of writeComment
 
 
-function emotionsPoints(points){
+function emotionsBar(points){
   // if the points attribute == point attribute value (depending on the emotion), increase the value in the progress bar for each emotion with the value given
+  // HAPPINESS POINTS
   if (points == 1){
     // get the current value for happiness
     let happyValue = $("#happy_progress").progressbar( "option", "value" );
     // increase its value by 5 in the happiness progressbar
     $("#happy_progress").progressbar({
-        value: happyValue+5
+        value: happyValue+10
     });
-
+    // if the user answered 6 questions happily, they get more followers
+    if (happyValue >= 50){
+      alert("win followers");
+    }
   } // end of points 1
 
 
+  // INSPIRATION POINTS
   if (points == 2){
     // get the current value for inspiration
     let inspirationValue = $("#inspiration_progress").progressbar( "option", "value" );
@@ -211,8 +213,14 @@ function emotionsPoints(points){
     $("#inspiration_progress").progressbar({
         value: inspirationValue+10
     });
+    // if the user answered 6 questions inspiringly, they get more followers
+    if (inspirationValue >= 50){
+      alert("win followers");
+    }
   } // end of points 2
 
+
+  // ENCOURAGEMENT POINTS
   if (points == 3){
     // get the current value for encouragement
     let encouragementValue = $("#encouragement_progress").progressbar( "option", "value" );
@@ -220,8 +228,14 @@ function emotionsPoints(points){
     $("#encouragement_progress").progressbar({
         value: encouragementValue+10
     });
+    // if the user answered 6 questions inspiringly, they get more followers
+    if (encouragementValue >= 50){
+      alert("win followers");
+    }
   } // end of points 3
 
+
+  // DISAPPROVAL POINTS
   if (points == 4){
     // get the current value for disapproval
     let disapprovalValue = $("#disapproval_progress").progressbar("option", "value");
@@ -229,11 +243,15 @@ function emotionsPoints(points){
     $("#disapproval_progress").progressbar({
         value: disapprovalValue+20
     });
-    if (disapprovalValue == 100){
-      alert("greater than 100");
+
+    // if the user answered 5 questions disapprovingly, deactivate their account
+    if (disapprovalValue >= 75){
+      $(location).attr('href', 'https://aniesha08.github.io/cart263/projects/project_3/deactivate.html');
     }
   } // end of points 4
 
+
+  // JEALOUSY POINTS
   if (points == 5){
     // get the current value for jealous
     let jealousyValue = $("#jealousy_progress").progressbar("option", "value");
@@ -241,18 +259,24 @@ function emotionsPoints(points){
     $("#jealousy_progress").progressbar({
         value: jealousyValue+25
     });
-    console.log(jealousyValue);
-    if (jealousyValue == 75){
-      alert("greater than 75");
+    // if the user answered 4 questions jealously, deactivate their account
+    if (jealousyValue >= 75){
+      $(location).attr('href', 'https://aniesha08.github.io/cart263/projects/project_3/deactivate.html');
     }
   } // end of points 5
 
+
+  // ANGER POINTS
   if (points == 6){
     // get the current value for anger
     let angerValue = $( "#anger_progress" ).progressbar("option", "value");
-    // increase its value by 30 in the anger progressbar
+    // increase its value by 33.34 in the anger progressbar
     $("#anger_progress").progressbar({
-        value: angerValue+30
+        value: angerValue+33.34
     });
+    // if the user answered 3 questions angrily, deactivate their account
+    if (angerValue >= 66.68){
+      $(location).attr('href', 'https://aniesha08.github.io/cart263/projects/project_3/deactivate.html');
+    }
   } // end of points 5
 } // end of emotionsPoints
