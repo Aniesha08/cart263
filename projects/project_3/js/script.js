@@ -8,8 +8,10 @@ author, and this description to match your project!
 ******************/
 
 $(document).ready(setup);
+let followersNum = 50;
 
 function setup(){
+
   logIn();
 
   // Code by Pippin
@@ -189,9 +191,18 @@ function writeComment() {
 
 
 function emotionsBar(points){
+  // define where to display the followers number
+  let followersIncrease = $("#followers_number").text(followersNum);
+
   // if the points attribute == point attribute value (depending on the emotion), increase the value in the progress bar for each emotion with the value given
   // HAPPINESS POINTS
+  // if a happy comment is selected...
   if (points == 1){
+    // increase the followers number by 1
+    followersNum = followersNum+1;
+    // display the updated followers number
+    followersIncrease = $("#followers_number").text(followersNum);
+
     // get the current value for happiness
     let happyValue = $("#happy_progress").progressbar( "option", "value" );
     // increase its value by 5 in the happiness progressbar
@@ -206,7 +217,13 @@ function emotionsBar(points){
 
 
   // INSPIRATION POINTS
+  // if an inspiration comment is selected...
   if (points == 2){
+    // increase the followers number by 3
+    followersNum = followersNum+3;
+    // display the updated followers number
+    followersIncrease = $("#followers_number").text(followersNum);
+
     // get the current value for inspiration
     let inspirationValue = $("#inspiration_progress").progressbar( "option", "value" );
     // increase its value by 10 in the inspiration progressbar
@@ -221,8 +238,14 @@ function emotionsBar(points){
 
 
   // ENCOURAGEMENT POINTS
+  // if an encouraging comment is selected...
   if (points == 3){
-    // get the current value for encouragement
+    // increase the followers number by 5
+    followersNum = followersNum+5;
+    // display the updated followers number
+    followersIncrease = $("#followers_number").text(followersNum);
+
+    // get the current progressbar value for encouragement
     let encouragementValue = $("#encouragement_progress").progressbar( "option", "value" );
     // increase its value by 10 in the encouragement progressbar
     $("#encouragement_progress").progressbar({
@@ -236,8 +259,14 @@ function emotionsBar(points){
 
 
   // DISAPPROVAL POINTS
+  // if a disapproving comment is selected...
   if (points == 4){
-    // get the current value for disapproval
+    // increase the followers number by 10
+    followersNum = followersNum+10;
+    // display the updated followers number
+    followersIncrease = $("#followers_number").text(followersNum);
+
+    // get the current progressbar value for disapproval
     let disapprovalValue = $("#disapproval_progress").progressbar("option", "value");
     // increase its value by 20 in the disapproval progressbar
     $("#disapproval_progress").progressbar({
@@ -252,13 +281,20 @@ function emotionsBar(points){
 
 
   // JEALOUSY POINTS
+  // if a jealous comment is selected...
   if (points == 5){
-    // get the current value for jealous
+    // increase the followers number by 20
+    followersNum = followersNum+20;
+    // display the updated followers number
+    followersIncrease = $("#followers_number").text(followersNum);
+
+    // get the current progressbar value for jealous
     let jealousyValue = $("#jealousy_progress").progressbar("option", "value");
     // increase its value by 25 in the jealousy progressbar
     $("#jealousy_progress").progressbar({
         value: jealousyValue+25
     });
+
     // if the user answered 4 questions jealously, deactivate their account
     if (jealousyValue >= 75){
       $(location).attr('href', 'https://aniesha08.github.io/cart263/projects/project_3/deactivate.html');
@@ -267,13 +303,20 @@ function emotionsBar(points){
 
 
   // ANGER POINTS
+  // if an angry comment is selected...
   if (points == 6){
-    // get the current value for anger
+    // increase the followers number by 30
+    followersNum = followersNum+30;
+    // display the updated followers number
+    followersIncrease = $("#followers_number").text(followersNum);
+
+    // get the current progressbar value for anger
     let angerValue = $( "#anger_progress" ).progressbar("option", "value");
     // increase its value by 33.34 in the anger progressbar
     $("#anger_progress").progressbar({
         value: angerValue+33.34
     });
+
     // if the user answered 3 questions angrily, deactivate their account
     if (angerValue >= 66.68){
       $(location).attr('href', 'https://aniesha08.github.io/cart263/projects/project_3/deactivate.html');

@@ -144,7 +144,7 @@ a{
 }
 
 span#status{
-  background-color: lightgreen;
+  background-color: #5aa8f9;
   color: white;
   margin-left: 0.15;
   font-size: 20px;
@@ -281,6 +281,10 @@ button.ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-
   margin-bottom: 5px;
 }
 
+/* .dropdown-content p:hover{
+  background-color:red;
+} */
+
 .noline{
   border-bottom: 0px !important;
 }
@@ -351,6 +355,10 @@ button{
   position: fixed;
   right: 0;
   color: #fff;
+}
+
+#followers_number{
+  color: lightgreen;
 }
 
 #left{
