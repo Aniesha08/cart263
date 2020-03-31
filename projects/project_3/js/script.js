@@ -208,7 +208,7 @@ function emotionsBar(points){
   let followersIncrease = $("#followers_number").text(followersNum);
 
   // if the points attribute == point attribute value (depending on the emotion), increase the value in the progress bar for each emotion with the value given
-  // HAPPINESS POINTS
+  // COMPLIMENT POINTS
   // if a happy comment is selected...
   if (points == 1){
     // increase the followers number by 1

@@ -120,7 +120,7 @@ a{
 }
 
 #followers{
-  margin-top: 0.5em;
+  margin-top: 0.25em;
 }
 
 #bio{
@@ -361,6 +361,19 @@ button{
   color: lightgreen;
 }
 
+#followers_para{
+  margin-bottom: 2em;
+  margin-right:30px;
+}
+
+.light_green{
+  color: lightgreen;
+}
+
+.light_green_border{
+  border-bottom: 1px solid lightgreen;
+}
+
 #left{
   margin-right: 30px;
   margin-top: 15px;
@@ -377,9 +390,10 @@ button{
   right: 30px;
 }
 
-h1.emotions{
+h1.followers{
   color: #fff;
   margin: 30px;
+  margin-bottom: 0.25em;
 }
 
 .emotions_bar p{
