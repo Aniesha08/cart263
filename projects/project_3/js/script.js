@@ -115,8 +115,7 @@ function writeComment() {
   let number = commentBox.substring(10); // with Sabine
 
   // define the text from the selected comment to append:
-  let theText = $(this).text(); // with Sabine
-  console.log(theText);
+  let comment = $(this).text(); // with Sabine
   // define the text from the child element (the response) that comes right after the selected comment tag
   let response = $(this).next().text();
   // END OF DEFINE SELECTED COMMENT & RESPONSE
@@ -132,52 +131,49 @@ function writeComment() {
   // DEFINE EMOJIS
   // get the number of the emoji attribute from the selected comment
   let emojiNumber = $(this).attr("emoji");
-  console.log(emojiNumber);
 
   // get the src of the emoji that is contained in the selected comment
   // by finding the image tag that contains the class ".comment_emoji"+emojiNumber
   let commentEmoji = $(this).find(".comment_emoji"+emojiNumber).attr('src');
-  console.log(commentEmoji);
-
   let displayCommentEmoji = "<img class='emoji' src="+commentEmoji+">";
 
   // get the src of the emoji that is contained in the RESPONSE of the selected comment
   // by targeting the child element that comes next from the selected comment1
   // and finding the image tag that contains the class ".response_emoji"+emojiNumber
   let responseEmoji = $(this).next().find(".response_emoji"+emojiNumber).attr('src');
-  console.log(responseEmoji);
-
   let displayResponseEmoji = "<img class='emoji' src="+responseEmoji+">";
   // END OF EMOJIS
+
 
 
   // DISPLAY COMMENT & RESPONSE
   // the comment will be displayed in the display comment paragraph
   let $commentDisplay = $("#display_comment"+number); // with Sabine
-
   // the response will be displayed right after the comment in the display response paragraph
   let $responseDisplay = $("#display_response"+number);
 
   // css styling for the comments
   $commentDisplay.css({
-   'margin-bottom' : '0.5em',
-   'font-size' : '14px'
+    'margin-bottom' : '0.5em',
+    'font-size' : '14px'
   });
   // css styling for the responses
   $responseDisplay.css({
-   'margin-bottom' : '1em',
-   'margin-left' : '45px',
-   'font-size' : '14px',
-   'font-style' : 'italic'
+    'margin-bottom' : '1em',
+    'margin-left' : '45px',
+    'font-size' : '14px',
+    'font-style' : 'italic'
   });
 
   // with the empty(), only 1 comment and response will be displayed on the display paragraphs
   // all won't display one after another
   $commentDisplay.empty();
   $responseDisplay.empty();
+
   // and finally, append the comment & response with the profile image of the user & profile owner
-  $commentDisplay.append(user + "&nbsp;" + theText + displayCommentEmoji);
+  $commentDisplay.append(user + "&nbsp;" + comment + displayCommentEmoji);
   $responseDisplay.append(responder + "&nbsp;" + response + displayResponseEmoji);
+  typeWriter(response, $responseDisplay);
   // END OF DISPLAY COMMENT & RESPONSE
 
 
@@ -188,6 +184,23 @@ function writeComment() {
   emotionsBar(points);
 
 } // end of writeComment
+
+
+// TYPE WRITER effect from: W3schools
+// https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_typewriter
+function typeWriter(response, $responseDisplay){
+  let i = 0;
+  let speed = 100;
+
+  (function addLetter() {
+    if (i < response.length) {
+      $responseDisplay += response.charAt(i);
+      i++;
+      console.log(response.charAt(i));
+      setTimeout(addLetter, speed);
+    }
+  })();
+} // end of typeWriter
 
 
 function emotionsBar(points){
@@ -207,7 +220,7 @@ function emotionsBar(points){
     let happyValue = $("#happy_progress").progressbar( "option", "value" );
     // increase its value by 5 in the happiness progressbar
     $("#happy_progress").progressbar({
-        value: happyValue+10
+      value: happyValue+10
     });
     // if the user answered 6 questions happily, they get more followers
     if (happyValue >= 50){
@@ -228,7 +241,7 @@ function emotionsBar(points){
     let inspirationValue = $("#inspiration_progress").progressbar( "option", "value" );
     // increase its value by 10 in the inspiration progressbar
     $("#inspiration_progress").progressbar({
-        value: inspirationValue+10
+      value: inspirationValue+10
     });
     // if the user answered 6 questions inspiringly, they get more followers
     if (inspirationValue >= 50){
@@ -249,7 +262,7 @@ function emotionsBar(points){
     let encouragementValue = $("#encouragement_progress").progressbar( "option", "value" );
     // increase its value by 10 in the encouragement progressbar
     $("#encouragement_progress").progressbar({
-        value: encouragementValue+10
+      value: encouragementValue+10
     });
     // if the user answered 6 questions inspiringly, they get more followers
     if (encouragementValue >= 50){
@@ -270,7 +283,7 @@ function emotionsBar(points){
     let disapprovalValue = $("#disapproval_progress").progressbar("option", "value");
     // increase its value by 20 in the disapproval progressbar
     $("#disapproval_progress").progressbar({
-        value: disapprovalValue+20
+      value: disapprovalValue+20
     });
 
     // if the user answered 5 questions disapprovingly, deactivate their account
@@ -292,7 +305,7 @@ function emotionsBar(points){
     let jealousyValue = $("#jealousy_progress").progressbar("option", "value");
     // increase its value by 25 in the jealousy progressbar
     $("#jealousy_progress").progressbar({
-        value: jealousyValue+25
+      value: jealousyValue+25
     });
 
     // if the user answered 4 questions jealously, deactivate their account
@@ -314,7 +327,7 @@ function emotionsBar(points){
     let angerValue = $( "#anger_progress" ).progressbar("option", "value");
     // increase its value by 33.34 in the anger progressbar
     $("#anger_progress").progressbar({
-        value: angerValue+33.34
+      value: angerValue+33.34
     });
 
     // if the user answered 3 questions angrily, deactivate their account
