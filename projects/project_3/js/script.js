@@ -172,8 +172,10 @@ function writeComment() {
 
   // and finally, append the comment & response with the profile image of the user & profile owner
   $commentDisplay.append(user + "&nbsp;" + comment + displayCommentEmoji);
-  $responseDisplay.append(responder + "&nbsp;" + response + displayResponseEmoji);
-  typeWriter(response, $responseDisplay);
+  $responseDisplay.append(responder + "&nbsp;");
+
+  // function for type writer effect
+  typeWriter(response, $responseDisplay, displayResponseEmoji);
   // END OF DISPLAY COMMENT & RESPONSE
 
 
@@ -186,18 +188,27 @@ function writeComment() {
 } // end of writeComment
 
 
-// TYPE WRITER effect from: W3schools
+// TYPE WRITER effect for Response from: W3schools
 // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_typewriter
-function typeWriter(response, $responseDisplay){
+// referenced 1st answer: https://stackoverflow.com/questions/47937178/javascript-typewriter-animation-during-generating-random-string-from-array
+function typeWriter(response, $responseDisplay, displayResponseEmoji){
+  // define the starting point and speed of typeWriter
   let i = 0;
-  let speed = 100;
+  let speed = 50;
 
   (function addLetter() {
+    // if the character length of the response is less that 0,
     if (i < response.length) {
-      $responseDisplay += response.charAt(i);
+      $responseDisplay.html($responseDisplay.html() + response.charAt(i));
+      // keep adding letters
       i++;
       console.log(response.charAt(i));
+      // at speed 50
       setTimeout(addLetter, speed);
+    }
+    // once the typewriter effect is finished, add the emoji at the end of the response
+    else{
+      $responseDisplay.html($responseDisplay.html() + displayResponseEmoji);
     }
   })();
 } // end of typeWriter
