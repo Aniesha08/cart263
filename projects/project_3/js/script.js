@@ -1,18 +1,40 @@
 "use strict";
 
 /*****************
-Social Media
+InstaEmotion
 Aniesha Sangarapillai
-This is a template. You must fill in the title,
-author, and this description to match your project!
+
 ******************/
 
 $(document).ready(setup);
+
+// defined the starting followers value
 let followersNum = 50;
+
+// defined the SOUND for the comment responses (1 sound per picture)
+// audio for picture 1, comment 4
 let voiceResponse1 = new Audio("https://aniesha08.github.io/cart263/projects/project_3/assets/sounds/wash.mp3");
+// audio for picture 2, comment 2
+let voiceResponse2 = new Audio("https://aniesha08.github.io/cart263/projects/project_3/assets/sounds/drawing.mp3");
+// audio for picture 3, comment 4
+let voiceResponse3 = new Audio("https://aniesha08.github.io/cart263/projects/project_3/assets/sounds/yuvan.mp3");
+// audio for picture 4, comment 6
+let voiceResponse4 = new Audio("https://aniesha08.github.io/cart263/projects/project_3/assets/sounds/poem.mp3");
+// audio for picture 5, comment 4
+let voiceResponse5 = new Audio("https://aniesha08.github.io/cart263/projects/project_3/assets/sounds/model.mp3");
+// audio for picture 6, comment 1
+let voiceResponse6 = new Audio("https://aniesha08.github.io/cart263/projects/project_3/assets/sounds/award.mp3");
+// audio for picture 7, comment 4
+let voiceResponse7 = new Audio("https://aniesha08.github.io/cart263/projects/project_3/assets/sounds/cover.mp3");
+// audio for picture 8, comment 2
+let voiceResponse8 = new Audio("https://aniesha08.github.io/cart263/projects/project_3/assets/sounds/makeup.mp3");
+//audio for picture 9, comment 1
+let voiceResponse9 = new Audio("https://aniesha08.github.io/cart263/projects/project_3/assets/sounds/travel.mp3");
+
+
 
 function setup(){
-
+  // function for login page
   logIn();
 
   // Code by Pippin
@@ -29,42 +51,45 @@ function setup(){
   // Listen for clicks on the image div
   $('.image').on('click', toggleModal);
   // End code by Pippin
-  // If an option is selected from the dropdown, perform the writeComment function
+
+  // If an comment is selected from the dropdown, perform the writeComment function
   $('.dropdown-content p').on('click', writeComment);
 
   // Disable resizable and draggable property from modal
   $(".ui-dialog").resizable('disable').removeClass('ui-state-disabled');
   $(".ui-dialog").draggable('disable').removeClass('ui-state-disabled');
 
-
-  $( "#happy_progress" ).progressbar({
+  // Defined initial starting value for the progressbars
+  $("#happy_progress").progressbar({
     value: 0
   });
 
-  $( "#inspiration_progress" ).progressbar({
+  $("#inspiration_progress").progressbar({
     value: 0
   });
 
-  $( "#encouragement_progress" ).progressbar({
+  $("#encouragement_progress").progressbar({
     value: 0
   });
 
-  $( "#disapproval_progress" ).progressbar({
+  $("#disapproval_progress").progressbar({
     value: 0
   });
 
-  $( "#jealousy_progress" ).progressbar({
+  $("#jealousy_progress").progressbar({
     value: 0
   });
 
-  $( "#anger_progress" ).progressbar({
+  $("#anger_progress").progressbar({
     value: 0
   });
 
+  // function to dynamically change the values of the progressbar and followers
   emotionsBar();
-  voiceResponse1.pause();
-
+  // function to play the response sound if a specific comment is chosen...
+  responseSound();
 } // End of setup
+
 
 
 function logIn(){
@@ -77,7 +102,6 @@ function logIn(){
   $("#password").keyup(function() {
     // increase the length value of the password character typed
     $password++;
-    console.log($password);
     // if the user typed less that 6 characters for the password...
     if ($password < 6){
       // disable the click function of the login button
@@ -95,10 +119,12 @@ function logIn(){
       }); // end of login click function
     } // end of > 6 if statement
   }); // end of key up function
-
 } //end of logIn
 
 
+
+// toggleModal function
+// function that opens the modal of its appropriate image
 function toggleModal(){
   // Get the modal dialog from this image div's data
   let $dialog = $(this).data('modal');
@@ -107,21 +133,22 @@ function toggleModal(){
 } // end of toggleModal
 
 
+
+// writeComment function
+// takes care of identifying the comment that was clicked
+// displaying it along with the response and emojis that corresponds to the comment
 function writeComment() {
   // DEFINE SELECTED COMMENT & RESPONSE
   // Code re-edited based on Sabine's guidance via ZOOM (March 23)
   // get the comment box of the selected comment
   let commentBox = $(this).parent().attr("id"); // with Sabine
-
   // get the number associated with the comment box
   let number = commentBox.substring(10); // with Sabine
-
   // define the text from the selected comment to append:
   let comment = $(this).text(); // with Sabine
   // define the text from the child element (the response) that comes right after the selected comment tag
   let response = $(this).next().text();
   // END OF DEFINE SELECTED COMMENT & RESPONSE
-
 
   // DEFINE USER IMAGE
   // define the user image in front of comment and response
@@ -140,12 +167,11 @@ function writeComment() {
   let displayCommentEmoji = "<img class='emoji' src="+commentEmoji+">";
 
   // get the src of the emoji that is contained in the RESPONSE of the selected comment
-  // by targeting the child element that comes next from the selected comment1
+  // by targeting the child element that comes next from the selected comment
   // and finding the image tag that contains the class ".response_emoji"+emojiNumber
   let responseEmoji = $(this).next().find(".response_emoji"+emojiNumber).attr('src');
   let displayResponseEmoji = "<img class='emoji' src="+responseEmoji+">";
   // END OF EMOJIS
-
 
 
   // DISPLAY COMMENT & RESPONSE
@@ -172,26 +198,32 @@ function writeComment() {
   $commentDisplay.empty();
   $responseDisplay.empty();
 
-  // and finally, append the comment & response with the profile image of the user & profile owner
+  // and finally, append the comment and response with the profile image of the user & profile owner
   $commentDisplay.append(user + "&nbsp;" + comment + displayCommentEmoji);
   $responseDisplay.append(responder + "&nbsp;");
 
-  // function for type writer effect
+  // function for Typewriter effect
+  // pass the response, $responseDisplay, displayResponseEmoji variables into the function
+  // as we will be adding the typeWriter effect to the response
   typeWriter(response, $responseDisplay, displayResponseEmoji);
   // END OF DISPLAY COMMENT & RESPONSE
 
 
   // POINTS
-  // Get the points attribute for the comments
+  // Get the points attribute from the comment that was clicked
+  // in each modal, there are 6 $comments
+  // comment 1 (1 point), comment 2 (2 points), comment 3 (3 points) and so on...
   let points = $(this).attr("point");
   // pass the points to the emotionsPoints() function
+  // we will use this points value to determing which comment was clicked...
   emotionsBar(points);
 
 } // end of writeComment
 
 
-// TYPE WRITER effect for Response from: W3schools
-// https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_typewriter
+
+// TYPE WRITER effect for profile owner's response
+// from: W3schools (https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_typewriter)
 // referenced 1st answer: https://stackoverflow.com/questions/47937178/javascript-typewriter-animation-during-generating-random-string-from-array
 function typeWriter(response, $responseDisplay, displayResponseEmoji){
   // define the starting point and speed of typeWriter
@@ -202,45 +234,105 @@ function typeWriter(response, $responseDisplay, displayResponseEmoji){
     // if the character length of the response is less that 0,
     if (i < response.length) {
       $responseDisplay.html($responseDisplay.html() + response.charAt(i));
-      // keep adding letters
       i++;
-      console.log(response.charAt(i));
-      // at speed 50
+      // keep adding letters to the responseDisplay paragraph
+      // at the speed of 50
       setTimeout(addLetter, speed);
     }
-    // once the typewriter effect is finished, add the emoji at the end of the response
+
+    // once the typewriter effect is completed, add the emoji at the end of the response
     else{
       $responseDisplay.html($responseDisplay.html() + displayResponseEmoji);
     }
-  })();
+
+  })(); // end of addLetter
 } // end of typeWriter
 
 
+
+// SOUND for the comment responses (1 sound per picture)
+function responseSound(){
+//if the assigned comments are clicked, play its assigned sound
+  // comment 4 of 1st picture
+  $("#commentbox1 .comment4").click(function() {
+    voiceResponse1.play();
+  });
+
+  // comment 2 of 2nd picture
+  $("#commentbox2 .comment2").click(function() {
+    voiceResponse2.play();
+  });
+
+  // comment 4 of 3rd picture
+  $("#commentbox3 .comment4").click(function() {
+    voiceResponse3.play();
+  });
+
+  // comment 6 of 4th picture
+  $("#commentbox4 .comment6").click(function() {
+    voiceResponse4.play();
+  });
+
+  // comment 5 of 4th picture
+  $("#commentbox5 .comment4").click(function() {
+    voiceResponse5.play();
+  });
+
+  // comment 1 of 6th picture
+  $("#commentbox6 .comment1").click(function() {
+    voiceResponse6.play();
+  });
+
+  // comment 4 of 7th picture
+  $("#commentbox7 .comment4").click(function() {
+    voiceResponse7.play();
+  });
+
+  // comment 4 of 7th picture
+  $("#commentbox8 .comment2").click(function() {
+    voiceResponse8.play();
+  });
+
+  // comment 1 of 8th picture
+  $("#commentbox9 .comment1").click(function() {
+    voiceResponse9.play();
+  });
+} // end of responseSound
+
+
+
+// EmotionsBar function
+// takes care of updating the followers and progressbar values
 function emotionsBar(points){
-  // define where to display the followers number
+  // define where to display the followers number and display the initial followers number (50) which will be updated
   let followersIncrease = $("#followers_number").text(followersNum);
 
   // if the points attribute == point attribute value (depending on the emotion), increase the value in the progress bar for each emotion with the value given
   // COMPLIMENT POINTS
   // if a happy comment is selected...
   if (points == 1){
-    voiceResponse1.play();
-    console.log("playing sound");
-
     // increase the followers number by 1
     followersNum = followersNum+1;
     // display the updated followers number
     followersIncrease = $("#followers_number").text(followersNum);
 
-    // get the current value for happiness
+    // get the current value for happiness from the progressbar
     let happyValue = $("#happy_progress").progressbar( "option", "value" );
-    // increase its value by 5 in the happiness progressbar
+    console.log(happyValue);
+    // increase its value by 10 in the happiness progressbar
     $("#happy_progress").progressbar({
       value: happyValue+10
     });
-    // if the user answered 6 questions happily, they get more followers
-    if (happyValue >= 50){
-      alert("win followers");
+    // if the user answered 4 questions happily, they get more 100 followers
+    if (happyValue >= 30){
+      // increase the followers number by 100
+      followersNum = followersNum+100;
+      // display the updated followers number
+      followersIncrease = $("#followers_number").text(followersNum);
+      // change the color of the followers number
+      followersIncrease.css({
+        'color' : '#fee785'
+      });
     }
   } // end of points 1
 
@@ -253,15 +345,22 @@ function emotionsBar(points){
     // display the updated followers number
     followersIncrease = $("#followers_number").text(followersNum);
 
-    // get the current value for inspiration
+    // get the current value for inspiration from the progressbar
     let inspirationValue = $("#inspiration_progress").progressbar( "option", "value" );
     // increase its value by 10 in the inspiration progressbar
     $("#inspiration_progress").progressbar({
       value: inspirationValue+10
     });
-    // if the user answered 6 questions inspiringly, they get more followers
-    if (inspirationValue >= 50){
-      alert("win followers");
+    // if the user answered 4 questions inspiringly, they get more followers
+    if (inspirationValue >= 30){
+      // increase the followers number by 100
+      followersNum = followersNum+100;
+      // display the updated followers number
+      followersIncrease = $("#followers_number").text(followersNum);
+      // change the color of the followers number
+      followersIncrease.css({
+        'color' : '#fee785'
+      });
     }
   } // end of points 2
 
@@ -274,15 +373,22 @@ function emotionsBar(points){
     // display the updated followers number
     followersIncrease = $("#followers_number").text(followersNum);
 
-    // get the current progressbar value for encouragement
+    // get the current progressbar value for encouragement from the progressbar
     let encouragementValue = $("#encouragement_progress").progressbar( "option", "value" );
     // increase its value by 10 in the encouragement progressbar
     $("#encouragement_progress").progressbar({
       value: encouragementValue+10
     });
-    // if the user answered 6 questions inspiringly, they get more followers
-    if (encouragementValue >= 50){
-      alert("win followers");
+    // if the user answered 3 questions with encouragement, they get more followers
+    if (encouragementValue >= 30){
+      // increase the followers number by 100
+      followersNum = followersNum+100;
+      // display the updated followers number
+      followersIncrease = $("#followers_number").text(followersNum);
+      // change the color of the followers number
+      followersIncrease.css({
+        'color' : '#fee785'
+      });
     }
   } // end of points 3
 
@@ -294,8 +400,11 @@ function emotionsBar(points){
     followersNum = followersNum+10;
     // display the updated followers number
     followersIncrease = $("#followers_number").text(followersNum);
+    followersIncrease.css({
+      'color' : '#f44336'
+    });
 
-    // get the current progressbar value for disapproval
+    // get the current progressbar value for disapproval from the progressbar
     let disapprovalValue = $("#disapproval_progress").progressbar("option", "value");
     // increase its value by 20 in the disapproval progressbar
     $("#disapproval_progress").progressbar({
@@ -316,8 +425,11 @@ function emotionsBar(points){
     followersNum = followersNum+20;
     // display the updated followers number
     followersIncrease = $("#followers_number").text(followersNum);
+    followersIncrease.css({
+      'color' : '#f44336'
+    });
 
-    // get the current progressbar value for jealous
+    // get the current progressbar value for jealous from the progressbar
     let jealousyValue = $("#jealousy_progress").progressbar("option", "value");
     // increase its value by 25 in the jealousy progressbar
     $("#jealousy_progress").progressbar({
@@ -338,8 +450,11 @@ function emotionsBar(points){
     followersNum = followersNum+30;
     // display the updated followers number
     followersIncrease = $("#followers_number").text(followersNum);
+    followersIncrease.css({
+      'color' : '#f44336'
+    });
 
-    // get the current progressbar value for anger
+    // get the current progressbar value for anger from the progressbar
     let angerValue = $( "#anger_progress" ).progressbar("option", "value");
     // increase its value by 33.34 in the anger progressbar
     $("#anger_progress").progressbar({
