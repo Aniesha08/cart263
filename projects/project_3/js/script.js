@@ -9,6 +9,7 @@ author, and this description to match your project!
 
 $(document).ready(setup);
 let followersNum = 50;
+let voiceResponse1 = new Audio("https://aniesha08.github.io/cart263/projects/project_3/assets/sounds/wash.mp3");
 
 function setup(){
 
@@ -61,6 +62,7 @@ function setup(){
   });
 
   emotionsBar();
+  voiceResponse1.pause();
 
 } // End of setup
 
@@ -222,6 +224,9 @@ function emotionsBar(points){
   // COMPLIMENT POINTS
   // if a happy comment is selected...
   if (points == 1){
+    voiceResponse1.play();
+    console.log("playing sound");
+
     // increase the followers number by 1
     followersNum = followersNum+1;
     // display the updated followers number
