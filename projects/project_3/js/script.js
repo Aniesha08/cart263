@@ -4,6 +4,9 @@
 InstaEmotion
 Aniesha Sangarapillai
 
+InstaEmotion is a project that attempts to shed light on the thoughts and emotions of social media users by revealing aspects of profile owners (commentors)
+and profile viewers (responders) through a simple profile page interaction by clicking and choosing a comment for each post.
+
 ******************/
 
 $(document).ready(setup);
@@ -379,7 +382,7 @@ function emotionsBar(points){
     $("#encouragement_progress").progressbar({
       value: encouragementValue+10
     });
-    // if the user answered 3 questions with encouragement, they get more followers
+    // if the user answered 4 questions with encouragement, they get more followers
     if (encouragementValue >= 30){
       // increase the followers number by 100
       followersNum = followersNum+100;
